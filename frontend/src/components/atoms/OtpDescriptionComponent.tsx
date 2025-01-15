@@ -35,7 +35,11 @@ const DescriptionDiv = styled.div`
     text-decoration-skip-ink: none;
 `;
 
-const KYCDescription = () => {
+interface description {
+  desc : string
+}
+
+const OtpDescriptionComponent :React.FC<description> = ({desc}) => {
   return (
     <Container>
 
@@ -46,10 +50,10 @@ const KYCDescription = () => {
         </SVGElementDiv>
 
         <DescriptionDiv>
-        It’s mandatory to verify your KYC. This is a one-time process and won’t not take more than 1 minute of your time.
+        {desc}
         </DescriptionDiv>
     </Container>
   )
 }
 
-export default KYCDescription
+export default OtpDescriptionComponent

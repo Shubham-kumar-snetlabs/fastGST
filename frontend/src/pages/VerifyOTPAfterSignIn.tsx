@@ -5,6 +5,8 @@ import EnterOTPDescription from '../components/molecules/enterOTPmolecule/EnterO
 import EnterOTPBox from '../components/molecules/enterOTPmolecule/EnterOTPBox';
 import SendOtpButtonComponent from '../components/atoms/SendOtpButtonComponent';
 import { useNavigate } from 'react-router-dom';
+import { usePhoneNumber } from '../contexts/PhoneNumberContext';
+
 
 const Container = styled.div`
     height : 358px;
@@ -24,7 +26,9 @@ const ButtonContainer = styled.div`
 `;
 
 
-const VerifyKYC = () => {
+
+const VerifyOTPAfterSignIn = () => {
+  const { phoneNumber, setPhoneNumber } = usePhoneNumber();
   const svgContent =  <svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M47.9984 95.9999C68.5582 95.9999 85.2253 94.7324 85.2253 93.1689C85.2253 91.6054 68.5582 90.3379 47.9984 90.3379C27.4385 90.3379 10.7715 91.6054 10.7715 93.1689C10.7715 94.7324 27.4385 95.9999 47.9984 95.9999Z" fill="#F5F5F5"/>
     <path d="M45.7731 70.7253H8.69984C8.40923 70.7246 8.13067 70.5739 7.92518 70.3063C7.71969 70.0386 7.60402 69.6758 7.60352 69.2972V1.41551C7.60655 1.03915 7.72333 0.679512 7.92855 0.414546C8.13376 0.149581 8.41088 0.0006373 8.69984 0H45.7731C46.0635 0.00066252 46.3419 0.151406 46.5471 0.419138C46.7523 0.68687 46.8675 1.04971 46.8675 1.42801V69.2972C46.8675 69.6755 46.7523 70.0384 46.5471 70.3061C46.3419 70.5738 46.0635 70.7246 45.7731 70.7253ZM8.69984 0.050018C8.42196 0.0506791 8.15561 0.194755 7.95912 0.45069C7.76263 0.706625 7.65202 1.05356 7.65152 1.41551V69.2972C7.65202 69.6592 7.76263 70.0061 7.95912 70.2621C8.15561 70.518 8.42196 70.6621 8.69984 70.6627H45.7731C46.0508 70.6621 46.317 70.5179 46.5131 70.2619C46.7093 70.0059 46.8195 69.659 46.8195 69.2972V1.41551C46.8195 1.05379 46.7093 0.70685 46.5131 0.450844C46.317 0.194837 46.0508 0.0506805 45.7731 0.050018H8.69984Z" fill="#E6E6E6"/>
@@ -179,23 +183,25 @@ const VerifyKYC = () => {
     <path d="M37.4999 43.8345H37.3233C37.2868 43.8345 37.2599 43.8094 37.2618 43.7794L37.3463 42.7791C37.3463 42.7491 37.3789 42.7266 37.4135 42.7266H37.5921C37.6266 42.7266 37.6535 42.7491 37.6516 42.7791L37.569 43.7794C37.5637 43.7972 37.554 43.8121 37.5415 43.822C37.5291 43.832 37.5144 43.8363 37.4999 43.8345Z" fill="#4C9EEB"/>
     <path d="M41.7948 43.8345H41.6182C41.5837 43.8345 41.5568 43.8094 41.5587 43.7794L41.6413 42.7791C41.6413 42.7491 41.6739 42.7266 41.7104 42.7266H41.887C41.9216 42.7266 41.9485 42.7491 41.9465 42.7791L41.864 43.7794C41.8563 43.7994 41.8313 43.8345 41.7948 43.8345Z" fill="#4C9EEB"/>
                       </svg> 
-  const description = 'One Time Password has been sent to your Adhaar linked mobile number.'
 
-  const naviagte = useNavigate()
+  const description = 'One Time Password has been sent to'
+  
+  const navigate = useNavigate()
 
-  const handleVerifyKYC = ()=>{
-    naviagte('/sign-in')
-  }
+  const handleVerifyOTP = () => {
+    setPhoneNumber('')
+    navigate("/dashboard");
+  };
   return (
     <Container>
-        <EnterOTPTitle svgContent={svgContent} title='KYC Verification'/>
-        <EnterOTPDescription description={description}/>
+        <EnterOTPTitle svgContent={svgContent} title='Verify OTP'/>
+        <EnterOTPDescription description={description} phoneNumber={phoneNumber}/>
         <EnterOTPBox/>
         <ButtonContainer>
-          <SendOtpButtonComponent onClick={handleVerifyKYC} text="Verify" width='228px'/>
+          <SendOtpButtonComponent onClick={handleVerifyOTP} text="Verify" width='228px'/>
       </ButtonContainer>
     </Container>
   )
 }
 
-export default VerifyKYC
+export default VerifyOTPAfterSignIn

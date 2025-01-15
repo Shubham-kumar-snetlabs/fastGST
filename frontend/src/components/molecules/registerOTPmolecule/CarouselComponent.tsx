@@ -120,7 +120,7 @@ const CarouselComponent = () => {
         {
           name: 'Amit K.',
           profession: 'SDE',
-          comment: 'Its really good.',
+          comment: 'Whenever you want to make good financial decisions, use FastGST',
           photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHr74Pjdj__bQPnZK-BFujbwgnP1t5PIqkig&s', 
         },
         {

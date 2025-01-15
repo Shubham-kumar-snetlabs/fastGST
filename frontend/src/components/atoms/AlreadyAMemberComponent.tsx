@@ -19,10 +19,16 @@ const Container = styled.div`
 
 
 
-const AlreadyAMemberComponent = () => {
+interface isMemberProps{
+  text : string,
+  registerOrLogin : string
+}
+
+
+const AlreadyAMemberComponent: React.FC<isMemberProps> = ({text,registerOrLogin}) => {
   return (
     <Container>
-        Already a member? <span style={{color:'#4C9EEB', marginLeft:'4px'}}>Login</span>
+        {text} <span style={{color:'#4C9EEB', marginLeft:'4px'}}>{registerOrLogin}</span>
     </Container>
   )
 }

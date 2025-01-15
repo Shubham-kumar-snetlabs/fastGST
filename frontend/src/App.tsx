@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import FixedLeftPage from './pages/FixedLeftPage';
-import RegisterComponent from './components/molecules/registerOTPmolecule/RegisterComponent';
+import RegisterComponent from './pages/RegisterComponent';
 import VerifyOTPComponent from './pages/VerifyOTPComponent';
 import CreateAccount from './pages/CreateAccount';
 import VerifyKYC from './pages/VerifyKYC';
+import Signin from './pages/Signin';
+import Dashboard from './pages/Dashboard';
+import VerifyOTPAfterSignIn from './pages/VerifyOTPAfterSignIn';
 
 
 const Container = styled.div`
@@ -68,10 +71,12 @@ function App() {
             <InnerRightContainer>
               <Routes>
                 <Route path="/" element={<RegisterComponent />} />
-                 <Route path="/verify" element={<VerifyOTPComponent />} /> 
+                 <Route path="/verify-otp" element={<VerifyOTPComponent />} /> 
                  <Route path="/create-account" element={<CreateAccount />} /> 
                  <Route path="/verify-kyc" element={<VerifyKYC />} /> 
-
+                 <Route path="/sign-in" element={<Signin />} />
+                 <Route path='verify-sign-in' element = {<VerifyOTPAfterSignIn/>} />
+                 <Route path ="/dashboard" element={<Dashboard />} />
               </Routes>
             </InnerRightContainer>
           </RightContainer>

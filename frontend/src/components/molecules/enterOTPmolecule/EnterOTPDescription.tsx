@@ -29,17 +29,24 @@ const DescriptionDiv = styled.div`
 const NumberDiv = styled.div`
     display : flex;
     justify-content : center;
-`
+`;
+
+interface OtpDescriptionProps{
+    description : string,
+    phoneNumber? : string,
+    text? : string
+}
 
 
 
-const EnterOTPDescription = () => {
+const EnterOTPDescription: React.FC<OtpDescriptionProps> = ({description, phoneNumber,text}) => {
   return (
     <Container>
         <InnerContainer>
-            <DescriptionDiv>One Time Password has been sent to </DescriptionDiv>
+            <DescriptionDiv>{description} </DescriptionDiv>
             <NumberDiv >
-                <p style={{color: '#4C9EEB', margin:'0'}}>+91-1234567890</p>
+                {(phoneNumber && <p style={{color: '#4C9EEB', margin:'0'}}>+91-{phoneNumber}</p>)}
+                <p>{text}</p>
             </NumberDiv>
         </InnerContainer>
     </Container>
