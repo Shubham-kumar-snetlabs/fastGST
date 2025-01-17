@@ -8,14 +8,14 @@ import SendOtpButtonComponent from '../components/atoms/SendOtpButtonComponent';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-const Container = styled.div`
+const Container = styled(motion.div)`
     display: flex;
     flex-direction: column;
     align-items: center;
     gap : 32px;
 `;
 
-const FirstContainer = styled(motion.div)`
+const FirstContainer = styled.div`
   width : 251px;
   height : 140px;
   display : flex;

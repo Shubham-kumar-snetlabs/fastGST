@@ -4,6 +4,13 @@ import DashBoardNav from './DashBoardNav';
 import DashBoardFooter from './DashBoardFooter';
 
 const Container = styled.div`
+    height : 100%;
+    display : flex;
+    flex-direction : column;
+    justify-content : space-between;
+`;
+
+const FirsTandSecondContainer = styled.div`
 
 `;
 
@@ -12,7 +19,7 @@ const FirstConatiner = styled.div`
     height: 96px;
     box-sizing : border-box;
     padding: 32px 16px 32px 16px;
-    gap: 10px;
+    gap: 60px;
 `;
 
 const FirstContainerDiv = styled.div`
@@ -82,8 +89,6 @@ const ThirdContainer = styled.div`
     gap: 10px;
     border-top: 2px;
     box-sizing : border-box;
-    position : relative;
-    top : 277px;
 `;
 
 const DashBoardLeft = () => {
@@ -106,6 +111,7 @@ const DashBoardLeft = () => {
     
   return (
     <Container>
+        <FirsTandSecondContainer>
         <FirstConatiner>
             <FirstContainerDiv>
                 <LogoandText>
@@ -120,6 +126,7 @@ const DashBoardLeft = () => {
                 <DashBoardNav/>
             </InnerSecondContainer>
         </SecondContainer>
+        </FirsTandSecondContainer>
         <ThirdContainer>
             <DashBoardFooter/>
         </ThirdContainer>

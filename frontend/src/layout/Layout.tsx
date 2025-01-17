@@ -66,7 +66,7 @@ const InnerRightContainer = styled.div`
 
   return isDashboard ? (
     <Routes>
-      <Route path="/dashboards" element={<Dashboard />} />
+      <Route path="/dashboard" element={<Dashboard />} />
     </Routes>
   ) : (
     <Container>

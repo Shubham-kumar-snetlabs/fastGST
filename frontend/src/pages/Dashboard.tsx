@@ -2,31 +2,40 @@
 import React from 'react'
 import styled from 'styled-components'
 import DashBoardLeft from '../components/molecules/dashBoard/DashBoardLeft';
+import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   height : 100vh;
   width : 100vw;
   background : #fffff9 ;
   display : flex;
   justify-content : center;
   align-items : center;
+  overflow : hidden;
 `;
 
 const MainContainer = styled.div`
-  height : 832px;
-  width : 1280px;
+  height : 100%;
+  width : 100%;
+  min-height : 832px;
+  min-width : 1280px;
   display :flex;
 `;
 
 const LeftContainer = styled.div`
-  height : 832px;
-  width : 288px;
+  height : 100%;
+  width : auto;
+  min-height : 832px;
+  max-width : 288px;
   background : #E1E8ED;
 `;
 
 const RightContainer = styled.div`
-  height : 832px;
-  width : 992px;
+  height : 100%;
+  width : 100%;
+  min-height : 832px;
+  min-width : 992px;
   background : #E1E8ED;
   display : flex;
   gap : 10px;
@@ -35,14 +44,17 @@ const RightContainer = styled.div`
 `;
 
 const InnerRightContainer = styled.div`
-  width : 984px;
-  height : 824px;
+  height : 100%;
+  width : 100%;
+  min-width : 984px;
+  min-height : 824px;
   diplay : flex;
   flex-direction : column;
 `;
 
 const NavigatingTopBar = styled.div`
-  width : 984px;
+  width : 100%;
+  min-width : 984px;
   height : 48px;
   background : #F5F8FA;
   border : 2px solid #E1E8ED;
@@ -64,6 +76,7 @@ const Navigator = styled.div`
 const BackButton = styled.div`
   height : 24px;
   width : 24px;
+  cursor : pointer;
 `;
 
 const Pipe = styled.div`
@@ -101,8 +114,10 @@ const Text = styled.p `
 `;
 
 const ContentContainer = styled.div`
-  width : 984px;
-  height : 776px;
+  height : 100%;
+  width : 100%;
+  min-width : 984px;
+  min-height : 776px;
   border-right: 2px solid #E1E8ED;
   border-bottom: 2px solid #E1E8ED;
   border-left: 2px solid #E1E8ED;
@@ -114,8 +129,10 @@ const ContentContainer = styled.div`
 `;
 
 const ContentMainContainer = styled.div`
-  height : 744px;
-  width : 888px;
+  height : 100%;
+  width : 100%;
+  min-height : 744px;
+  min-width : 888px;
   box-sizing : border-box;
   display: flex;
   flex-direction : column;
@@ -128,7 +145,8 @@ const ContentMainContainer = styled.div`
 `;
 
 const HeadContainer = styled.div`
-  width : 888px;
+  width : 100%;
+  min-width : 888px;
   height : 60px;
   border-bottom : 1px;
   padding-top : 4px;
@@ -140,7 +158,8 @@ const HeadContainer = styled.div`
 
 const InnerHeadContainer = styled.div`
   height : 52px;
-  width : 653px;
+  width : 100%;
+  min-width : 653px;
   display : flex;
   gap: 10px;
   align-items : flex-end
@@ -153,7 +172,8 @@ const HeadIconContainer = styled.div`
 
 const HeadTextContainer = styled.div`
   height : 52px;
-  width : 520px;
+  width : 100%;
+  min-width : 520px;
   display : flex;
   flex-direction : column;
   gap : 12px;
@@ -162,7 +182,8 @@ const HeadTextContainer = styled.div`
 
 const HeadTitle = styled.div`
   height : 24px;
-  width : 64px;
+  width : 100%;
+  min-width : 64px;
   font-family: Noto Sans;
   font-size: 24px;
   font-weight: 600;
@@ -176,7 +197,8 @@ const HeadTitle = styled.div`
 
 
 const HeadDescription = styled.div`
-  width: 520px;
+  width : 100%;
+  min-width: 520px;
   height: 16px;
   font-family: Noto Sans;
   font-size: 16px;
@@ -189,16 +211,20 @@ const HeadDescription = styled.div`
 `;
 
 const BodyContainer = styled.div`
-  height : 652px;
-  width : 888px;
+  height : 100%;
+  width : 100%;
+  min-height : 652px;
+  min-width : 888px;
   display : flex;
   gap : 10px;
   justify-content : center;
 `;
 
 const InnerBodyContainer = styled.div`
-  height : 545px;
-  width : 316px;
+  height : 100%;
+  width : 100%;
+  min-height : 545px;
+  min-width : 316px;
   display : flex;
   flex-direction : column;
   gap: 12px;
@@ -211,16 +237,20 @@ const InnerBodyIconContainer = styled.div`
 `;
 
 const BodyContentContainer = styled.div`
-  height : 485px;
-  width : 316px;
+  height : 100%;
+  width : 100%;
+  min-height : 485px;
+  min-width : 316px;
   display : flex;
   flex-direction : column;
+  align-items: center;
   gap : 24px;
 `;
 
 const BodyTitle = styled.div`
   height : 44px;
-  width : 316px;
+  width : 100%;
+  min-width : 316px;
   font-family: Inter;
   font-size: 18px;
   font-weight: 500;
@@ -233,7 +263,8 @@ const BodyTitle = styled.div`
 `;
 
 const BodyDesciption = styled.div`
-  width: 316px;
+  width : 100%;
+  min-width: 316px;
   height: 17px;
   font-family: Inter;
   font-size: 14px;
@@ -439,10 +470,20 @@ const Dashboard = () => {
   <rect x="0.5" width="24" height="24" rx="12" fill="#E1E8ED"/>
   <path d="M10.534 10.756C11.0567 10.644 11.5373 10.588 11.976 10.588C12.4987 10.588 12.9607 10.665 13.362 10.819C13.7633 10.973 14.097 11.1853 14.363 11.456C14.6337 11.7267 14.8367 12.0463 14.972 12.415C15.112 12.7837 15.182 13.185 15.182 13.619C15.182 14.151 15.0887 14.6317 14.902 15.061C14.72 15.4903 14.4657 15.859 14.139 16.167C13.817 16.4703 13.4367 16.7037 12.998 16.867C12.5593 17.0303 12.0857 17.112 11.577 17.112C11.283 17.112 11.0007 17.0817 10.73 17.021C10.4593 16.965 10.205 16.888 9.967 16.79C9.73367 16.692 9.51667 16.58 9.316 16.454C9.11533 16.328 8.938 16.195 8.784 16.055L9.169 15.523C9.253 15.4017 9.36267 15.341 9.498 15.341C9.59133 15.341 9.69633 15.3783 9.813 15.453C9.92967 15.523 10.072 15.6023 10.24 15.691C10.408 15.7797 10.604 15.8613 10.828 15.936C11.0567 16.006 11.3273 16.041 11.64 16.041C11.99 16.041 12.305 15.985 12.585 15.873C12.865 15.761 13.1053 15.6023 13.306 15.397C13.5067 15.187 13.6607 14.9373 13.768 14.648C13.8753 14.3587 13.929 14.0343 13.929 13.675C13.929 13.3623 13.8823 13.08 13.789 12.828C13.7003 12.576 13.5627 12.3613 13.376 12.184C13.194 12.0067 12.9653 11.869 12.69 11.771C12.4147 11.673 12.0927 11.624 11.724 11.624C11.472 11.624 11.2083 11.645 10.933 11.687C10.6623 11.729 10.3847 11.7967 10.1 11.89L9.316 11.659L10.121 6.969H14.874V7.515C14.874 7.69233 14.818 7.83933 14.706 7.956C14.5987 8.068 14.412 8.124 14.146 8.124H10.996L10.534 10.756Z" fill="#657786"/>
   </svg>
+
+  const navigate = useNavigate();
   
+  const handleBackButton = ()=>{
+    navigate('/sign-in')
+  }
 
   return (
-    <Container>
+    <Container
+    initial={{ opacity: 0, x: -100 }} // Start state
+      animate={{ opacity: 1, x: 0 }} // End state
+      exit={{ opacity: 0, x: 100 }} // Exit state
+      transition={{ type: "spring", mass: 1, stiffness: 100, damping: 15 }} // Spring animation
+    >
       <MainContainer>
         <LeftContainer>
           <DashBoardLeft/>
@@ -451,7 +492,7 @@ const Dashboard = () => {
           <InnerRightContainer>
             <NavigatingTopBar>
               <Navigator>
-                <BackButton>{backButtonSVG}</BackButton>
+                <BackButton onClick={handleBackButton}>{backButtonSVG}</BackButton>
                 <Pipe>|</Pipe>
                 <TextDiv>
                   <Text>Team</Text>
