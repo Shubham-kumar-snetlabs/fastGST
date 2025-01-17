@@ -5,8 +5,9 @@ import EnterOTPDescription from '../components/molecules/enterOTPmolecule/EnterO
 import EnterOTPBox from '../components/molecules/enterOTPmolecule/EnterOTPBox';
 import SendOtpButtonComponent from '../components/atoms/SendOtpButtonComponent';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
-const Container = styled.div`
+const Container = styled(motion.div)`
     height : 358px;
     width : 336px;
     display : flex;
@@ -187,7 +188,12 @@ const VerifyKYC = () => {
     naviagte('/sign-in')
   }
   return (
-    <Container>
+    <Container
+    initial={{ opacity: 0, x: -100 }} // Start state
+      animate={{ opacity: 1, x: 0 }} // End state
+      exit={{ opacity: 0, x: 100 }} // Exit state
+      transition={{ type: "spring", mass: 1, stiffness: 100, damping: 15 }} // Spring animation
+    >
         <EnterOTPTitle svgContent={svgContent} title='KYC Verification'/>
         <EnterOTPDescription description={description}/>
         <EnterOTPBox/>

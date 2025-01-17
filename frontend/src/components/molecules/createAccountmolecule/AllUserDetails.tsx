@@ -55,13 +55,13 @@ const AllUserDetails = () => {
             <UserDetailsBox
             type="text"
             placeholder="First Name"
-            width="140px"
+            width="160px"
             height="54px"
             />
             <UserDetailsBox
               type="text"
               placeholder="Last Name"
-              width="140px"
+              width="160px"
               height="54px"
             />
           </NameBlock>
@@ -69,7 +69,7 @@ const AllUserDetails = () => {
             <UserDetailsBox 
             type="email"
             placeholder="Email (Optional)"
-            width="314px"
+            width="336px"
             height="54px"
             />
           </EmailBlock>
@@ -77,7 +77,7 @@ const AllUserDetails = () => {
             <UserDetailsBox 
             type="number"
             placeholder="Aadhar Number"
-            width="314px"
+            width="336px"
             height="54px"
             />
           </AadharBlock>

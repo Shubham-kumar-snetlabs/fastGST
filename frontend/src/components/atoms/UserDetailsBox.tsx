@@ -15,13 +15,14 @@ const InputBlock = styled.input<{
   border: 1px solid ${({ borderColor }) => borderColor || "#657786"};
   background: ${({ backgroundColor }) => backgroundColor || "#F5F8FA"};
   color: ${({ fontColor }) => fontColor || "#14171A"};
-  padding: 0 8px;
+  padding: 20px 8px;
   font-family: Noto Sans;
   font-size: ${({ fontSize }) => fontSize || "16px"};
   font-weight: 400;
   line-height: 18px;
   text-align: left;
   outline: none;
+  box-sizing : border-box;
 
   ::placeholder {
     color: ${({ fontColor }) => fontColor || "#AABBCC"};

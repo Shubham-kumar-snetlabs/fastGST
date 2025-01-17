@@ -17,7 +17,7 @@ const SendOtpButton = styled.button<{ width?: string }>`
   cursor: pointer;
 
   &:hover {
-    opacity: 0.9; /* Add hover effect */
+    opacity: 0.9; 
   }
 `;
 

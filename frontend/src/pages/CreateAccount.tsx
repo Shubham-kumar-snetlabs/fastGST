@@ -3,9 +3,10 @@ import styled from 'styled-components'
 import TitleName from '../components/molecules/registerOTPmolecule/TitleName';
 import OtpDescriptionComponent from '../components/atoms/OtpDescriptionComponent';
 import AllUserDetails from '../components/molecules/createAccountmolecule/AllUserDetails';
+import { motion } from "framer-motion";
 
 
-const Container = styled.div`
+const Container = styled(motion.div)`
     height : 517px;
     width : 336px;
     display : flex;
@@ -117,7 +118,12 @@ const CreateAccount = () => {
                         </svg>
     const desc = 'It’s mandatory to verify your KYC. This is a one-time process and won’t not take more than 1 minute of your time.'
   return (
-    <Container>
+    <Container
+    initial={{ opacity: 0, x: -100 }} // Start state
+      animate={{ opacity: 1, x: 0 }} // End state
+      exit={{ opacity: 0, x: 100 }} // Exit state
+      transition={{ type: "spring", mass: 1, stiffness: 100, damping: 15 }} // Spring animation
+    >
         <FirstContainer>
             <TitleName svgContent={svgContent} title='Complete Profile'/>
         </FirstContainer>
