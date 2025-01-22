@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import EnterOTPTitle from "../components/molecules/enterOTPmolecule/EnterOTPTitle";
 import EnterOTPDescription from "../components/molecules/enterOTPmolecule/EnterOTPDescription";
@@ -6,9 +5,8 @@ import EnterOTPBox from "../components/molecules/enterOTPmolecule/EnterOTPBox";
 import SendOtpButtonComponent from "../components/atoms/SendOtpButtonComponent";
 import { useNavigate } from "react-router-dom";
 import { usePhoneNumber } from "../contexts/PhoneNumberContext";
-import { motion } from "framer-motion";
 
-const Container = styled(motion.div)`
+const Container = styled.div`
   height: 358px;
   width: 336px;
   display: flex;
@@ -190,12 +188,7 @@ const VerifyOTPAfterSignIn = () => {
   };
 
   return (
-    <Container
-      initial={{ opacity: 0, x: -100 }} // Start state
-      animate={{ opacity: 1, x: 0 }} // End state
-      exit={{ opacity: 0, x: 100 }} // Exit state
-      transition={{ type: "spring", mass: 1, stiffness: 100, damping: 15 }} // Spring animation
-    >
+    <Container>
       <EnterOTPTitle svgContent={svgContent} title="Verify OTP" />
       <EnterOTPDescription description={description} phoneNumber={phoneNumber} />
       <EnterOTPBox />

@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components'
 import TitleName from '../components/molecules/registerOTPmolecule/TitleName';
 import OtpComponent from '../components/molecules/registerOTPmolecule/OtpComponent';
@@ -6,18 +5,20 @@ import AlreadyAMemberComponent from '../components/atoms/AlreadyAMemberComponent
 import OtpDescriptionComponent from '../components/atoms/OtpDescriptionComponent';
 import SendOtpButtonComponent from '../components/atoms/SendOtpButtonComponent';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
 
-const Container = styled(motion.div)`
+const Container = styled.div`
+    min-height : 336px;
+    min-width : 390px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap : 32px;
 `;
 
 const FirstContainer = styled.div`
-  width : 251px;
-  height : 140px;
+  width : auto;
+  height : auto;
+  min-width : 251px;
+  min-height : 140px;
   display : flex;
   flex-direction : column;
   gap : 16px;
@@ -41,6 +42,7 @@ const ThirdContainer = styled.div`
     justify-content: center;
     align-items: center;
     gap: 16px;
+    margin-top : 32px;
 `;
 
 const RegisterComponent  = () => {
@@ -289,12 +291,7 @@ const RegisterComponent  = () => {
     navigate('/verify-otp')
   }
   return (
-    <Container
-    initial={{ opacity: 0, x: -100 }} // Start state
-      animate={{ opacity: 1, x: 0 }} // End state
-      exit={{ opacity: 0, x: 100 }} // Exit state
-      transition={{ type: "spring", mass: 1, stiffness: 100, damping: 15 }} // Spring animation
-    >
+    <Container>
         <FirstContainer>
           <TitleName svgContent = {svgContent} title=' Create an Account'/>
         </FirstContainer>

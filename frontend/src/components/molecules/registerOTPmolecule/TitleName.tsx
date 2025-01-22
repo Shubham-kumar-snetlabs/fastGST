@@ -17,11 +17,11 @@ const Logo = styled.div`
 
 const TitleHeader = styled.div`
     height: 28px;
-    width: 251px;
-    // font-family: Noto Sans;
+    width: 257px;
+    font-family: Noto Sans;
     font-size: 28px;
-    font-weight: 500;
-    line-height: 10px;
+    font-weight: 600;
+    line-height: 28px;
     text-align: left;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
@@ -38,9 +38,7 @@ const TitleName : React.FC<TitleNameProps> = ({svgContent , title}) => {
   return (
     <Container>
         <Logo>
-        
         {svgContent}
-
         </Logo>
         <TitleHeader>{title}</TitleHeader>
     </Container>

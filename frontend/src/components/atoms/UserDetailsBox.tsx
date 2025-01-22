@@ -16,6 +16,7 @@ const InputBlock = styled.input<{
   background: ${({ backgroundColor }) => backgroundColor || "#F5F8FA"};
   color: ${({ fontColor }) => fontColor || "#14171A"};
   padding: 20px 8px;
+  box-sizing : border-box;
   font-family: Noto Sans;
   font-size: ${({ fontSize }) => fontSize || "16px"};
   font-weight: 400;
@@ -39,6 +40,8 @@ interface InputProps {
   fontColor?: string;
   fontWeight?: string;
   fontSize?: string;
+  value?: string;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const UserDetailsBox = (props: InputProps) => {

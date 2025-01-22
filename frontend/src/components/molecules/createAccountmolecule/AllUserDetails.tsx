@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useState } from "react";
 import UserDetailsBox from "../../atoms/UserDetailsBox";
 import styled from "styled-components";
 import SendOtpButtonComponent from "../../atoms/SendOtpButtonComponent";
@@ -44,9 +44,21 @@ const AadharBlock = styled.div`
 
 const AllUserDetails = () => {
   const navigate = useNavigate()
+
+  const [aadharInput , setAadharInput] = useState('')
+
   const handleSendOTP = ()=>{
     navigate('/verify-kyc')
   }
+
+  const handleAadharChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    // Allow only digits
+    if (/^\d{0,12}$/.test(value)) {
+      setAadharInput(value);
+    }
+
+  };
   return (
     <Container>
       <FirstContainer>
@@ -75,10 +87,12 @@ const AllUserDetails = () => {
           </EmailBlock>
           <AadharBlock>
             <UserDetailsBox 
-            type="number"
+            type="text"
             placeholder="Aadhar Number"
             width="336px"
             height="54px"
+            value={aadharInput}
+            onChange={handleAadharChange}
             />
           </AadharBlock>
           <SendOtpButtonComponent text="Send OTP" onClick={handleSendOTP} />

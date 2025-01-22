@@ -33,7 +33,7 @@ const InnerContainer = styled.div`
 
 const LeftContainer = styled.div`
   display: flex;
-  height: 624px;
+  height: 630px;
   width: 484px;
   background: #4c9eeb;
   border-radius: 8px;
@@ -43,7 +43,7 @@ const LeftContainer = styled.div`
 const RightContainer = styled.div`
   flex: 1;
   background: transparent;
-  height: 624px;
+  height: 630px;
   width: 464px;
   display: flex;
   justify-content: center;
@@ -51,7 +51,7 @@ const RightContainer = styled.div`
 `;
 
 const InnerRightContainer = styled.div`
-  height: 624px;
+  height: 630px;
   width: 464px;
   background: transparent;
   display: flex;

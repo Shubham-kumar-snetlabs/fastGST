@@ -47,12 +47,12 @@ const CountryCode = styled.div`
   text-align: center;
 `;
 
-const PhoneNumberBlock = styled.div`
+const PhoneNumberBlock = styled.div<{ isClicked: boolean }>`
   position: relative; 
   width: 230px;
   height: 54px;
   border-radius: 4px;
-  border: 1px solid #657786;
+  border: 1px solid ${({ isClicked }) => (isClicked ? '#4C9EEB' : '#657786')};
   background: #e1e8ed;
 `;
 
@@ -104,12 +104,13 @@ const PhoneNumberWrittenTextAfterInput = styled.p<{ show: boolean }>`
 
 const PhoneNumberComponent = () => {
   const [phoneNumberBlockText, setPhoneNumberBlockContent] = useState(false);
+  const [isPhoneNumberBlockClicked, setPhoneNumberBlockClicked] = useState(false);
   const { phoneNumber, setPhoneNumber } = usePhoneNumber();
   const inputRef = useRef<HTMLInputElement>(null);
-  
 
   const handleBlockClick = () => {
-    setPhoneNumberBlockContent(true)
+    setPhoneNumberBlockClicked(true); // Update state to show clicked
+    setPhoneNumberBlockContent(true);
     inputRef.current?.focus();
   };
 
@@ -126,26 +127,26 @@ const PhoneNumberComponent = () => {
 
   return (
     <NumberComponent>
-          <CountryCodeBlock>
-            <Country>Country</Country>
-            <CountryCode>+91</CountryCode>
-          </CountryCodeBlock>
-          <PhoneNumberBlock onClick={handleBlockClick} ref={inputRef}>
-            <PhoneNumberWrittenTextAfterInput show={phoneNumberBlockText}>
-              Phone Number
-            </PhoneNumberWrittenTextAfterInput>
-            <PhoneNumberBlockContent>
-              <PhoneNumberInput
-                ref={inputRef}
-                type="text"
-                placeholder="Phone Number"
-                value={phoneNumber}
-                onChange={handleInputChange}
-              />
-            </PhoneNumberBlockContent>
-          </PhoneNumberBlock>
-        </NumberComponent>
+      <CountryCodeBlock>
+        <Country>Country</Country>
+        <CountryCode>+91</CountryCode>
+      </CountryCodeBlock>
+      <PhoneNumberBlock onClick={handleBlockClick} isClicked={isPhoneNumberBlockClicked}>
+        <PhoneNumberWrittenTextAfterInput show={phoneNumberBlockText}>
+          Phone Number
+        </PhoneNumberWrittenTextAfterInput>
+        <PhoneNumberBlockContent>
+          <PhoneNumberInput
+            ref={inputRef}
+            type="text"
+            placeholder="Phone Number"
+            value={phoneNumber}
+            onChange={handleInputChange}
+          />
+        </PhoneNumberBlockContent>
+      </PhoneNumberBlock>
+    </NumberComponent>
   )
 }
 
-export default PhoneNumberComponent
+export default PhoneNumberComponent;
