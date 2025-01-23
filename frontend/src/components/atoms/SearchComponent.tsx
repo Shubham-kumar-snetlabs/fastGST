@@ -2,17 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 
 interface SearchComponentProps {
-  svg?: React.ReactNode; // SVG or any JSX to render as an icon
-  placeholder?: string; // Placeholder text for the input
-  height?: string; // Custom height for the search bar
-  width?: string; // Custom width for the search bar
-  padding?: string; // Padding for the search bar
-  background?: string; // Background color for the search bar
-  color?: string; // Font color for text
-  borderColor?: string; // Border color
-  fontStyle?: string; // Font style for the input
-  fontWeight?: number; // Font weight for the input
-  fontSize?: string; // Font size for the input
+  svg?: React.ReactNode; 
+  placeholder?: string; 
+  height?: string; 
+  width?: string; 
+  padding?: string; 
+  background?: string; 
+  color?: string; 
+  borderColor?: string; 
+  fontStyle?: string; 
+  fontWeight?: number; 
+  fontSize?: string;
 }
 
 const SearchBarDiv = styled.div<SearchComponentProps>`

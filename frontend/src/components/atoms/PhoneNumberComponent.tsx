@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react'
 import styled from 'styled-components';
 import { usePhoneNumber } from "../../contexts/PhoneNumberContext";
+import MultiFunctionInputComponent from './MultiFunctionInputComponent';
 
 const NumberComponent = styled.div`
   display: flex;
@@ -47,82 +47,15 @@ const CountryCode = styled.div`
   text-align: center;
 `;
 
-const PhoneNumberBlock = styled.div<{ isClicked: boolean }>`
-  position: relative; 
-  width: 230px;
-  height: 54px;
-  border-radius: 4px;
-  border: 1px solid ${({ isClicked }) => (isClicked ? '#4C9EEB' : '#657786')};
-  background: #e1e8ed;
-`;
-
-const PhoneNumberBlockContent = styled.div`
-  width: 115px;
-  height: 16px;
-  font-family: Noto Sans;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 16px;
-  text-align: center;
-  color: #657786;
-  padding: 0 0 0 8px;
-`;
-
-const PhoneNumberInput = styled.input`
-  position: relative;
-  top: 12px;
-  border: none;
-  outline: none;
-  background: transparent;
-  font-family: Noto Sans;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 16px;
-  color: #14171a;
-  padding: 12px 0 0 2px;
-
-  ::placeholder {
-    color: #aabbc2;
-  }
-`;
-
-const PhoneNumberWrittenTextAfterInput = styled.p<{ show: boolean }>`
-  position: absolute; 
-  top: 8px;
-  left: 8px;
-  width: 214px;
-  height: 14px;
-  font-family: Noto Sans;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 14px;
-  text-align: left;
-  color: #4c9eeb;
-  margin: 0px;
-  visibility: ${({ show }) => (show ? "visible" : "hidden")};
-`;
 
 const PhoneNumberComponent = () => {
-  const [phoneNumberBlockText, setPhoneNumberBlockContent] = useState(false);
-  const [isPhoneNumberBlockClicked, setPhoneNumberBlockClicked] = useState(false);
   const { phoneNumber, setPhoneNumber } = usePhoneNumber();
-  const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleBlockClick = () => {
-    setPhoneNumberBlockClicked(true); // Update state to show clicked
-    setPhoneNumberBlockContent(true);
-    inputRef.current?.focus();
-  };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let value = e.target.value;
-
-    if (value.length > 10) {
-      value = value.slice(0, 10);
+  const handleInputChange = (value : string) => {
+    if (/^\d{0,10}$/.test(value)) {
+      setPhoneNumber(value);
     }
-    e.target.value = value;
-    setPhoneNumberBlockContent(value.length > 0);
-    setPhoneNumber(value)
   };
 
   return (
@@ -131,20 +64,12 @@ const PhoneNumberComponent = () => {
         <Country>Country</Country>
         <CountryCode>+91</CountryCode>
       </CountryCodeBlock>
-      <PhoneNumberBlock onClick={handleBlockClick} isClicked={isPhoneNumberBlockClicked}>
-        <PhoneNumberWrittenTextAfterInput show={phoneNumberBlockText}>
-          Phone Number
-        </PhoneNumberWrittenTextAfterInput>
-        <PhoneNumberBlockContent>
-          <PhoneNumberInput
-            ref={inputRef}
-            type="text"
-            placeholder="Phone Number"
-            value={phoneNumber}
-            onChange={handleInputChange}
-          />
-        </PhoneNumberBlockContent>
-      </PhoneNumberBlock>
+      <MultiFunctionInputComponent
+      type='text'
+      label='Phone Number'
+      value={phoneNumber}
+      onChange={handleInputChange}
+      />
     </NumberComponent>
   )
 }

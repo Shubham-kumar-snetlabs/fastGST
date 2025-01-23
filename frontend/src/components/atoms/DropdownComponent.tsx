@@ -37,6 +37,7 @@ const FilterText = styled.div<FilterComponentProps>`
   font-style: ${({ fontStyle }) => fontStyle || 'Noto Sans'};
   color: ${({ color }) => color || '#657786'};
   line-height: ${({ fontSize }) => fontSize || '16px'};
+  white-space : nowrap;
 `;
 
 const Dropdown = styled.select<FilterComponentProps>`
@@ -76,10 +77,12 @@ const DropdownComponent: React.FC<FilterComponentProps> = ({
   onChange,
 }) => {
   const [selectedText, setSelectedText] = useState(text);
+  const [showSVG, setShowSVG] = useState(svg)
 
   const handleDropdownChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedOption = options.find((option) => option.value === event.target.value);
     setSelectedText(selectedOption?.label || text);
+    setShowSVG(null)
     if (onChange) {
       onChange(event); // Pass the full event to the parent
     }
@@ -95,7 +98,7 @@ const DropdownComponent: React.FC<FilterComponentProps> = ({
       borderColor={borderColor}
       background={background}
     >
-      {svg}
+      {showSVG}
       <FilterText
         color={color}
         fontSize={fontSize}

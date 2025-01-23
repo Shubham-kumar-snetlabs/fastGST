@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import DropdownComponent from './DropdownComponent';
+import DropdownComponent from '../atoms/DropdownComponent';
+import { tablePaginationNextNavSVG, tablePaginationPrevNavSVG } from '../../svg/svg';
 
 
 const Container = styled.div`
@@ -167,18 +168,7 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
         setRowsPerPage(Number(event.target.value));
         setCurrentPage(0);
       };
-
-
-    const PrevNavSVG = <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M14.4831 16.9652L9.51758 11.9997L14.4831 7.03418" stroke="#14171A" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-
-    const NextNavSVG = <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M9.51758 7.03418L14.4831 11.9997L9.51758 16.9652" stroke="#14171A" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
     
-    
-  
   return (
     <Container>
       <TableContainer width={width} height={height}>
@@ -215,6 +205,7 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
                   width='64px'
                   height='32px'
                   onChange={handleRowsPerPageChange}
+                  text= {`${rowsPerPage}`}
                   />
         </RecordsPerPageDiv>
         <PageNavigatorDiv>
@@ -222,7 +213,7 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
             onClick={handlePrevious} 
             disabled={currentPage === 0}
             >
-             {PrevNavSVG}
+             {tablePaginationPrevNavSVG}
             </Navigator>
             <CountofPagesDiv>
                 <CurrentPageDiv>{currentPage + 1}</CurrentPageDiv>
@@ -233,7 +224,7 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
             onClick={handleNext}
             disabled={currentPage === totalPages - 1}
             >
-             {NextNavSVG}
+             {tablePaginationNextNavSVG}
             </Navigator>
         </PageNavigatorDiv>
       </PaginationContainer>

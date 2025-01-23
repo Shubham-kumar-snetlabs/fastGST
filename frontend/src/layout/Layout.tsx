@@ -4,7 +4,7 @@ import Dashboard from '../pages/Dashboard';
 import FixedLeftPage from '../pages/FixedLeftPage';
 import RegisterComponent from '../pages/RegisterComponent';
 import VerifyOTPComponent from '../pages/VerifyOTPAfterCreationComponent';
-import CreateAccount from '../pages/CreateAccount';
+import CreateAccount from '../pages/CompleteProfile';
 import VerifyKYC from '../pages/VerifyKYC';
 import Signin from '../pages/Signin';
 import VerifyOTPAfterSignIn from '../pages/VerifyOTPAfterSignIn';

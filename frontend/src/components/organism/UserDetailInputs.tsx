@@ -1,9 +1,8 @@
-
-import React, { useState } from "react";
-import UserDetailsBox from "../../atoms/UserDetailsBox";
+import { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import MultiFunctionButtonComponent from "../../atoms/MultiFunctionButtonComponent";
+import MultiFunctionButtonComponent from "../atoms/MultiFunctionButtonComponent";
+import MultiFunctionInputComponent from "../atoms/MultiFunctionInputComponent";
 
 const Container = styled.div`
   width : 336px;
@@ -42,17 +41,19 @@ const AadharBlock = styled.div`
 
 `;
 
-const AllUserDetails = () => {
+const UserDetailInputs = () => {
   const navigate = useNavigate()
 
-  const [aadharInput , setAadharInput] = useState('')
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [aadharInput, setAadharInput] = useState("");
 
   const handleSendOTP = ()=>{
     navigate('/verify-kyc')
   }
 
-  const handleAadharChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
+  const handleAadharChange = (value: string) => {
     // Allow only digits
     if (/^\d{0,12}$/.test(value)) {
       setAadharInput(value);
@@ -64,33 +65,43 @@ const AllUserDetails = () => {
       <FirstContainer>
         <SecondContainer>
           <NameBlock>
-            <UserDetailsBox
+            <MultiFunctionInputComponent
             type="text"
             placeholder="First Name"
             width="160px"
             height="54px"
+            label="First Name"
+            value= {firstName}
+            onChange={(value) => setFirstName(value)}
             />
-            <UserDetailsBox
+            <MultiFunctionInputComponent
               type="text"
               placeholder="Last Name"
               width="160px"
               height="54px"
+              label="Last Name"
+              value={lastName}
+              onChange={(value) => setLastName(value)}
             />
           </NameBlock>
           <EmailBlock>
-            <UserDetailsBox 
+            <MultiFunctionInputComponent 
             type="email"
             placeholder="Email (Optional)"
             width="336px"
             height="54px"
+            label="Email"
+            value={email}
+            onChange={(value) => setEmail(value)}
             />
           </EmailBlock>
           <AadharBlock>
-            <UserDetailsBox 
+            <MultiFunctionInputComponent 
             type="text"
             placeholder="Aadhar Number"
             width="336px"
             height="54px"
+            label="Aadhar Number"
             value={aadharInput}
             onChange={handleAadharChange}
             />
@@ -106,4 +117,4 @@ const AllUserDetails = () => {
   );
 };
 
-export default AllUserDetails;
+export default UserDetailInputs;

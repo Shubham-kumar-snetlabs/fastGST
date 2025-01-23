@@ -14,28 +14,12 @@ const Container = styled.div`
     flex-direction : column;
     padding-top : 24px;
     box-sizing : border-box;
-    gap : 36px;
-    // background : red;
-`;
+    gap : 36px;`;
 
 const SearchandFilterBlock = styled.div`
-    // min-width : 888px;
-    // min-height : 36px;
-    // display : flex;
-    // justify-content : space-between;
-    // // height : 100%;
-    // width : 100%;
-    // background : red;
 `;
 
 const MemberTableDiv = styled.div`
-    // // width: 888px;
-    // height: 420px;
-    // border-right-radius: 12px;
-    // border-right: 1px solid #AAB8C2;
-    // border-left: 1px solid #AAB8C2;
-    // display : flex;
-    // justify-content : center;
 `;
 
 

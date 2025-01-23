@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components"
 import RemoveModal from "./RemoveModal";
 import SendOtpButtonComponent from "../atoms/MultiFunctionButtonComponent";
+import { DropdownSVG } from "../../svg/svg";
 
 const Container = styled.div`
     height : 100%;
@@ -106,26 +107,7 @@ const Email = styled.div`
     color : #657786;
 `;
 
-const RemoveMember = styled.div`
-    width: 161px;
-    height: 36px;
-    padding: 10px 16px 10px 16px;
-    box-sizing : border-box;
-    display : flex;
-    gap: 10px;
-    border-radius: 1000px ;
-    border: 1px solid #EB5244;
 
-    // font-family: Inter;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 16px;
-    text-align: left;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
-    color : #EB5244;
-    cursor : pointer;
-`;
 
 const RoleContainer = styled.div`
     width: 408px;
@@ -241,9 +223,7 @@ const MemberDetails:React.FC<MemberDetailsProps> = ({ setShowMemberDetails }) =>
         setDropdownOpen(false);
     };
 
-    const DropdownSVG = <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M16.9662 9.51758L12.0007 14.4831L7.03516 9.51758" stroke="#657786" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+
 
   return (
     <Container onClick={handleCloseMemberDetails}>

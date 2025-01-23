@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -26,9 +27,17 @@ interface isMemberProps{
 
 
 const RegisterorLoginComponent: React.FC<isMemberProps> = ({text,registerOrLogin}) => {
+  const navigate = useNavigate()
+  const handleNavigate = ()=>{
+    if (registerOrLogin==='Register') {
+      navigate('/')
+    }else if (registerOrLogin === 'Login') {
+      navigate('/sign-in')
+    }
+  }
   return (
     <Container>
-        {text} <span style={{color:'#4C9EEB', marginLeft:'4px'}}>{registerOrLogin}</span>
+        {text} <span style={{color:'#4C9EEB', marginLeft:'4px', cursor:'pointer'}} onClick={handleNavigate}>{registerOrLogin}</span>
     </Container>
   )
 }
