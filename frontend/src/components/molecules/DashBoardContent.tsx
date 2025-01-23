@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import DashBoardHead from '../../atoms/DashBoardHead';
-import TeamMemberComponet from '../../atoms/TeamMemberComponet';
-import { headIconSVG } from '../../../svg/svg';
+import DashBoardHead from '../atoms/DashBoardHead';
+import TeamMemberComponet from '../atoms/TeamMemberComponet';
+import { headIconSVG } from '../../svg/svg';
 
 
 const ContentMainContainer = styled.div`
@@ -42,11 +42,7 @@ const BodyContainer = styled.div`
 `;
 
 const DashBoardContent = () => {  
-
-
-
   const headDescription = "Manage and organize your team members for efficient collaboration.";
-
   return (
     <ContentMainContainer>
       <HeadContainer>

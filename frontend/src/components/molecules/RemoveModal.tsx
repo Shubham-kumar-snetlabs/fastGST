@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { binSVG } from '../../svg/svg';
+import { binSVG } from '../../svg/svg'; 
 
 
 const Container = styled.div`

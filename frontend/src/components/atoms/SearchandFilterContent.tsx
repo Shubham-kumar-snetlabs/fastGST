@@ -4,6 +4,7 @@ import SearchComponent from "./SearchComponent";
 import DropdownComponent from "./DropdownComponent";
 import MultiFunctionButtonComponent from "./MultiFunctionButtonComponent";
 import { FilterSVG, SearchSVG } from "../../svg/svg";
+import { useNavigate } from "react-router-dom";
 
 
 const Container = styled.div`
@@ -46,8 +47,7 @@ const SearchandFilterContent = () => {
 
     
     const {teamMembers} = useTeamMembers()
-    
-    
+    const navigate = useNavigate()    
   return (
     <Container>
         <MemberCount>
@@ -67,6 +67,7 @@ const SearchandFilterContent = () => {
                 ]}
             />
             <MultiFunctionButtonComponent
+             onClick={()=>navigate('/dashborad/filing_history')}
              text="Filling History" 
              height="36px" 
              width="137px" 

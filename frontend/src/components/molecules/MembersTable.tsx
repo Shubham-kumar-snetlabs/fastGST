@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useTeamMembers } from '../../../contexts/TeamMemberContext';
-import MemberDetails from '../MemberDetails';
-import DynamicTable from '../../organism/DynamicTable';
-import { historySVG } from '../../../svg/svg';
+import { useTeamMembers } from '../../contexts/TeamMemberContext';
+import MemberDetails from './MemberDetails';
+import DynamicTable from '../organism/DynamicTable';
+import { historySVG } from '../../svg/svg';
 
 
 

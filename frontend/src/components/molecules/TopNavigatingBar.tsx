@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { backButtonSVG } from "../../../svg/svg";
+import { backButtonSVG } from "../../svg/svg";
+
 
 
 const Navigator = styled.div`

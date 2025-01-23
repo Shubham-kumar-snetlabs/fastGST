@@ -1,6 +1,6 @@
 import  { useState } from 'react';
 import styled from 'styled-components';
-import { BillingSVG, ClientSVG, InvitesSVG, NotificationsSVG, NotificatioNumberSVG, PreferencesSVG, ProfileSVG, TeamSVG } from '../../../svg/svg';
+import { TeamSVG, BillingSVG, ClientSVG, InvitesSVG, NotificationsSVG, NotificatioNumberSVG, PreferencesSVG, ProfileSVG} from '../../svg/svg';
 
 const Container = styled.div`
   display: flex;

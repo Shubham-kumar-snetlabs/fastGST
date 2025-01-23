@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
-import OTPBox from "../../atoms/OTPBox";
+import OTPBox from "../atoms/OTPBox";
 
 const Container = styled.div`
   height: 110px;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import DashBoardBody from './DashBoardBody';
 import SearchandFilterContent from './SearchandFilterContent';
-import MembersTable from '../molecules/dashBoard/MembersTable';
+import MembersTable from '../molecules/MembersTable';
 import { useTeamMembers } from '../../contexts/TeamMemberContext';
 import React from 'react';
 

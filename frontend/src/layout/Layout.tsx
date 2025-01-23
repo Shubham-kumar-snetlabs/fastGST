@@ -17,7 +17,6 @@ const Container = styled.div`
   height: 100vh;
   width: 100vw;
   background: #E0E0E0;
-  // box-sizing : border-box;
 `;
 
 const InnerContainer = styled.div`

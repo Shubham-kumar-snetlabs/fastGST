@@ -1,7 +1,8 @@
 import styled from 'styled-components'
-import DashBoardLeft from '../components/molecules/dashBoard/DashBoardLeft';
-import TopNavigatingBar from '../components/molecules/dashBoard/TopNavigatingBar';
-import DashBoardContent from '../components/molecules/dashBoard/DashBoardContent';
+import DashBoardLeft from '../components/molecules/DashBoardLeft';
+import TopNavigatingBar from '../components/molecules/TopNavigatingBar';
+import DashBoardContent from '../components/molecules/DashBoardContent';
+
 
 const Container = styled.div`
   height : 100vh;

@@ -1,10 +1,10 @@
 
 import styled from 'styled-components'
-import EnterOTPBox from '../components/molecules/enterOTPmolecule/EnterOTPBox';
+import EnterOTPBox from '../components/molecules/EnterOTPBox';
 import MultiFunctionButtonComponent from '../components/atoms/MultiFunctionButtonComponent';
 import { useNavigate } from 'react-router-dom';
 import TitleName from '../components/atoms/TitleName';
-import OTPDescription from '../components/molecules/enterOTPmolecule/OTPDescription';
+import OTPDescription from '../components/molecules/OTPDescription';
 import { verifyOTPSVG } from '../svg/svg';
 
 

@@ -1,6 +1,6 @@
 
 import styled from 'styled-components'
-import CarouselComponent from '../components/molecules/fixedLeftPage/CarouselComponent';
+import CarouselComponent from '../components/molecules/CarouselComponent';
 import { fixedLeftPageSVG } from '../svg/svg';
 
 const Container = styled.div`
