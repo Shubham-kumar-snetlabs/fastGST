@@ -1,10 +1,10 @@
 import styled from 'styled-components'
-import TitleName from '../components/molecules/registerOTPmolecule/TitleName';
-import OtpComponent from '../components/molecules/registerOTPmolecule/OtpComponent';
-import AlreadyAMemberComponent from '../components/atoms/AlreadyAMemberComponent';
-import OtpDescriptionComponent from '../components/atoms/OtpDescriptionComponent';
-import SendOtpButtonComponent from '../components/atoms/SendOtpButtonComponent';
+import TitleName from '../components/atoms/TitleName';
 import { useNavigate } from 'react-router-dom';
+import PhoneNumberComponent from '../components/atoms/PhoneNumberComponent';
+import RegisterorLoginComponent from '../components/atoms/RegisterorLoginComponent';
+import MultiFunctionButtonComponent from '../components/atoms/MultiFunctionButtonComponent';
+import DescriptionComponent from '../components/atoms/DescriptionComponent';
 
 const Container = styled.div`
     min-height : 336px;
@@ -296,12 +296,16 @@ const RegisterComponent  = () => {
           <TitleName svgContent = {svgContent} title=' Create an Account'/>
         </FirstContainer>
         <SecondContainer>
-          <OtpComponent/>
-          <SendOtpButtonComponent onClick={handleSendOTP} text = 'Send OTP'/>
+          <PhoneNumberComponent/>
+          <MultiFunctionButtonComponent
+           onClick={handleSendOTP}
+           text = 'Send OTP'
+           width='336px'
+           />
         </SecondContainer>
         <ThirdContainer>
-          <AlreadyAMemberComponent text='Already a member?' registerOrLogin='Login'/>
-          <OtpDescriptionComponent desc={desc}/>
+          <RegisterorLoginComponent text='Already a member?' registerOrLogin='Login'/>
+          <DescriptionComponent desc={desc}/>
         </ThirdContainer>
     </Container>
   )

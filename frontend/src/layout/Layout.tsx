@@ -3,7 +3,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import Dashboard from '../pages/Dashboard';
 import FixedLeftPage from '../pages/FixedLeftPage';
 import RegisterComponent from '../pages/RegisterComponent';
-import VerifyOTPComponent from '../pages/VerifyOTPComponent';
+import VerifyOTPComponent from '../pages/VerifyOTPAfterCreationComponent';
 import CreateAccount from '../pages/CreateAccount';
 import VerifyKYC from '../pages/VerifyKYC';
 import Signin from '../pages/Signin';

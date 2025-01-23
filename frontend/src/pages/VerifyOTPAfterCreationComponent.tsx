@@ -1,10 +1,12 @@
 import styled from 'styled-components'
-import EnterOTPTitle from '../components/molecules/enterOTPmolecule/EnterOTPTitle';
-import EnterOTPDescription from '../components/molecules/enterOTPmolecule/EnterOTPDescription';
+
+import TitleName from '../components/atoms/TitleName';
 import EnterOTPBox from '../components/molecules/enterOTPmolecule/EnterOTPBox';
-import SendOtpButtonComponent from '../components/atoms/SendOtpButtonComponent';
+import MultiFunctionButtonComponent from '../components/atoms/MultiFunctionButtonComponent';
 import { useNavigate } from 'react-router-dom';
 import { usePhoneNumber } from '../contexts/PhoneNumberContext';
+import OTPDescription from '../components/molecules/enterOTPmolecule/OTPDescription';
+
 
 const Container = styled.div`
     height : 358px;
@@ -25,8 +27,9 @@ const ButtonContainer = styled.div`
 
 
 
-const VerifyOTPComponent = () => {
+const VerifyOTPAfterCreationComponent = () => {
   const { phoneNumber , setPhoneNumber} = usePhoneNumber();
+
   const svgContent =  <svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M47.9984 95.9999C68.5582 95.9999 85.2253 94.7324 85.2253 93.1689C85.2253 91.6054 68.5582 90.3379 47.9984 90.3379C27.4385 90.3379 10.7715 91.6054 10.7715 93.1689C10.7715 94.7324 27.4385 95.9999 47.9984 95.9999Z" fill="#F5F5F5"/>
     <path d="M45.7731 70.7253H8.69984C8.40923 70.7246 8.13067 70.5739 7.92518 70.3063C7.71969 70.0386 7.60402 69.6758 7.60352 69.2972V1.41551C7.60655 1.03915 7.72333 0.679512 7.92855 0.414546C8.13376 0.149581 8.41088 0.0006373 8.69984 0H45.7731C46.0635 0.00066252 46.3419 0.151406 46.5471 0.419138C46.7523 0.68687 46.8675 1.04971 46.8675 1.42801V69.2972C46.8675 69.6755 46.7523 70.0384 46.5471 70.3061C46.3419 70.5738 46.0635 70.7246 45.7731 70.7253ZM8.69984 0.050018C8.42196 0.0506791 8.15561 0.194755 7.95912 0.45069C7.76263 0.706625 7.65202 1.05356 7.65152 1.41551V69.2972C7.65202 69.6592 7.76263 70.0061 7.95912 70.2621C8.15561 70.518 8.42196 70.6621 8.69984 70.6627H45.7731C46.0508 70.6621 46.317 70.5179 46.5131 70.2619C46.7093 70.0059 46.8195 69.659 46.8195 69.2972V1.41551C46.8195 1.05379 46.7093 0.70685 46.5131 0.450844C46.317 0.194837 46.0508 0.0506805 45.7731 0.050018H8.69984Z" fill="#E6E6E6"/>
@@ -192,14 +195,17 @@ const VerifyOTPComponent = () => {
   };
   return (
     <Container>
-        <EnterOTPTitle svgContent={svgContent} title='OTP Verification'/>
-        <EnterOTPDescription description={description} phoneNumber={phoneNumber}/>
+        <TitleName svgContent={svgContent} title='OTP Verification'/>
+        <OTPDescription description={description} phoneNumber={phoneNumber}/>
         <EnterOTPBox/>
         <ButtonContainer>
-          <SendOtpButtonComponent onClick={handleVerifyOTP} text="Verify" width='228px'/>
+          <MultiFunctionButtonComponent
+           onClick={handleVerifyOTP} 
+           text="Verify" 
+           width='228px'/>
       </ButtonContainer>
     </Container>
   )
 }
 
-export default VerifyOTPComponent
+export default VerifyOTPAfterCreationComponent

@@ -1,10 +1,11 @@
 import styled from "styled-components";
-import EnterOTPTitle from "../components/molecules/enterOTPmolecule/EnterOTPTitle";
-import EnterOTPDescription from "../components/molecules/enterOTPmolecule/EnterOTPDescription";
 import EnterOTPBox from "../components/molecules/enterOTPmolecule/EnterOTPBox";
-import SendOtpButtonComponent from "../components/atoms/SendOtpButtonComponent";
+import MultiFunctionButtonComponent from "../components/atoms/MultiFunctionButtonComponent";
 import { useNavigate } from "react-router-dom";
 import { usePhoneNumber } from "../contexts/PhoneNumberContext";
+import TitleName from "../components/atoms/TitleName";
+import OTPDescription from "../components/molecules/enterOTPmolecule/OTPDescription";
+
 
 const Container = styled.div`
   height: 358px;
@@ -189,11 +190,11 @@ const VerifyOTPAfterSignIn = () => {
 
   return (
     <Container>
-      <EnterOTPTitle svgContent={svgContent} title="Verify OTP" />
-      <EnterOTPDescription description={description} phoneNumber={phoneNumber} />
+      <TitleName svgContent={svgContent} title="Verify OTP" />
+      <OTPDescription description={description} phoneNumber={phoneNumber} />
       <EnterOTPBox />
       <ButtonContainer>
-        <SendOtpButtonComponent onClick={handleVerifyOTP} text="Verify" width="228px" />
+        <MultiFunctionButtonComponent onClick={handleVerifyOTP} text="Verify" width="228px" />
       </ButtonContainer>
     </Container>
   );

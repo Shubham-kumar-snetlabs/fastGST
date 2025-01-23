@@ -58,7 +58,7 @@ export const TeamMemberProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     },
     {
       id: 6,
-      name: 'Member-5',
+      name: 'Member-6',
       phoneNumber: '987-654-3210',
       role: 'Member',
       photo: 'ShivangSir.png',

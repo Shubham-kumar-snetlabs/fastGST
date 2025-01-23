@@ -2,8 +2,8 @@
 import React, { useState } from "react";
 import UserDetailsBox from "../../atoms/UserDetailsBox";
 import styled from "styled-components";
-import SendOtpButtonComponent from "../../atoms/SendOtpButtonComponent";
 import { useNavigate } from "react-router-dom";
+import MultiFunctionButtonComponent from "../../atoms/MultiFunctionButtonComponent";
 
 const Container = styled.div`
   width : 336px;
@@ -95,7 +95,11 @@ const AllUserDetails = () => {
             onChange={handleAadharChange}
             />
           </AadharBlock>
-          <SendOtpButtonComponent text="Send OTP" onClick={handleSendOTP} />
+          <MultiFunctionButtonComponent 
+          text="Send OTP" 
+          onClick={handleSendOTP} 
+          width="336px"
+          />
         </SecondContainer>
       </FirstContainer>
     </Container>

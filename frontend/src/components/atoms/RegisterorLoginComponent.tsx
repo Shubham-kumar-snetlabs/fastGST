@@ -25,7 +25,7 @@ interface isMemberProps{
 }
 
 
-const AlreadyAMemberComponent: React.FC<isMemberProps> = ({text,registerOrLogin}) => {
+const RegisterorLoginComponent: React.FC<isMemberProps> = ({text,registerOrLogin}) => {
   return (
     <Container>
         {text} <span style={{color:'#4C9EEB', marginLeft:'4px'}}>{registerOrLogin}</span>
@@ -33,4 +33,4 @@ const AlreadyAMemberComponent: React.FC<isMemberProps> = ({text,registerOrLogin}
   )
 }
 
-export default AlreadyAMemberComponent
+export default RegisterorLoginComponent

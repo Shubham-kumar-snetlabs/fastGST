@@ -39,7 +39,7 @@ interface OtpDescriptionProps{
 
 
 
-const EnterOTPDescription: React.FC<OtpDescriptionProps> = ({description, phoneNumber,text}) => {
+const OTPDescription: React.FC<OtpDescriptionProps> = ({description, phoneNumber,text}) => {
   return (
     <Container>
         <InnerContainer>
@@ -53,4 +53,4 @@ const EnterOTPDescription: React.FC<OtpDescriptionProps> = ({description, phoneN
   )
 }
 
-export default EnterOTPDescription
+export default OTPDescription;

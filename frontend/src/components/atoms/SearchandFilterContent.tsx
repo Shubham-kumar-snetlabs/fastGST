@@ -1,5 +1,8 @@
 import styled from "styled-components"
 import { useTeamMembers } from "../../contexts/TeamMemberContext";
+import SearchComponent from "./SearchComponent";
+import SendOtpButtonComponent from "./MultiFunctionButtonComponent";
+import DropdownComponent from "./DropdownComponent";
 
 
 const Container = styled.div`
@@ -37,118 +40,6 @@ const SearchFilterandHistoryDiv = styled.div`
 `;
 
 
-const SearchBarDiv = styled.div`
-    width: 216px;
-    height: 36px;
-    padding: 9px 8px 9px 8px;
-    box-sizing : border-box;
-    border-radius: 100px ;
-    border: 1px solid #AAB8C2;
-    background: #F5F8FA;
-    color : #657786;
-    display : flex;
-    gap : 10px;
-`;
-
-const SearchBarItem = styled.div`
-    height : 18px;
-    width : 174px;
-    display : flex;
-    // gap : 4px;
-`;
-
-const SearchIcon = styled.div`
-    width: 18px;
-    height: 18px;
-    display : flex;
-`;
-
-const SearchInputDiv = styled.div`
-    width: 152px;
-    height: 14px;
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 14px;
-    color : #657786;
-    display : flex;
-`;
-
-const SearchInput = styled.input`
-    background : transparent;
-    outline : none;
-    border : none;
-    font-style: italic;
-    color : #657786;
-`;
-
-const FilterDiv = styled.div`
-    width: 110px;
-    height: 36px;
-    padding: 9px 12px 9px 12px;
-    box-sizing : border-box;
-    gap: 6px;
-    border-radius: 100px;
-    border: 1px solid #657786;
-    display : flex;
-`;
-
-const FilterText = styled.div`
-    width: 40px;
-    height: 16px;
-    font-family: Noto Sans;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 16px;
-    color : #657786;
-   
-`;
-
-const Dropdown = styled.select`
-    width: 16px;
-    height: 16px;
-    font-family: Noto Sans;
-    font-size: 14px;
-    font-weight: 400;
-    color: #657786;
-    background: #F5F8FA;
-    border : none;
-    outline : none;
-
-    option {
-        font-size: 14px;
-        color: #657786;
-        background: transparent;
-        width : 100%;
-        padding : 2px;
-        box-sizing : border-box;
-        border-radius: 100px;
-    }
-`;
-
-const FillingDiv = styled.div`
-    width: 137px;
-    height: 36px;
-    padding: 10px 18px 10px 18px;
-    box-sizing : border-box;
-    display : flex;
-    gap: 10px;
-    border-radius: 1000px;
-    background : #4C9EEB;
-`;
-
-const FillingItem = styled.div`
-    width: 101px;
-    height: 16px;
-    font-family: Inter;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 16px;
-    text-align: left;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
-    color : #FFFFFF;
-`;
-
 const SearchandFilterContent = () => {
 
     const SearchSVG = <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -169,26 +60,26 @@ const SearchandFilterContent = () => {
             <MemberCountText>All Members: ({teamMembers.length})</MemberCountText>
         </MemberCount>
         <SearchFilterandHistoryDiv>
-            <SearchBarDiv>
-                <SearchBarItem>
-                    <SearchIcon>{SearchSVG}</SearchIcon>
-                    <SearchInputDiv>
-                        <SearchInput
-                        placeholder="Search a Team member..." />
-                    </SearchInputDiv>
-                </SearchBarItem>
-            </SearchBarDiv>
-            <FilterDiv>
-                {FilterSVG}
-                <FilterText>Filter</FilterText>
-                <Dropdown>
-                    <option value="all">All</option>
-                    <option value="some">Some</option>
-                </Dropdown>
-            </FilterDiv>
-            <FillingDiv>
-                <FillingItem>Filing History</FillingItem>
-            </FillingDiv>
+            <SearchComponent svg={SearchSVG} placeholder="Search a Team member..."/>
+            <DropdownComponent
+                svg={FilterSVG}
+                text="Filter"
+                options={[
+                { value: 'owner', label: 'Owner' },
+                { value: 'super admin', label: 'Super Admin' },
+                { value: 'admin', label: 'Admin' },
+                { value: 'member', label: 'Member'},
+                ]}
+            />
+            <SendOtpButtonComponent
+             text="Filling History" 
+             height="36px" 
+             width="137px" 
+             padding="10px 18px" 
+             background="#4C9EEB"
+             fontSize="16px"
+             lineHeight="16px"
+             />
         </SearchFilterandHistoryDiv>
     </Container>
   )

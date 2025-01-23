@@ -1,10 +1,11 @@
 
 import styled from 'styled-components'
-import EnterOTPTitle from '../components/molecules/enterOTPmolecule/EnterOTPTitle';
-import EnterOTPDescription from '../components/molecules/enterOTPmolecule/EnterOTPDescription';
 import EnterOTPBox from '../components/molecules/enterOTPmolecule/EnterOTPBox';
-import SendOtpButtonComponent from '../components/atoms/SendOtpButtonComponent';
+import MultiFunctionButtonComponent from '../components/atoms/MultiFunctionButtonComponent';
 import { useNavigate } from 'react-router-dom';
+import TitleName from '../components/atoms/TitleName';
+import OTPDescription from '../components/molecules/enterOTPmolecule/OTPDescription';
+
 
 const Container = styled.div`
     height : 358px;
@@ -188,11 +189,15 @@ const VerifyKYC = () => {
   }
   return (
     <Container>
-        <EnterOTPTitle svgContent={svgContent} title='KYC Verification'/>
-        <EnterOTPDescription description={description}/>
+        <TitleName svgContent={svgContent} title='KYC Verification'/>
+        <OTPDescription description={description}/>
         <EnterOTPBox/>
         <ButtonContainer>
-          <SendOtpButtonComponent onClick={handleVerifyKYC} text="Verify" width='228px'/>
+          <MultiFunctionButtonComponent 
+          onClick={handleVerifyKYC} 
+          text="Verify" 
+          width='228px'
+          />
       </ButtonContainer>
     </Container>
   )

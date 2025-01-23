@@ -1,8 +1,8 @@
 
 import styled from 'styled-components'
-import TitleName from '../components/molecules/registerOTPmolecule/TitleName';
-import OtpDescriptionComponent from '../components/atoms/OtpDescriptionComponent';
+import TitleName from '../components/atoms/TitleName';
 import AllUserDetails from '../components/molecules/createAccountmolecule/AllUserDetails';
+import DescriptionComponent from '../components/atoms/DescriptionComponent';
 
 
 
@@ -116,6 +116,7 @@ const CreateAccount = () => {
     </clipPath>
     </defs>
                         </svg>
+                        
     const desc = 'It’s mandatory to verify your KYC. This is a one-time process and won’t not take more than 1 minute of your time.'
   return (
     <Container>
@@ -126,7 +127,7 @@ const CreateAccount = () => {
             <AllUserDetails/>
         </SecondContainer>
         <ThirdConatiner>
-            <OtpDescriptionComponent desc={desc}/>
+            <DescriptionComponent desc={desc}/>
         </ThirdConatiner>
     </Container>
   )

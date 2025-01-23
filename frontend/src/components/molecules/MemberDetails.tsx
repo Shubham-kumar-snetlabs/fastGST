@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components"
 import RemoveModal from "./RemoveModal";
+import SendOtpButtonComponent from "../atoms/MultiFunctionButtonComponent";
 
 const Container = styled.div`
     height : 100%;
@@ -212,64 +213,6 @@ const ButtonContainer = styled.div`
 `;
 
 
-const CancelButton = styled.div`
-    width : fit-content;
-    min-width : 408px;
-    height : 42px;
-    border-radius : 1000px;
-    padding : 12px 18px;
-    box-sizing : border-box;
-    display : flex;
-    align-items : center;
-    justify-content : center;
-    gap : 10px;
-    background : #AAB8C2;
-
-    // font-family: Inter;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 18px;
-    text-align: left;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
-    color : #14171A;
-
-    &:hover{
-    background :rgb(105, 126, 141);
-    }
-
-    cursor : pointer;
-`;
-
-const UpdateButton = styled.div`
-    width : fit-content;
-    min-width : 408px;
-    height : 42px;
-    border-radius : 1000px;
-    padding : 12px 18px;
-    box-sizing : border-box;
-    display : flex;
-    align-items : center;
-    justify-content : center;
-    gap : 10px;
-    background : #B9DCF7;
-
-    &:hover{
-    background : #4C9EEB;
-    }
-
-    // font-family: Inter;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 18px;
-    text-align: left;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
-    color : #FFFFFF;
-
-    cursor : pointer;
-`;
-
 interface MemberDetailsProps {
     showMemberDetails: boolean;
     setShowMemberDetails: React.Dispatch<React.SetStateAction<boolean>>;
@@ -315,7 +258,17 @@ const MemberDetails:React.FC<MemberDetailsProps> = ({ setShowMemberDetails }) =>
                         <Number>+91-1234567890</Number>
                         <Email>Shivangpatel283@gmail.com</Email>
                     </UserDescription>
-                    <RemoveMember onClick={handleRemoveModal}>Remove Member</RemoveMember>
+                    <SendOtpButtonComponent
+                        onClick={handleRemoveModal}
+                        text="Remove Member"
+                        background="transparent"
+                        color="#EB5244"
+                        height="36px"
+                        width="163px"
+                        border="1px solid #EB5244"
+                        padding="10px 16px"
+                        fontSize="16px"
+                    />
                 </UserDetailDiv>
                 <RoleContainer>
                         <RoleInnerContainer onClick={() => setDropdownOpen(!isDropdownOpen)}>
@@ -336,8 +289,24 @@ const MemberDetails:React.FC<MemberDetailsProps> = ({ setShowMemberDetails }) =>
                         )}
                     </RoleContainer>
                 <ButtonContainer>
-                    <CancelButton onClick={()=>setShowMemberDetails(false)}>Cancel</CancelButton>
-                    <UpdateButton>Update</UpdateButton>
+                    <SendOtpButtonComponent
+                    text="Cancel"
+                    onClick={handleCloseMemberDetails}
+                    width="408px"
+                    height="42px"
+                    background="#AAB8C2"
+                    padding="12px 18px"
+                    color="#14171A"
+                    />
+                    <SendOtpButtonComponent
+                    text="Update"
+                    onClick={handleCloseMemberDetails}
+                    width="408px"
+                    height="42px"
+                    background="#4C9EEB"
+                    padding="12px 18px"
+                    color="#FFFFFF"
+                    />
                 </ButtonContainer>
             </ContentContainer>
         </MainContainer>
