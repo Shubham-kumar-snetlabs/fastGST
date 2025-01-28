@@ -1,18 +1,14 @@
 import styled from "styled-components";
 import TopNavigatingBar from "../components/molecules/TopNavigatingBar";
-import { FilterSVG, headIconSVG, SearchSVG } from "../svg/svg";
+import { ClientSmallIconSVG, SearchSVG } from "../svg/svg";
 import MemberCount from "../components/atoms/MemberCount";
 import SearchComponent from "../components/atoms/SearchComponent";
-import DropdownComponent from "../components/atoms/DropdownComponent";
-import MultiFunctionButtonComponent from "../components/atoms/MultiFunctionButtonComponent";
 import { useNavigate } from "react-router-dom";
-import { useTeamMembers } from "../contexts/TeamMemberContext";
-import MembersTable from "../tables/MembersTable";
 import DashBoardTitle from "../components/atoms/deprecated/DashBoardHead";
 import DashBoardBody from "../components/atoms/deprecated/DashBoardBody";
+import { useClients } from "../contexts/ClientsContext";
+import ClientsTable from "../tables/ClientsTable";
 import Layout from "../layout/Layout";
-
-
 
 const InnerRightContainer = styled.div`
   height: 100%;
@@ -111,27 +107,27 @@ const SearchFilterandHistoryDiv = styled.div`
   justify-content : flex-end;
 `;
 
+const SearchandFilterBlock = styled.div``;
+
+const MemberTableDiv = styled.div``;
+
 interface DashBoardLeftProps {
   activeItem: number;
   setActiveItem: (id: number) => void;
 }
 
-const SearchandFilterBlock = styled.div``;
-
-const MemberTableDiv = styled.div``;
-
-const Dashboard: React.FC<DashBoardLeftProps> = ({ activeItem, setActiveItem }) => {
-  const headDescription = "Manage and organize your team members for efficient collaboration.";
-
+const Clients: React.FC<DashBoardLeftProps> = ({ activeItem, setActiveItem }) => {
+  const headDescription =
+    "Effortlessly manage your clients and their businesses by automatically receiving your client’s business OTPs for streamlining the tax filing process.";
   const navigate = useNavigate();
-  const { teamMembers } = useTeamMembers();
+  const { clients } = useClients();
   return (
-    <Layout activeItem={activeItem} setActiveItem={setActiveItem} >
+    <Layout activeItem={activeItem} setActiveItem={setActiveItem}>
       <InnerRightContainer>
         <NavigatingTopBar>
           <TopNavigatingBar
             showBackButton={false}
-            mainText="Teams"
+            mainText="Clients"
             showExtendedRoutes={false}
           />
         </NavigatingTopBar>
@@ -139,46 +135,32 @@ const Dashboard: React.FC<DashBoardLeftProps> = ({ activeItem, setActiveItem }) 
           <ContentMainContainer>
             <TitleContainer>
               <DashBoardTitle
-                svg={headIconSVG}
-                headTitle="Team"
+                svg={ClientSmallIconSVG}
+                headTitle="Clients"
                 headDescription={headDescription}
               />
             </TitleContainer>
             <BodyContainer>
               <SearchandFilterContainer>
                 <SearchandFilterBlock>
-                  {teamMembers.length && (
+                  {clients.length && (
                     <SearchAndFilterDiv>
-                      <MemberCount label="All Members" count={teamMembers.length} />
+                      <MemberCount label="All Clients" count={clients.length} />
                       <SearchFilterandHistoryDiv>
-                        <SearchComponent svg={SearchSVG} placeholder="Search a Team member..." />
-                        <DropdownComponent
-                          svg={FilterSVG}
-                          text="Filter"
-                          width="auto"
-                          options={[
-                            { value: "owner", label: "Owner" },
-                            { value: "super admin", label: "Super Admin" },
-                            { value: "admin", label: "Admin" },
-                            { value: "member", label: "Member" },
-                          ]}
-                        />
-                        <MultiFunctionButtonComponent
-                          onClick={() => navigate("/filing")}
-                          text="Filling History"
-                          height="36px"
-                          width="137px"
-                          padding="10px 18px"
-                          background="#4C9EEB"
-                          fontSize="16px"
-                          lineHeight="16px"
+                        <SearchComponent
+                          svg={SearchSVG}
+                          placeholder="Search a Team member..."
                         />
                       </SearchFilterandHistoryDiv>
                     </SearchAndFilterDiv>
                   )}
                 </SearchandFilterBlock>
                 <MemberTableDiv>
-                  {teamMembers.length ? <MembersTable /> : <DashBoardBody type="team" />}
+                  {clients.length ? (
+                    <ClientsTable />
+                  ) : (
+                    <DashBoardBody type="client" />
+                  )}
                 </MemberTableDiv>
               </SearchandFilterContainer>
             </BodyContainer>
@@ -189,4 +171,4 @@ const Dashboard: React.FC<DashBoardLeftProps> = ({ activeItem, setActiveItem }) 
   );
 };
 
-export default Dashboard;
+export default Clients;

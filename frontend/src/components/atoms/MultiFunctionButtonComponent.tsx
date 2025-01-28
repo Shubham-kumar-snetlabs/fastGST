@@ -10,30 +10,33 @@ const Button = styled.button<{
   border?: string;
   borderRadius?: string;
   padding? : string;
+  gap?: string;
+  flexDirection?: string;
 }>`
   width: ${({ width }) => width || "max-content"};
   height: ${({ height }) => height || "42px"};
   padding: ${({padding})=> padding || '10px 16px'};
   box-sizing : border-box;
-  gap: 10px;
+  gap: ${({gap}) => gap || '10px'};
   border: ${( {border} )=> border || 'none'};
   border-radius: ${( {borderRadius} )=> borderRadius || '1000px'};
   outline : none;
   background: ${({ background }) => background || " #4c9eeb;"};              
   display: flex;
+  flex-direction: ${({flexDirection}) => flexDirection || "row"};
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  opacity : 0.8;
+  // opacity : 0.8;
 
   &:hover{
     opacity : 1;
-    border: ${( {border} )=> border || 'none'};
+    // border: ${( {border} )=> border || 'none'};
   }
 
   &:focus {
     outline: none;
-    border : none;
+    // border : none;
   }
 `;
 
@@ -54,6 +57,7 @@ const ButtonText = styled.p<{
 
 interface ButtonProps {
   onClick?: () => void;
+  svg?: React.ReactNode;
   text: string;
   width?: string;
   height? : string;
@@ -66,7 +70,9 @@ interface ButtonProps {
   lineHeight? : string;
   border? : string;
   borderRadius? : string;
-  padding? : string
+  padding? : string;
+  gap?: string;
+  flexDirection?: string;
 };
 
 const MultiFunctionButtonComponent: React.FC<ButtonProps> = ({
@@ -83,6 +89,9 @@ const MultiFunctionButtonComponent: React.FC<ButtonProps> = ({
   fontFamily,
   lineHeight,
   padding,
+  svg,
+  gap,
+  flexDirection
 }) => {
   return (
     <Container>
@@ -94,7 +103,10 @@ const MultiFunctionButtonComponent: React.FC<ButtonProps> = ({
         border={border} 
         borderRadius={borderRadius} 
         padding={padding}
+        gap={gap}
+        flexDirection={flexDirection}
       >
+        {svg}
         <ButtonText 
           color={color} 
           fontFamily={fontFamily} 

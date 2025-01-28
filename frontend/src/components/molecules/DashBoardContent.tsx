@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import DashBoardHead from '../atoms/DashBoardHead';
-import TeamMemberComponet from '../atoms/TeamMemberComponet';
+import DashBoardHead from '../atoms/deprecated/DashBoardHead';
+import TeamMemberComponent from '../atoms/TeamMemberComponent';
 import { headIconSVG } from '../../svg/svg';
 
 
@@ -53,7 +53,7 @@ const DashBoardContent = () => {
         />
       </HeadContainer>
       <BodyContainer>
-       <TeamMemberComponet />
+       <TeamMemberComponent />
       </BodyContainer>
     </ContentMainContainer>
   )

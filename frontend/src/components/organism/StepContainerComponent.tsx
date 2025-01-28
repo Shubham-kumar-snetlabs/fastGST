@@ -1,198 +1,74 @@
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
+import {verticalLineSVG } from "../../svg/svg";
 
-const StepContainer  = styled.div`
+const Container = styled.div`
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+`;
+
+const StepContainer = styled.div`
   width: 277px;
-  height: 344px;
-  display : flex;
-  flex-direction : column;
+  display: flex;
+  flex-direction: column;
   gap: 8px;
-  color : black;
+  color: black;
+  z-index: 999;
 `;
 
-const Step1 = styled.div`
-  height : 24px;
-  width : 253px;
-  display : flex;
+const Step = styled.div`
+  height: 24px;
+  display: flex;
   gap: 8px;
-  align-items : center;
+  align-items: center;
 `;
 
-
-
-const Step1Text = styled.div`
-  width : 221px;
-  height : 14px;
-  display : flex;
-  gap : 10px;
-  // font-family: Noto Sans;
+const StepText = styled.div`
+  flex-grow: 1;
   font-size: 14px;
   font-weight: 400;
   line-height: 14px;
   text-align: left;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
-  color : #14171A
-
+  color: #14171a;
 `;
 
 const VerticalLine = styled.div`
-  height : 40px;
-  width : 24px;
+  height: 40px;
+  display: flex;
 `;
 
-
-const Step2 = styled.div`
-  height : 24px;
-  width : 204px;
-  display : flex;
-  gap: 8px;
-  align-items : center;
-`;
-
-const Step2Text = styled.div`
-  width : 172px;
-  height : 14px;
-  display : flex;
-  gap : 10px;
-  // font-family: Noto Sans;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 14px;
-  text-align: left;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
-  color : #14171A
-`;
-
-const Step3 = styled.div`
-  height : 24px;
-  width : 277px;
-  display : flex;
-  gap: 8px;
-  align-items : center;
-`;
-
-const Step3Text = styled.div`
-  width : 243px;
-  height : 14px;
-  display : flex;
-  gap : 10px;
-  // font-family: Noto Sans;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 14px;
-  text-align: left;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
-  color : #14171A
-`;
-
-const Step4 = styled.div`
-  height : 24px;
-  width : 105px;
-  display : flex;
-  gap: 8px;
-  align-items : center;
-`;
-
-const Step4Text = styled.div`
-  width : 77px;
-  height : 14px;
-  display : flex;
-  gap : 10px;
-  // font-family: Noto Sans;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 14px;
-  text-align: left;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
-  color : #14171A
-`;
-
-
-const Step5 = styled.div`
-  height : 24px;
-  width : 277px;
-  display : flex;
-  gap: 8px;
-  align-items : center;
-`;
-
-const Step5Text = styled.div`
-  width : 195px;
-  height : 14px;
-  display : flex;
-  gap : 10px;
-  // font-family: Noto Sans;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 14px;
-  text-align: left;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
-  color : #14171A
-`;
-
-const StepContainerComponent = () => {
-
-    const tickSVG = <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="0.5" width="24" height="24" rx="12" fill="#E4F4FF"/>
-    <path d="M10.0777 17C9.93725 17.0009 9.80203 16.945 9.7009 16.8445L5.66374 12.801C5.61285 12.7499 5.57219 12.689 5.54411 12.6217C5.51602 12.5545 5.50105 12.4822 5.50005 12.4089C5.49905 12.3357 5.51204 12.263 5.53828 12.1949C5.56452 12.1268 5.60349 12.0648 5.65298 12.0123C5.70246 11.9598 5.76148 11.9178 5.82667 11.8888C5.89187 11.8598 5.96195 11.8444 6.03293 11.8434C6.10391 11.8423 6.17439 11.8557 6.24035 11.8828C6.30631 11.9099 6.36645 11.9501 6.41735 12.0012L10.0777 15.667L18.5827 7.15785C18.6854 7.05473 18.8237 6.99797 18.9671 7.00006C19.1104 7.00214 19.2471 7.06289 19.347 7.16896C19.447 7.27502 19.502 7.4177 19.4999 7.56561C19.4979 7.71352 19.439 7.85454 19.3363 7.95766L10.4545 16.8445C10.3534 16.945 10.2182 17.0009 10.0777 17Z" fill="#4C9EEB"/>
-    </svg>
-  
-    const verticalLineSVG = <svg width="25" height="40" viewBox="0 0 25 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <line x1="13" y1="2.18558e-08" x2="13" y2="40" stroke="#4C9EEB"/>
-    </svg>
-  
-    const number2SVG = <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="0.5" width="24" height="24" rx="12" fill="#4C9EEB"/>
-    <path d="M14.909 15.817C15.0443 15.817 15.1517 15.8567 15.231 15.936C15.3103 16.0153 15.35 16.118 15.35 16.244V17H8.658V16.573C8.658 16.4843 8.67667 16.3933 8.714 16.3C8.75133 16.2067 8.80967 16.1203 8.889 16.041L12.102 12.814C12.368 12.5433 12.6107 12.2843 12.83 12.037C13.0493 11.785 13.236 11.533 13.39 11.281C13.544 11.029 13.663 10.7747 13.747 10.518C13.831 10.2567 13.873 9.979 13.873 9.685C13.873 9.391 13.8263 9.13433 13.733 8.915C13.6397 8.691 13.5113 8.50667 13.348 8.362C13.1893 8.21733 13.0003 8.11 12.781 8.04C12.5617 7.96533 12.326 7.928 12.074 7.928C11.8173 7.928 11.5817 7.96533 11.367 8.04C11.1523 8.11467 10.961 8.21967 10.793 8.355C10.6297 8.48567 10.492 8.642 10.38 8.824C10.268 9.006 10.1887 9.20667 10.142 9.426C10.086 9.58933 10.009 9.699 9.911 9.755C9.81767 9.80633 9.68467 9.82033 9.512 9.797L8.861 9.685C8.92633 9.22767 9.05233 8.824 9.239 8.474C9.43033 8.11933 9.66833 7.823 9.953 7.585C10.2423 7.347 10.5713 7.16733 10.94 7.046C11.3087 6.92 11.7077 6.857 12.137 6.857C12.5617 6.857 12.9583 6.92 13.327 7.046C13.6957 7.172 14.0153 7.35633 14.286 7.599C14.5567 7.837 14.769 8.12867 14.923 8.474C15.077 8.81933 15.154 9.21133 15.154 9.65C15.154 10.0233 15.098 10.371 14.986 10.693C14.874 11.0103 14.7223 11.3137 14.531 11.603C14.3397 11.8923 14.118 12.1747 13.866 12.45C13.6187 12.7253 13.355 13.003 13.075 13.283L10.429 15.985C10.6157 15.9337 10.8047 15.894 10.996 15.866C11.1873 15.8333 11.3717 15.817 11.549 15.817H14.909Z" fill="white"/>
-    </svg>
-    
-    const number3SVG = <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="0.5" width="24" height="24" rx="12" fill="#E1E8ED"/>
-    <path d="M8.91 9.685C8.97533 9.22767 9.10133 8.824 9.288 8.474C9.47467 8.11933 9.71033 7.823 9.995 7.585C10.2843 7.347 10.6133 7.16733 10.982 7.046C11.3553 6.92 11.7567 6.857 12.186 6.857C12.6107 6.857 13.0027 6.91767 13.362 7.039C13.7213 7.16033 14.0293 7.333 14.286 7.557C14.5473 7.781 14.7503 8.05167 14.895 8.369C15.0397 8.68633 15.112 9.03867 15.112 9.426C15.112 9.74333 15.07 10.028 14.986 10.28C14.9067 10.5273 14.79 10.7443 14.636 10.931C14.4867 11.1177 14.3047 11.2763 14.09 11.407C13.8753 11.5377 13.635 11.645 13.369 11.729C14.0223 11.897 14.5123 12.1863 14.839 12.597C15.1703 13.003 15.336 13.5117 15.336 14.123C15.336 14.585 15.2473 15.0003 15.07 15.369C14.8973 15.7377 14.6593 16.0527 14.356 16.314C14.0527 16.5707 13.698 16.769 13.292 16.909C12.8907 17.0443 12.459 17.112 11.997 17.112C11.465 17.112 11.01 17.0467 10.632 16.916C10.254 16.7807 9.93433 16.5963 9.673 16.363C9.41167 16.1297 9.197 15.8543 9.029 15.537C8.861 15.215 8.71867 14.8673 8.602 14.494L9.141 14.27C9.281 14.2093 9.41633 14.193 9.547 14.221C9.68233 14.249 9.78033 14.326 9.841 14.452C9.90167 14.5827 9.97633 14.739 10.065 14.921C10.1583 15.103 10.2843 15.278 10.443 15.446C10.6017 15.614 10.8023 15.7563 11.045 15.873C11.2923 15.9897 11.605 16.048 11.983 16.048C12.333 16.048 12.6387 15.992 12.9 15.88C13.166 15.7633 13.3853 15.614 13.558 15.432C13.7353 15.25 13.8683 15.047 13.957 14.823C14.0457 14.599 14.09 14.3773 14.09 14.158C14.09 13.8873 14.055 13.64 13.985 13.416C13.915 13.192 13.7843 12.9983 13.593 12.835C13.4017 12.6717 13.138 12.5433 12.802 12.45C12.4707 12.3567 12.0437 12.31 11.521 12.31V11.407C11.9503 11.4023 12.3143 11.3557 12.613 11.267C12.9163 11.1783 13.1613 11.057 13.348 10.903C13.5393 10.749 13.677 10.5647 13.761 10.35C13.8497 10.1353 13.894 9.89733 13.894 9.636C13.894 9.34667 13.8473 9.09467 13.754 8.88C13.6653 8.66533 13.5417 8.488 13.383 8.348C13.2243 8.208 13.0353 8.103 12.816 8.033C12.6013 7.963 12.368 7.928 12.116 7.928C11.864 7.928 11.6283 7.96533 11.409 8.04C11.1943 8.11467 11.003 8.21967 10.835 8.355C10.6717 8.48567 10.534 8.642 10.422 8.824C10.31 9.006 10.2307 9.20667 10.184 9.426C10.1233 9.58933 10.0463 9.699 9.953 9.755C9.86433 9.80633 9.73367 9.82033 9.561 9.797L8.91 9.685Z" fill="#657786"/>
-    </svg>
-  
-    const number4SVG = <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="0.5" width="24" height="24" rx="12" fill="#E1E8ED"/>
-    <path d="M13.11 13.381V9.244C13.11 9.12267 13.1147 8.98967 13.124 8.845C13.1333 8.70033 13.1473 8.55333 13.166 8.404L9.512 13.381H13.11ZM15.721 13.381V14.095C15.721 14.1697 15.6977 14.2327 15.651 14.284C15.609 14.3353 15.5413 14.361 15.448 14.361H14.202V17H13.11V14.361H8.658C8.56467 14.361 8.483 14.3353 8.413 14.284C8.34767 14.228 8.30567 14.1603 8.287 14.081L8.161 13.444L13.04 6.969H14.202V13.381H15.721Z" fill="#657786"/>
-    </svg>
-  
-    const number5SVG = <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="0.5" width="24" height="24" rx="12" fill="#E1E8ED"/>
-    <path d="M10.534 10.756C11.0567 10.644 11.5373 10.588 11.976 10.588C12.4987 10.588 12.9607 10.665 13.362 10.819C13.7633 10.973 14.097 11.1853 14.363 11.456C14.6337 11.7267 14.8367 12.0463 14.972 12.415C15.112 12.7837 15.182 13.185 15.182 13.619C15.182 14.151 15.0887 14.6317 14.902 15.061C14.72 15.4903 14.4657 15.859 14.139 16.167C13.817 16.4703 13.4367 16.7037 12.998 16.867C12.5593 17.0303 12.0857 17.112 11.577 17.112C11.283 17.112 11.0007 17.0817 10.73 17.021C10.4593 16.965 10.205 16.888 9.967 16.79C9.73367 16.692 9.51667 16.58 9.316 16.454C9.11533 16.328 8.938 16.195 8.784 16.055L9.169 15.523C9.253 15.4017 9.36267 15.341 9.498 15.341C9.59133 15.341 9.69633 15.3783 9.813 15.453C9.92967 15.523 10.072 15.6023 10.24 15.691C10.408 15.7797 10.604 15.8613 10.828 15.936C11.0567 16.006 11.3273 16.041 11.64 16.041C11.99 16.041 12.305 15.985 12.585 15.873C12.865 15.761 13.1053 15.6023 13.306 15.397C13.5067 15.187 13.6607 14.9373 13.768 14.648C13.8753 14.3587 13.929 14.0343 13.929 13.675C13.929 13.3623 13.8823 13.08 13.789 12.828C13.7003 12.576 13.5627 12.3613 13.376 12.184C13.194 12.0067 12.9653 11.869 12.69 11.771C12.4147 11.673 12.0927 11.624 11.724 11.624C11.472 11.624 11.2083 11.645 10.933 11.687C10.6623 11.729 10.3847 11.7967 10.1 11.89L9.316 11.659L10.121 6.969H14.874V7.515C14.874 7.69233 14.818 7.83933 14.706 7.956C14.5987 8.068 14.412 8.124 14.146 8.124H10.996L10.534 10.756Z" fill="#657786"/>
-    </svg>
-
-  return (
-    <StepContainer>
-      <Step1>
-        {tickSVG}
-        <Step1Text>Download FastGST biz mobie App</Step1Text>
-      </Step1>
-      <VerticalLine>{verticalLineSVG}</VerticalLine>
-      <Step2>
-        {number2SVG}
-        <Step2Text>Open App and go to Team</Step2Text>
-      </Step2>
-      <VerticalLine>{verticalLineSVG}</VerticalLine>
-      <Step3>
-        {number3SVG}
-        <Step3Text>Select member from your contact list</Step3Text>
-      </Step3>
-      <VerticalLine>{verticalLineSVG}</VerticalLine>
-      <Step4>
-        {number4SVG}
-        <Step4Text>Send invite</Step4Text>
-      </Step4>
-      <VerticalLine>{verticalLineSVG}</VerticalLine>
-      <Step5>
-        {number5SVG}
-        <Step5Text>Wait for the invite acceptance</Step5Text>
-      </Step5>
-    </StepContainer>
-  )
+interface StepData {
+  icon: React.ReactNode;
+  text: string;
 }
 
-export default StepContainerComponent
+interface StepContainerProps {
+  steps: StepData[];
+  showVerticalLine?: boolean;
+}
+
+const StepContainerComponent: React.FC<StepContainerProps> = ({
+  steps,
+  showVerticalLine = true,
+}) => {
+  return (
+    <Container>
+      <StepContainer>
+        {steps.map((step, index) => (
+          <React.Fragment key={index}>
+            <Step>
+              {step.icon}
+              <StepText>{step.text}</StepText>
+            </Step>
+              <VerticalLine>{showVerticalLine && index < 1 &&  verticalLineSVG}</VerticalLine>
+          </React.Fragment>
+        ))}
+      </StepContainer>
+    </Container>
+  );
+};
+
+export default StepContainerComponent;

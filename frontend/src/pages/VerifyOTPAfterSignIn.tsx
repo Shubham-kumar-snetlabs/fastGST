@@ -6,9 +6,58 @@ import { usePhoneNumber } from "../contexts/PhoneNumberContext";
 import TitleName from "../components/atoms/TitleName";
 import OTPDescription from "../components/molecules/OTPDescription";
 import { verifyOTPSVG } from "../svg/svg";
-
+import FixedLeftPage from "./FixedLeftPage";
 
 const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: #E0E0E0;
+`;
+
+const InnerContainer = styled.div`
+  height: 640px;
+  width: 964px;
+  padding-top: 8px;
+  padding-left: 8px;
+  background: #F5F8FA;
+  display: flex;
+  border-radius: 8px;
+  gap: 2px;
+`;
+
+const LeftContainer = styled.div`
+  display: flex;
+  height: 630px;
+  width: 484px;
+  background: #4c9eeb;
+  border-radius: 8px;
+  flex: 1;
+`;
+
+const RightContainer = styled.div`
+  flex: 1;
+  background: transparent;
+  height: 630px;
+  width: 464px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const InnerRightContainer = styled.div`
+  height: 630px;
+  width: 464px;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #14171A;
+`;
+
+const VerifyOTPAfterSignInContainer = styled.div`
   height: 358px;
   width: 336px;
   display: flex;
@@ -29,27 +78,37 @@ const VerifyOTPAfterSignIn = () => {
   const { phoneNumber } = usePhoneNumber();
   const description = "One Time Password has been sent to";
 
-
   const navigate = useNavigate();
 
   const handleVerifyOTP = () => {
-    navigate("/dashboard");
+    navigate("/");
   };
 
   return (
     <Container>
-      <TitleName svgContent={verifyOTPSVG} title="Verify OTP" />
-      <OTPDescription description={description} phoneNumber={phoneNumber} />
-      <EnterOTPBox />
-      <ButtonContainer>
-        <MultiFunctionButtonComponent onClick={handleVerifyOTP} text="Verify" width="228px" />
-      </ButtonContainer>
+      <InnerContainer>
+        <LeftContainer>
+          <FixedLeftPage />
+        </LeftContainer>
+        <RightContainer>
+          <InnerRightContainer>
+            <VerifyOTPAfterSignInContainer>
+              <TitleName svgContent={verifyOTPSVG} title="Verify OTP" />
+              <OTPDescription description={description} phoneNumber={phoneNumber} />
+              <EnterOTPBox />
+              <ButtonContainer>
+                <MultiFunctionButtonComponent
+                  onClick={handleVerifyOTP}
+                  text="Verify"
+                  width="228px"
+                />
+              </ButtonContainer>
+            </VerifyOTPAfterSignInContainer>
+          </InnerRightContainer>
+        </RightContainer>
+      </InnerContainer>
     </Container>
   );
 };
 
 export default VerifyOTPAfterSignIn;
-
-
-
-

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components"
 import RemoveModal from "./RemoveModal";
-import SendOtpButtonComponent from "../atoms/MultiFunctionButtonComponent";
 import { DropdownSVG } from "../../svg/svg";
+import MultiFunctionButtonComponent from "../atoms/MultiFunctionButtonComponent";
 
 const Container = styled.div`
     height : 100%;
@@ -71,7 +71,8 @@ const UserDescription = styled.div`
 `;
 
 const Name = styled.div`
-    width: 159px;
+    width : auto;
+    min-width: 159px;
     height: 24px;
     // font-family: Noto Sans;
     font-size: 24px;
@@ -82,7 +83,8 @@ const Name = styled.div`
 `;
 
 const Number = styled.div`
-    width: 125px;
+    width : auto;
+    min-width: 125px;
     height: 16px;
     font-family: Noto Sans;
     font-size: 16px;
@@ -114,6 +116,7 @@ const RoleContainer = styled.div`
     height: 54px;
     border-radius: 4px ;
     border: 1px solid #657786;
+    z-index: 999;
 `;
 
 const RoleInnerContainer = styled.div`
@@ -198,11 +201,12 @@ const ButtonContainer = styled.div`
 interface MemberDetailsProps {
     showMemberDetails: boolean;
     setShowMemberDetails: React.Dispatch<React.SetStateAction<boolean>>;
+    member: any;
   }
 
 
 
-const MemberDetails:React.FC<MemberDetailsProps> = ({ setShowMemberDetails }) => {
+const MemberDetails:React.FC<MemberDetailsProps> = ({ setShowMemberDetails, member }) => {
     const memberTypes = ["Owner", "Super Admin", "Admin", "Member"]
 
     const [removeModal , setRemoveModal] = useState(false)
@@ -214,8 +218,7 @@ const MemberDetails:React.FC<MemberDetailsProps> = ({ setShowMemberDetails }) =>
     }
 
     const handleRemoveModal = ()=>{
-        setRemoveModal(true)
-        // setShowMemberDetails(false)
+        setRemoveModal(true);
     }
 
     const handleRoleChange = (newRole: string) => {
@@ -234,11 +237,11 @@ const MemberDetails:React.FC<MemberDetailsProps> = ({ setShowMemberDetails }) =>
             </PhotoContainer>
                 <UserDetailDiv>  
                     <UserDescription>
-                        <Name>Shivang Patel</Name>
-                        <Number>+91-1234567890</Number>
+                        <Name>{member.name}</Name>
+                        <Number>+91-{member.phoneNumber}</Number>
                         <Email>Shivangpatel283@gmail.com</Email>
                     </UserDescription>
-                    <SendOtpButtonComponent
+                    <MultiFunctionButtonComponent
                         onClick={handleRemoveModal}
                         text="Remove Member"
                         background="transparent"
@@ -269,7 +272,7 @@ const MemberDetails:React.FC<MemberDetailsProps> = ({ setShowMemberDetails }) =>
                         )}
                     </RoleContainer>
                 <ButtonContainer>
-                    <SendOtpButtonComponent
+                    <MultiFunctionButtonComponent
                     text="Cancel"
                     onClick={handleCloseMemberDetails}
                     width="408px"
@@ -278,7 +281,7 @@ const MemberDetails:React.FC<MemberDetailsProps> = ({ setShowMemberDetails }) =>
                     padding="12px 18px"
                     color="#14171A"
                     />
-                    <SendOtpButtonComponent
+                    <MultiFunctionButtonComponent
                     text="Update"
                     onClick={handleCloseMemberDetails}
                     width="408px"
@@ -290,9 +293,7 @@ const MemberDetails:React.FC<MemberDetailsProps> = ({ setShowMemberDetails }) =>
                 </ButtonContainer>
             </ContentContainer>
         </MainContainer>
-        {removeModal && <RemoveModal
-        setRemoveModal={setRemoveModal}
-        setShowMemberDetails={setRemoveModal}
+        {removeModal && <RemoveModal member = {member}
         />}
     </Container>
   )

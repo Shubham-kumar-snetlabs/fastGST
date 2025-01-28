@@ -1,10 +1,10 @@
 import styled from "styled-components"
-import { useTeamMembers } from "../../contexts/TeamMemberContext";
 import SearchComponent from "./SearchComponent";
 import DropdownComponent from "./DropdownComponent";
 import MultiFunctionButtonComponent from "./MultiFunctionButtonComponent";
 import { FilterSVG, SearchSVG } from "../../svg/svg";
 import { useNavigate } from "react-router-dom";
+import MemberCount from "./MemberCount";
 
 
 const Container = styled.div`
@@ -15,24 +15,6 @@ const Container = styled.div`
     align-items : center;
 `;
 
-const MemberCount = styled.div`
-    height : 16px;
-    width : 125px;
-`;
-
-const MemberCountText = styled.div`
-    height : 16px;
-    width : max-content;
-    min-width : 122px;
-    font-family: Noto Sans;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 16px;
-    text-align: left;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
-    color : #657786;
-`;
 
 const SearchFilterandHistoryDiv = styled.div`
     height : 36px;
@@ -46,13 +28,11 @@ const SearchandFilterContent = () => {
 
 
     
-    const {teamMembers} = useTeamMembers()
+    
     const navigate = useNavigate()    
   return (
     <Container>
-        <MemberCount>
-            <MemberCountText>All Members: ({teamMembers.length})</MemberCountText>
-        </MemberCount>
+        <MemberCount/>
         <SearchFilterandHistoryDiv>
             <SearchComponent svg={SearchSVG} placeholder="Search a Team member..."/>
             <DropdownComponent
@@ -67,7 +47,7 @@ const SearchandFilterContent = () => {
                 ]}
             />
             <MultiFunctionButtonComponent
-             onClick={()=>navigate('/dashborad/filing_history')}
+             onClick={()=>navigate('/filing')}
              text="Filling History" 
              height="36px" 
              width="137px" 

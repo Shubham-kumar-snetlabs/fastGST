@@ -52,12 +52,12 @@ const HeadDescription = styled.div`
 
 
 interface DashBoardHeadProps {
-  svg: React.ReactNode; 
+  svg?: React.ReactNode; 
   headTitle: string; 
   headDescription: string; 
 }
 
-const DashBoardHead:React.FC<DashBoardHeadProps> = ({ svg, headTitle, headDescription }) => {
+const DashBoardTitle:React.FC<DashBoardHeadProps> = ({ svg, headTitle, headDescription }) => {
   return (
     <InnerHeadContainer>
       <HeadIconContainer>{svg}</HeadIconContainer>
@@ -69,4 +69,4 @@ const DashBoardHead:React.FC<DashBoardHeadProps> = ({ svg, headTitle, headDescri
   );
 };
 
-export default DashBoardHead;
+export default DashBoardTitle;

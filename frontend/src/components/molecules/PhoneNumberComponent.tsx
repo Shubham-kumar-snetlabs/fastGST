@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { usePhoneNumber } from "../../contexts/PhoneNumberContext";
-import MultiFunctionInputComponent from './MultiFunctionInputComponent';
+import MultiFunctionInputComponent from '../atoms/MultiFunctionInputComponent';
 
 const NumberComponent = styled.div`
   display: flex;

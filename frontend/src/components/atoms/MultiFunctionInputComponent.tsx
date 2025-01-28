@@ -27,7 +27,7 @@ const InputContainer = styled.div<{
 
 const WrittenTextAfterInput = styled.p<{ show: boolean }>`
   position: relative; 
-  top: 10px;
+  top: 9px;
   left: 8px;
   width: auto;
   height: auto;

@@ -1,93 +1,67 @@
-import styled from 'styled-components';
-import { Routes, Route, useLocation } from 'react-router-dom';
-import Dashboard from '../pages/Dashboard';
-import FixedLeftPage from '../pages/FixedLeftPage';
-import RegisterComponent from '../pages/RegisterComponent';
-import VerifyOTPComponent from '../pages/VerifyOTPAfterCreationComponent';
-import CreateAccount from '../pages/CompleteProfile';
-import VerifyKYC from '../pages/VerifyKYC';
-import Signin from '../pages/Signin';
-import VerifyOTPAfterSignIn from '../pages/VerifyOTPAfterSignIn';
+import styled from "styled-components";
+import DashBoardLeft from "../components/molecules/DashBoardLeft";
+import { useState } from "react";
 
-
-const Container = styled.div`
+const LayoutContainer = styled.div`
+  height: 100vh;
+  width: 100vw;
+  background: #fffff9;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
-  background: #E0E0E0;
+  overflow: hidden;
 `;
 
-const InnerContainer = styled.div`
-  height: 640px ;
-  width: 964px;
-  padding-top: 8px;
-  padding-left: 8px;
-  background: #F5F8FA;
+const MainContainer = styled.div`
+  height: 100%;
+  width: 100%;
+  min-height: 832px;
+  min-width: 1280px;
   display: flex;
-  border-radius: 8px;
-  gap: 2px;
 `;
 
 const LeftContainer = styled.div`
-  display: flex;
-  height: 630px;
-  width: 484px;
-  background: #4c9eeb;
-  border-radius: 8px;
-  flex: 1;
+  height: 100%;
+  width: auto;
+  min-height: 832px;
+  max-width: 288px;
+  background: #e1e8ed;
 `;
 
 const RightContainer = styled.div`
-  flex: 1;
-  background: transparent;
-  height: 630px;
-  width: 464px;
+  height: 100%;
+  width: 100%;
+  min-height: 832px;
+  min-width: 992px;
+  background: #e1e8ed;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  gap: 10px;
+  box-sizing: border-box;
+  padding: 8px 8px 8px 0;
 `;
 
-const InnerRightContainer = styled.div`
-  height: 630px;
-  width: 464px;
-  background: transparent;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #14171A;
-`;
+interface LayoutProps {
+    children: React.ReactNode;
+    activeItem: number;
+    setActiveItem: (id: number) => void;
 
- const Layout = () => {
-  const location = useLocation();
-  const isDashboard = location.pathname === "/dashboard";
-
-  return isDashboard ? (
-    <Routes>
-      <Route path="/dashboard" element={<Dashboard />} />
-    </Routes>
-  ) : (
-    <Container>
-      <InnerContainer>
-        <LeftContainer>
-          <FixedLeftPage />
-        </LeftContainer>
-        <RightContainer>
-          <InnerRightContainer>
-            <Routes>
-              <Route path="/" element={<RegisterComponent />} />
-              <Route path="/verify-otp" element={<VerifyOTPComponent />} />
-              <Route path="/create-account" element={<CreateAccount />} />
-              <Route path="/verify-kyc" element={<VerifyKYC />} />
-              <Route path="/sign-in" element={<Signin />} />
-              <Route path="/verify-sign-in" element={<VerifyOTPAfterSignIn />} />
-            </Routes>
-          </InnerRightContainer>
-        </RightContainer>
-      </InnerContainer>
-    </Container>
-  );
-}
-
-export default Layout;
+    filterOpen?: boolean;
+    setFilterOpen?: (open: boolean) => void;
+  }
+  
+  const Layout: React.FC<LayoutProps> = ({ children, activeItem, setActiveItem, filterOpen,setFilterOpen }) => {
+    
+    return (
+      <LayoutContainer>
+        <MainContainer>
+          <LeftContainer>
+            <DashBoardLeft activeItem={activeItem} setActiveItem={setActiveItem} filterOpen={filterOpen} setFilterOpen={setFilterOpen}/>
+          </LeftContainer>
+          <RightContainer>{children}</RightContainer>
+        </MainContainer>
+      </LayoutContainer>
+    );
+  };
+  
+  export default Layout;
+  

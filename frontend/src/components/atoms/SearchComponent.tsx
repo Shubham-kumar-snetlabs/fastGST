@@ -11,6 +11,7 @@ interface SearchComponentProps {
   color?: string; 
   borderColor?: string; 
   fontStyle?: string; 
+  fontFamily?: string;
   fontWeight?: number; 
   fontSize?: string;
 }
@@ -43,8 +44,6 @@ const SearchIcon = styled.div`
 const SearchInputDiv = styled.div<SearchComponentProps>`
   width: calc(100% - 18px);
   height: 14px;
-  font-size: ${({ fontSize }) => fontSize || '14px'};
-  font-weight: ${({ fontWeight }) => fontWeight || 300};
   line-height: 14px;
   color: ${({ color }) => color || '#657786'};
   display: flex;
@@ -54,7 +53,10 @@ const SearchInput = styled.input<SearchComponentProps>`
   background: transparent;
   outline: none;
   border: none;
+  font-size: ${({ fontSize }) => fontSize || '14px'};
   font-style: ${({ fontStyle }) => fontStyle || 'italic'};
+  font-weight: ${({ fontWeight }) => fontWeight || 300};
+  font-family: ${({ fontFamily }) => fontFamily || 'Noto Sans'};
   color: ${({ color }) => color || '#657786'};
   width: 100%;
 `;
@@ -69,6 +71,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
   color,
   borderColor,
   fontStyle,
+  fontFamily,
   fontWeight,
   fontSize,
 }) => {
@@ -84,14 +87,17 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
       <SearchBarItem>
         <SearchIcon>{svg}</SearchIcon>
         <SearchInputDiv
-          fontSize={fontSize}
-          fontWeight={fontWeight}
+          
           color={color}
+          
         >
           <SearchInput
             placeholder={placeholder}
             fontStyle={fontStyle}
             color={color}
+            fontSize={fontSize}
+            fontWeight={fontWeight}
+            fontFamily = {fontFamily}
           />
         </SearchInputDiv>
       </SearchBarItem>
