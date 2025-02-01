@@ -148,6 +148,7 @@ const FilingHistory: React.FC<DashBoardLeftProps> = ({ activeItem, setActiveItem
                 svg={FilingHistorySVG}
                 headTitle="Filing History"
                 headDescription={headDescription}
+                
               />
             </HeadContainer>
             <BodyContainer>

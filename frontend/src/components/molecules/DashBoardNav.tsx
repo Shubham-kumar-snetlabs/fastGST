@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import {
@@ -107,7 +106,6 @@ const DashBoardNav: React.FC<DashBoardNavProps> = ({activeItem, setActiveItem}) 
   const handleClick = (id: number) => {
     setActiveItem(id);
     console.log(activeItem," and ",id);
-    
   };
 
   return (

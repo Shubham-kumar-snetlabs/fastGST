@@ -65,12 +65,12 @@ const VerifyKYCContainer = styled.div`
   align-items: center;
 `;
 
-const ButtonContainer = styled.div`
-  height: 42px;
-  width: 228px;
-  border-radius: 1000px;
-  display: flex;
-  justify-content: center;
+const OTPandButtonDiv = styled.div`
+  height: 110px;
+  width : 228px;
+  display : flex;
+  flex-direction : column;
+  gap : 20px;
 `;
 
 const VerifyKYC = () => {
@@ -94,14 +94,22 @@ const VerifyKYC = () => {
             <VerifyKYCContainer>
               <TitleName svgContent={verifyOTPSVG} title="KYC Verification" />
               <OTPDescription description={description} />
-              <EnterOTPBox />
-              <ButtonContainer>
-                <MultiFunctionButtonComponent
-                  onClick={handleVerifyKYC}
-                  text="Verify"
-                  width="228px"
-                />
-              </ButtonContainer>
+              <OTPandButtonDiv>
+              <EnterOTPBox 
+                width='228px'
+                height='48px'
+                gap='8px'
+                padding='8px'
+                boxHeight='48px'
+                boxWidth='48px'
+              />
+              <MultiFunctionButtonComponent
+                onClick={handleVerifyKYC}
+                text="Verify"
+                width="228px"
+              />
+              </OTPandButtonDiv>
+
             </VerifyKYCContainer>
           </InnerRightContainer>
         </RightContainer>

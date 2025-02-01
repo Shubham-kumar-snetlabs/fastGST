@@ -6,6 +6,7 @@ import { PhoneNumberProvider } from './contexts/PhoneNumberContext.tsx'
 import { TeamMemberProvider } from './contexts/TeamMemberContext.tsx'
 import { ClientMemberProvider } from './contexts/ClientMemberContext.tsx'
 import { ClientsProvider } from './contexts/ClientsContext.tsx'
+import { BusinessProvider } from './contexts/BusinessContext.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -13,7 +14,9 @@ createRoot(document.getElementById('root')!).render(
       <TeamMemberProvider>
         <ClientMemberProvider>
           <ClientsProvider>
-            <App/>
+            <BusinessProvider>
+              <App/>
+            </BusinessProvider>
           </ClientsProvider>
         </ClientMemberProvider>
       </TeamMemberProvider>

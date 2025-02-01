@@ -28,7 +28,6 @@ const MainContainer = styled.div<{ width: string; height: string; padding: strin
 `;
 
 const AlertContainer = styled.div`
-//   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -62,6 +61,8 @@ const Description = styled.div<{ color: string; fontSize: string; lineHeight: st
 `;
 
 const ButtonContainer = styled.div`
+  height : 100px;
+  width : 408px;
   display: flex;
   flex-direction: column;
   gap: 16px;

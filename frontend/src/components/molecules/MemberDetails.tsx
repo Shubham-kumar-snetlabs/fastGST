@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components"
 import RemoveModal from "./RemoveModal";
-import { DropdownSVG } from "../../svg/svg";
+import { CloseSVG, DropdownSVG } from "../../svg/svg";
 import MultiFunctionButtonComponent from "../atoms/MultiFunctionButtonComponent";
 
 const Container = styled.div`
@@ -197,6 +197,15 @@ const ButtonContainer = styled.div`
     gap : 16px;
 `;
 
+const CloseDiv = styled.div`
+    width: 18px;
+    height: 18px;
+    position : relative;
+    top: 20px;
+    left: 442px;
+    cursor : pointer;
+`;
+
 
 interface MemberDetailsProps {
     showMemberDetails: boolean;
@@ -214,7 +223,7 @@ const MemberDetails:React.FC<MemberDetailsProps> = ({ setShowMemberDetails, memb
     const [isDropdownOpen, setDropdownOpen] = useState(false);
 
     const handleCloseMemberDetails = ()=>{
-        setShowMemberDetails(false );
+        setShowMemberDetails(false);
     }
 
     const handleRemoveModal = ()=>{
@@ -229,8 +238,9 @@ const MemberDetails:React.FC<MemberDetailsProps> = ({ setShowMemberDetails, memb
 
 
   return (
-    <Container onClick={handleCloseMemberDetails}>
-        <MainContainer onClick={(e)=>e.stopPropagation()} >
+    <Container>
+        <MainContainer>
+            <CloseDiv onClick={handleCloseMemberDetails}>{CloseSVG}</CloseDiv>
             <ContentContainer>
             <PhotoContainer>
                 <Photo src="/ShivangSir.png"/>
@@ -293,8 +303,7 @@ const MemberDetails:React.FC<MemberDetailsProps> = ({ setShowMemberDetails, memb
                 </ButtonContainer>
             </ContentContainer>
         </MainContainer>
-        {removeModal && <RemoveModal member = {member}
-        />}
+        {removeModal && <RemoveModal member = {member} removeModal={removeModal} setRemovwModal={setRemoveModal}/>}
     </Container>
   )
 }

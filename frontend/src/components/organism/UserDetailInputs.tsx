@@ -53,8 +53,9 @@ const UserDetailInputs = () => {
     navigate('/verify-kyc')
   }
 
-  const handleAadharChange = (value: string) => {
+  const handleAadharChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Allow only digits
+    const value = e.target.value
     if (/^\d{0,12}$/.test(value)) {
       setAadharInput(value);
     }
@@ -72,7 +73,7 @@ const UserDetailInputs = () => {
             height="54px"
             label="First Name"
             value= {firstName}
-            onChange={(value) => setFirstName(value)}
+            onChange={(e) => setFirstName(e.target.value)}
             />
             <MultiFunctionInputComponent
               type="text"
@@ -81,7 +82,7 @@ const UserDetailInputs = () => {
               height="54px"
               label="Last Name"
               value={lastName}
-              onChange={(value) => setLastName(value)}
+              onChange={(e) => setLastName(e.target.value)}
             />
           </NameBlock>
           <EmailBlock>
@@ -92,7 +93,7 @@ const UserDetailInputs = () => {
             height="54px"
             label="Email"
             value={email}
-            onChange={(value) => setEmail(value)}
+            onChange={(e) => setEmail(e.target.value)}
             />
           </EmailBlock>
           <AadharBlock>

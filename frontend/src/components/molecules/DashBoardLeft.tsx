@@ -4,6 +4,7 @@ import DashBoardNav from './DashBoardNav';
 import { zapperSVG } from '../../svg/svg';
 import PersonInfoComponent from '../atoms/PersonInfoComponent';
 import DashBoardFilter from './DashBoardFilter';
+import { useNavigate } from 'react-router-dom';
 
 
 const Container = styled.div`
@@ -105,7 +106,7 @@ interface DashBoardLeftProps {
 
 const DashBoardLeft: React.FC<DashBoardLeftProps> = ({activeItem, setActiveItem, filterOpen}) => {
     
-    
+    const navigate = useNavigate();
   return (
     <Container>
         <FirsTandSecondContainer>
@@ -154,6 +155,8 @@ const DashBoardLeft: React.FC<DashBoardLeftProps> = ({activeItem, setActiveItem,
             fontStyle='Noto Sans'
             fontWeight='400'
             textColor='#657786'
+
+            onClick={()=>navigate('/profile')}
              />
         </ThirdContainer>
     </Container>

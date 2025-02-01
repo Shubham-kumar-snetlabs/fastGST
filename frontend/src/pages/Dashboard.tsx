@@ -118,7 +118,7 @@ interface DashBoardLeftProps {
 
 const SearchandFilterBlock = styled.div``;
 
-const MemberTableDiv = styled.div``;
+const TableDiv = styled.div``;
 
 const Dashboard: React.FC<DashBoardLeftProps> = ({ activeItem, setActiveItem }) => {
   const headDescription = "Manage and organize your team members for efficient collaboration.";
@@ -177,9 +177,9 @@ const Dashboard: React.FC<DashBoardLeftProps> = ({ activeItem, setActiveItem }) 
                     </SearchAndFilterDiv>
                   )}
                 </SearchandFilterBlock>
-                <MemberTableDiv>
+                <TableDiv>
                   {teamMembers.length ? <MembersTable /> : <DashBoardBody type="team" />}
-                </MemberTableDiv>
+                </TableDiv>
               </SearchandFilterContainer>
             </BodyContainer>
           </ContentMainContainer>

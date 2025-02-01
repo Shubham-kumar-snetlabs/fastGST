@@ -67,12 +67,12 @@ const OTPContainer = styled.div`
   align-items: center;
 `;
 
-const ButtonContainer = styled.div`
-  height: 42px;
-  width: 228px;
-  border-radius: 1000px;
-  display: flex;
-  justify-content: center;
+const OTPandButtonDiv = styled.div`
+  height: 110px;
+  width : 228px;
+  display : flex;
+  flex-direction : column;
+  gap : 20px;
 `;
 
 const VerifyOTPAfterCreationComponent = () => {
@@ -98,14 +98,21 @@ const VerifyOTPAfterCreationComponent = () => {
             <OTPContainer>
               <TitleName svgContent={verifyOTPSVG} title="OTP Verification" />
               <OTPDescription description={description} phoneNumber={phoneNumber} />
-              <EnterOTPBox />
-              <ButtonContainer>
-                <MultiFunctionButtonComponent
-                  onClick={handleVerifyOTP}
-                  text="Verify"
-                  width="228px"
-                />
-              </ButtonContainer>
+              <OTPandButtonDiv>
+              <EnterOTPBox 
+                width='228px'
+                height='48px'
+                gap='8px'
+                padding='8px'
+                boxHeight='48px'
+                boxWidth='48px'
+              />
+              <MultiFunctionButtonComponent
+                onClick={handleVerifyOTP}
+                text="Verify"
+                width="228px"
+              />
+              </OTPandButtonDiv>
             </OTPContainer>
           </InnerRightContainer>
         </RightContainer>

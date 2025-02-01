@@ -6,6 +6,7 @@ import { useClients } from '../contexts/ClientsContext';
 import MultiFunctionButtonComponent from '../components/atoms/MultiFunctionButtonComponent';
 import { arrowNextSVG } from '../svg/svg';
 import ClientDetails from '../components/molecules/ClientDetails';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -38,16 +39,23 @@ const ActionDiv = styled.div`
 
 
 
+
 const ClientsTable: React.FC = () => {
   const { clients } = useClients();
   const [showClientDetails, setShowClientDetails] = useState(false);
   const [client, setClient] = useState({})
+
+  const navigate = useNavigate();
 
   const handleClientDetails = (client : any) => {
     setShowClientDetails(true);
     setClient(client)
   };
 
+const handleGotoBusiness = (client : any) => {
+  console.log('Go to business Clicked');
+  navigate('/business',{state:{client}})
+}
   
 
   const headers = ['Name', 'Contact', 'Business' , 'Action']
@@ -79,6 +87,7 @@ const ClientsTable: React.FC = () => {
       fontSize='16px'
       svg = {arrowNextSVG}
       flexDirection='row-reverse'
+      onClick={()=>handleGotoBusiness(client)}
       />
     </ActionDiv>,
   ]);

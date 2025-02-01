@@ -12,6 +12,7 @@ const Button = styled.button<{
   padding? : string;
   gap?: string;
   flexDirection?: string;
+  disabled?: boolean;
 }>`
   width: ${({ width }) => width || "max-content"};
   height: ${({ height }) => height || "42px"};
@@ -26,7 +27,7 @@ const Button = styled.button<{
   flex-direction: ${({flexDirection}) => flexDirection || "row"};
   justify-content: center;
   align-items: center;
-  cursor: pointer;
+  cursor: ${({disabled}) => (!disabled? "pointer" : "not-allowed")};
   // opacity : 0.8;
 
   &:hover{
@@ -40,7 +41,7 @@ const Button = styled.button<{
   }
 `;
 
-const ButtonText = styled.p<{
+const ButtonText = styled.div<{
   fontFamily?: string;
   fontSize?: string;
   fontWeight?: string;
@@ -73,6 +74,7 @@ interface ButtonProps {
   padding? : string;
   gap?: string;
   flexDirection?: string;
+  disabled?: boolean;
 };
 
 const MultiFunctionButtonComponent: React.FC<ButtonProps> = ({
@@ -91,7 +93,8 @@ const MultiFunctionButtonComponent: React.FC<ButtonProps> = ({
   padding,
   svg,
   gap,
-  flexDirection
+  flexDirection,
+  disabled = false //Default false
 }) => {
   return (
     <Container>
@@ -105,6 +108,7 @@ const MultiFunctionButtonComponent: React.FC<ButtonProps> = ({
         padding={padding}
         gap={gap}
         flexDirection={flexDirection}
+        disabled = {disabled}
       >
         {svg}
         <ButtonText 

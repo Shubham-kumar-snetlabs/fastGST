@@ -1,14 +1,19 @@
 import styled from "styled-components";
 import TopNavigatingBar from "../components/molecules/TopNavigatingBar";
-import { ClientSmallIconSVG, SearchSVG } from "../svg/svg";
+import { BusinessIconSVG,  SearchSVG } from "../svg/svg";
 import MemberCount from "../components/atoms/MemberCount";
 import SearchComponent from "../components/atoms/SearchComponent";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import DashBoardTitle from "../components/atoms/deprecated/DashBoardHead";
 import DashBoardBody from "../components/atoms/deprecated/DashBoardBody";
-import { useClients } from "../contexts/ClientsContext";
-import ClientsTable from "../tables/ClientsTable";
 import Layout from "../layout/Layout";
+import BusinessTable from "../tables/BusinessTable";
+import { useBusiness } from "../contexts/BusinessContext";
+import PersonInfoComponent from "../components/atoms/PersonInfoComponent";
+import { useState } from "react";
+import ClientDetails from "../components/molecules/ClientDetails";
+
+
 
 const InnerRightContainer = styled.div`
   height: 100%;
@@ -67,6 +72,7 @@ const TitleContainer = styled.div`
   box-sizing: border-box;
   display: flex;
   gap: 10px;
+  align-items : center;
 `;
 
 const BodyContainer = styled.div`
@@ -107,69 +113,83 @@ const SearchFilterandHistoryDiv = styled.div`
   justify-content : flex-end;
 `;
 
-const SearchandFilterBlock = styled.div``;
-
-const TableDiv = styled.div``;
-
 interface DashBoardLeftProps {
   activeItem: number;
   setActiveItem: (id: number) => void;
 }
 
-const Clients: React.FC<DashBoardLeftProps> = ({ activeItem, setActiveItem }) => {
-  const headDescription =
-    "Effortlessly manage your clients and their businesses by automatically receiving your client’s business OTPs for streamlining the tax filing process.";
+const SearchandFilterBlock = styled.div``;
+
+const TableDiv = styled.div``;
+
+const Business: React.FC<DashBoardLeftProps> = ({ activeItem, setActiveItem }) => {
+  const headDescription = "Streamline your client’s tax filing process by effortlessly managing their business OTPs with automatic forwarding.";
+
   const navigate = useNavigate();
-  const { clients } = useClients();
+  const { business } = useBusiness();
+  const location = useLocation();
+  const { client } = location.state || {};
+  const [showClientDetails, setShowClientDetails] = useState(false)
   return (
-    <Layout activeItem={activeItem} setActiveItem={setActiveItem}>
+    <Layout activeItem={activeItem} setActiveItem={setActiveItem} >
       <InnerRightContainer>
         <NavigatingTopBar>
           <TopNavigatingBar
-            showBackButton={false}
-            mainText="Clients"
-            showExtendedRoutes={false}
+            showBackButton={true}
+            mainText="Client"
+            showExtendedRoutes={true}
+            extendedRouteText="Business"
+            backButtonAction={()=>navigate('/clients')}
           />
         </NavigatingTopBar>
         <ContentContainer>
           <ContentMainContainer>
             <TitleContainer>
               <DashBoardTitle
-                svg={ClientSmallIconSVG}
-                headTitle="Clients"
+                svg={BusinessIconSVG}
+                headTitle="Business"
                 headDescription={headDescription}
-                
+                gap="12px"
+                textGap=""
+              />
+              <PersonInfoComponent
+              name={client?.name}
+              photo={client?.photo}
+              background="#E4F4FF"
+              width="105.15px"
+              height="32px"
+              onClick={()=>setShowClientDetails(true)}
               />
             </TitleContainer>
             <BodyContainer>
               <SearchandFilterContainer>
                 <SearchandFilterBlock>
-                  {clients.length && (
+                  {business.length && (
                     <SearchAndFilterDiv>
-                      <MemberCount label="All Clients" count={clients.length} />
+                      <MemberCount label="All Members" count={business.length} />
                       <SearchFilterandHistoryDiv>
-                        <SearchComponent
-                          svg={SearchSVG}
-                          placeholder="Search a Team member..."
-                        />
+                        <SearchComponent svg={SearchSVG} placeholder="Search a Team member..." />
                       </SearchFilterandHistoryDiv>
                     </SearchAndFilterDiv>
                   )}
                 </SearchandFilterBlock>
                 <TableDiv>
-                  {clients.length ? (
-                    <ClientsTable  />
-                  ) : (
-                    <DashBoardBody type="client" />
-                  )}
+                  {business.length ? <BusinessTable client={client}/> : <DashBoardBody type="team"/>}
                 </TableDiv>
               </SearchandFilterContainer>
             </BodyContainer>
           </ContentMainContainer>
         </ContentContainer>
       </InnerRightContainer>
+      {showClientDetails && (
+        <ClientDetails
+        showClientDetails={showClientDetails}
+        setShowClientDetails={setShowClientDetails}
+        client={client}
+        />
+      )}
     </Layout>
   );
 };
 
-export default Clients;
+export default Business;

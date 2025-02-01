@@ -8,14 +8,17 @@ interface FilterComponentProps {
   padding?: string; // Padding for the filter component
   gap?: string; // Gap between elements in the filter
   borderColor?: string; // Border color
+  borderRadius?: string;
   background?: string; // Background color
+  justifyContent? : string;
   text?: string;
   color?: string; // Text color
   fontSize?: string; // Font size for the text
   fontWeight?: number; // Font weight for the text
   fontStyle?: string; // Font style for the text
-  options?: { value: string; label: string }[]; // Dropdown options
+  options?: { value: string; label: string; svg?: any; onClick?: ()=>void}[];
   onChange?:  (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  onClick?: ()=>void;
 }
 
 const FilterDiv = styled.div<FilterComponentProps>`
@@ -24,11 +27,13 @@ const FilterDiv = styled.div<FilterComponentProps>`
   padding: ${({ padding }) => padding || '9px 12px'};
   box-sizing: border-box;
   gap: ${({ gap }) => gap || '6px'};
-  border-radius: 100px;
+  border-radius: ${({borderRadius}) => borderRadius || '100px'};
   border: 1px solid ${({ borderColor }) => borderColor || '#657786'};
   background: ${({ background }) => background || 'transparent'};
   display: flex;
   align-items: center;
+  cursor : pointer;
+  justify-content : ${({justifyContent}) => justifyContent || 'start'};
 `;
 
 const FilterText = styled.div<FilterComponentProps>`
@@ -49,6 +54,7 @@ const Dropdown = styled.select<FilterComponentProps>`
   background: ${({ background }) => background || '#F5F8FA'};
   border: none;
   outline: none;
+  cursor : pointer;
 
   option {
     font-size: ${({ fontSize }) => fontSize || '14px'};
@@ -67,7 +73,9 @@ const DropdownComponent: React.FC<FilterComponentProps> = ({
   padding,
   gap,
   borderColor,
+  borderRadius,
   background,
+  justifyContent,
   text,
   color,
   fontSize,
@@ -76,17 +84,25 @@ const DropdownComponent: React.FC<FilterComponentProps> = ({
   options = [],
   onChange,
 }) => {
-  const [selectedText, setSelectedText] = useState(text);
-  const [showSVG, setShowSVG] = useState(svg)
+  const [selectedOption, setSelectedOption] = useState(
+    () => options.find((opt) => opt.label === text) || null
+  );
 
-  const handleDropdownChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedOption = options.find((option) => option.value === event.target.value);
-    setSelectedText(selectedOption?.label || text);
-    setShowSVG(null)
-    if (onChange) {
-      onChange(event); // Pass the full event to the parent
-    }
-  };
+const handleDropdownChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const selectedOption = options.find(
+    (option) => option.value === event.target.value
+  );
+  setSelectedOption(selectedOption || null);
+
+  // Execute the specific `onClick` handler if defined
+  if (selectedOption?.onClick) {
+    selectedOption.onClick();
+  }
+
+  if (onChange) {
+    onChange(event); // Pass the event to the parent component
+  }
+};
   
 
   return (
@@ -94,18 +110,20 @@ const DropdownComponent: React.FC<FilterComponentProps> = ({
       height={height}
       width={width}
       padding={padding}
+      justifyContent={justifyContent}
       gap={gap}
       borderColor={borderColor}
+      borderRadius= {borderRadius}
       background={background}
     >
-      {showSVG}
+      {selectedOption?.svg || svg}
       <FilterText
         color={color}
         fontSize={fontSize}
         fontWeight={fontWeight}
         fontStyle={fontStyle}
       >
-        {selectedText}
+        {selectedOption?.label || text}
       </FilterText>
       <Dropdown
         fontSize={fontSize}

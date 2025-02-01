@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import DashBoardLeft from "../components/molecules/DashBoardLeft";
-import { useState } from "react";
 
 const LayoutContainer = styled.div`
   height: 100vh;
@@ -50,7 +49,6 @@ interface LayoutProps {
   }
   
   const Layout: React.FC<LayoutProps> = ({ children, activeItem, setActiveItem, filterOpen,setFilterOpen }) => {
-    
     return (
       <LayoutContainer>
         <MainContainer>

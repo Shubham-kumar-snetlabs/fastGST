@@ -4,12 +4,13 @@ import { binSVG } from "../../svg/svg";
 interface ModalProps {
     member: any;
     removeModal: boolean;
+    business?: any;
     setRemovwModal: React.Dispatch<React.SetStateAction<boolean>>;
   }
 
 
 
-const Example:React.FC<ModalProps> = ({member,setRemovwModal}) => {
+const Example:React.FC<ModalProps> = ({member,setRemovwModal,business}) => {
   const handleCancel = () => {
     setRemovwModal(false)
   };
@@ -18,7 +19,15 @@ const Example:React.FC<ModalProps> = ({member,setRemovwModal}) => {
     console.log("Remove clicked");
   };
 
-  const description = <>Are you sure you want to remove{" "}<span style={{ color: "#14171A" }}>{member.name}</span> from your team?</>
+  const description = 
+  <>
+  Are you sure you want to remove{" "} 
+  <span style={{ color: "#14171A" }}>
+    { member.name } 
+    { business && <span>'s{" "}</span> } 
+    { business?.name }
+  </span> from your team?
+  </>
 
   return (
     <ConfirmationModal

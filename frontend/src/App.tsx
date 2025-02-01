@@ -9,6 +9,11 @@ import Dashboard from './pages/Dashboard';
 import FilingHistory from './pages/FilingHistory';
 import Clients from './pages/Clients';
 import { useState } from 'react';
+import Business from './pages/Business';
+import BusinessFiling from './pages/BusinessFiling';
+import GSTFiled from './pages/GSTFiled';
+import Profile from './pages/profile/Profile';
+
 
 interface DashBoardLeftProps {
   activeItem: number; 
@@ -24,14 +29,19 @@ const App:React.FC<DashBoardLeftProps> = () => {
         <Route path='/' element= {<Dashboard activeItem={activeItem} setActiveItem={setActiveItem} />} />
         <Route path='/team' element= {<Dashboard activeItem={activeItem} setActiveItem={setActiveItem} />} />
         <Route path='/clients' element= {<Clients activeItem={activeItem} setActiveItem={setActiveItem}/>} />
+        <Route path='/business' element={<Business activeItem={activeItem} setActiveItem={setActiveItem}/>}/>
         <Route path='/billing' element= {<Dashboard activeItem={activeItem} setActiveItem={setActiveItem} />} />
         <Route path='/invites' element= {<Dashboard activeItem={activeItem} setActiveItem={setActiveItem} />} />
-        <Route path='/profile' element= {<Dashboard activeItem={activeItem} setActiveItem={setActiveItem} />} />
+        <Route path="/profile" element={<Profile  activeItem={activeItem} setActiveItem={setActiveItem}/>} />
+        <Route path="/profile/*" element={<Profile  activeItem={activeItem} setActiveItem={setActiveItem}/>} />
         <Route path='/notifications' element= {<Dashboard activeItem={activeItem} setActiveItem={setActiveItem} />} />
         <Route path='/preferences' element= {<FilingHistory activeItem={activeItem} setActiveItem={setActiveItem}/>} />
 
 
         <Route path='/filing' element= {<FilingHistory activeItem={activeItem} setActiveItem={setActiveItem}/>} />
+        <Route path='/business_filing' element= {<BusinessFiling activeItem={activeItem} setActiveItem={setActiveItem}/>} />
+        <Route path='/gst_filed' element= {<GSTFiled activeItem={activeItem} setActiveItem={setActiveItem}/>} />
+
 
 
         <Route path="/sign-up" element={<RegisterComponent />} />

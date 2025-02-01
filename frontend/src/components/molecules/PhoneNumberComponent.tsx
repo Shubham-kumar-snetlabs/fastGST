@@ -52,11 +52,19 @@ const PhoneNumberComponent = () => {
   const { phoneNumber, setPhoneNumber } = usePhoneNumber();
 
 
-  const handleInputChange = (value : string) => {
-    if (/^\d{0,10}$/.test(value)) {
-      setPhoneNumber(value);
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e);
+    // console.log(e.target.name);
+    // console.log(e.target.value);
+    
+    
+    let inputValue = e.target.value;
+    if (/^\d{0,10}$/.test(inputValue)) {
+      setPhoneNumber(inputValue);
     }
   };
+
+
 
   return (
     <NumberComponent>

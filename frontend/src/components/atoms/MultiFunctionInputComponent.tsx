@@ -83,14 +83,11 @@ interface InputProps {
   fontColor?: string;
   fontSize?: string;
   value?: string;
-  onChange: (value: string) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  label: string; // To display label for each input block
 }
 
-interface UserDetailsBoxProps extends InputProps {
-  label: string; // To display label for each input block
-  value: string;
-  onChange: (value: string) => void; // Callback for change in the input value
-}
+
 
 const MultiFunctionInputComponent = ({
   label,
@@ -104,7 +101,7 @@ const MultiFunctionInputComponent = ({
   fontSize,
   value,
   onChange,
-}: UserDetailsBoxProps) => {
+}: InputProps) => {
   const [blockText, setBlockContent] = useState(false); // For showing the placeholder at top
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -118,7 +115,7 @@ const MultiFunctionInputComponent = ({
     }
 
     setBlockContent(inputValue.length > 0); // Show label at top when user starts typing
-    onChange(inputValue); // Pass the input value back to the parent component
+    onChange(e); // Pass the input value back to the parent component
   };
 
   return (
