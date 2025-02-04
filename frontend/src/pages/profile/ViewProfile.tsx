@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { crossSVG, EmailIconSVG, LunchIconSVG, OfflineSVG, PhoneIconSVG } from "../../svg/svg";
 import MultiFunctionButtonComponent from "../../components/atoms/MultiFunctionButtonComponent";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
 
@@ -203,8 +204,35 @@ const PhoneNumber = styled.div`
     color : #657786;
 `;
 
+interface myStatus{
+    name : string;
+    email : string;
+    photo : string;
+    status : string;
+    statusType : string;
+    phoneNo : string;
+    statusIcon : JSX.Element;
+    statusTypeIcon : JSX.Element;
+
+}
+
+const MyStatus: myStatus[] = [
+    {
+        name: "Shivang Patel",
+        email: "shivangpatel812@gmail.com",
+        photo: '/ShivangSir.png',
+        status: "offline",
+        statusType: "Lunch",
+        phoneNo: "1234567890",
+        statusIcon : OfflineSVG,
+        statusTypeIcon : LunchIconSVG
+    }
+]
+
 
 const ViewProfile = () => {
+    const navigate = useNavigate()
+    const { statusIcon, statusTypeIcon, ...profileData } = MyStatus[0];
   return (
     <Container>
         <YouConatiner>
@@ -218,10 +246,10 @@ const ViewProfile = () => {
                         <Photo src='/ShivangSir.png'  alt='Profile Photo'/>
                     </PhotoContainer>
                     <NameContainer>
-                        <Name>Shivang Patel</Name>
+                        <Name>{MyStatus[0].name}</Name>
                         <StatusDiv>
-                            <Status>{OfflineSVG} Offline</Status>
-                            <BusyAt>{LunchIconSVG} Lunch</BusyAt>
+                            <Status>{MyStatus[0].statusIcon} {MyStatus[0].status}</Status>
+                            <BusyAt>{MyStatus[0].statusTypeIcon} {MyStatus[0].statusType}</BusyAt>
                         </StatusDiv>
                     </NameContainer>
                 </PhotoandNameContainer>
@@ -238,16 +266,17 @@ const ViewProfile = () => {
                 fontFamily='Noto Sans'
                 fontSize='16px'
                 fontWeight='500'
+                onClick={()=>navigate('edit-profile', {state : profileData })}
                 />
             </PhotoNameandButtonContainer>
             <EmailandPhoneNumberContainer>
                 <EmailContainer>
                     Email
-                    <EmailAddress>{EmailIconSVG} shivangpatel812@gmail.com</EmailAddress>
+                    <EmailAddress>{EmailIconSVG} {MyStatus[0].email}</EmailAddress>
                 </EmailContainer>
                 <PhoneNumberContainer>
                     Phone Number
-                    <PhoneNumber>{PhoneIconSVG} +91-1234567890</PhoneNumber>
+                    <PhoneNumber>{PhoneIconSVG} +91-{MyStatus[0].phoneNo}</PhoneNumber>
                 </PhoneNumberContainer>
             </EmailandPhoneNumberContainer>
         </WindowContentContainer>

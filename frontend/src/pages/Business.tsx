@@ -164,9 +164,9 @@ const Business: React.FC<DashBoardLeftProps> = ({ activeItem, setActiveItem }) =
             <BodyContainer>
               <SearchandFilterContainer>
                 <SearchandFilterBlock>
-                  {business.length && (
+                  {business?.length && (
                     <SearchAndFilterDiv>
-                      <MemberCount label="All Members" count={business.length} />
+                      <MemberCount label="All Members" count={business?.length} />
                       <SearchFilterandHistoryDiv>
                         <SearchComponent svg={SearchSVG} placeholder="Search a Team member..." />
                       </SearchFilterandHistoryDiv>
@@ -174,7 +174,7 @@ const Business: React.FC<DashBoardLeftProps> = ({ activeItem, setActiveItem }) =
                   )}
                 </SearchandFilterBlock>
                 <TableDiv>
-                  {business.length ? <BusinessTable client={client}/> : <DashBoardBody type="team"/>}
+                  {business?.length ? <BusinessTable client={client}/> : <DashBoardBody type="team"/>}
                 </TableDiv>
               </SearchandFilterContainer>
             </BodyContainer>

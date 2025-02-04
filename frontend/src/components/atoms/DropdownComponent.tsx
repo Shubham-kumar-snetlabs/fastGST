@@ -11,7 +11,7 @@ interface FilterComponentProps {
   borderRadius?: string;
   background?: string; // Background color
   justifyContent? : string;
-  text?: string;
+  text?: string; // Placeholder text when no option is selected
   color?: string; // Text color
   fontSize?: string; // Font size for the text
   fontWeight?: number; // Font weight for the text
@@ -61,8 +61,6 @@ const Dropdown = styled.select<FilterComponentProps>`
     color: ${({ color }) => color || '#657786'};
     background: transparent;
     border-radius: 100px;
-    padding: 2px;
-    box-sizing: border-box;
   }
 `;
 
@@ -84,26 +82,23 @@ const DropdownComponent: React.FC<FilterComponentProps> = ({
   options = [],
   onChange,
 }) => {
-  const [selectedOption, setSelectedOption] = useState(
-    () => options.find((opt) => opt.label === text) || null
-  );
+  const [selectedOption, setSelectedOption] = useState<any>(null);
 
-const handleDropdownChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-  const selectedOption = options.find(
-    (option) => option.value === event.target.value
-  );
-  setSelectedOption(selectedOption || null);
+  const handleDropdownChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selected = options.find(
+      (option) => option.value === e.target.value
+    );
+    setSelectedOption(selected || null);
 
-  // Execute the specific `onClick` handler if defined
-  if (selectedOption?.onClick) {
-    selectedOption.onClick();
-  }
+    // Execute the specific `onClick` handler if defined
+    if (selected?.onClick) {
+      selected.onClick();
+    }
 
-  if (onChange) {
-    onChange(event); // Pass the event to the parent component
-  }
-};
-  
+    if (onChange) {
+      onChange(e);
+    }
+  };
 
   return (
     <FilterDiv
@@ -113,7 +108,7 @@ const handleDropdownChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
       justifyContent={justifyContent}
       gap={gap}
       borderColor={borderColor}
-      borderRadius= {borderRadius}
+      borderRadius={borderRadius}
       background={background}
     >
       {selectedOption?.svg || svg}
@@ -123,7 +118,7 @@ const handleDropdownChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         fontWeight={fontWeight}
         fontStyle={fontStyle}
       >
-        {selectedOption?.label || text}
+        {selectedOption?.label || text} 
       </FilterText>
       <Dropdown
         fontSize={fontSize}
@@ -131,7 +126,9 @@ const handleDropdownChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         color={color}
         background={background}
         onChange={handleDropdownChange}
+        value={selectedOption?.value }
       >
+        <option value="" disabled selected={!selectedOption} style={{display : 'none'}}>{text}</option> 
         {options.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}

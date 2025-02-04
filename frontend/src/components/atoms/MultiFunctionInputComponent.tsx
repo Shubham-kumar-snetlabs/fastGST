@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 const InputContainer = styled.div<{
@@ -9,24 +9,23 @@ const InputContainer = styled.div<{
   fontColor?: string;
   fontSize?: string;
   padding?: string;
-  borderRadius? : string;
-  fontWeight? : string;
-  lineHeight? : string
-  }>`
-  position: relative; 
+  borderRadius?: string;
+  fontWeight?: string;
+  lineHeight?: string;
+}>`
+  position: relative;
   width: ${({ width }) => width || "100%"};
   height: ${({ height }) => height || "54px"};
   border-radius: ${({ borderRadius }) => borderRadius || "4px"};
-  border: 1px solid ${({ border }) => (border ? 'border' : '#657786')};
-  background: ${({backgroundColor}) => backgroundColor || 'transparent'};
-  display: flex; 
-  flex-direction : column;
-  justify-content : center; 
+  border: 1px solid ${({ border }) => (border ? border : "#657786")};
+  background: ${({ backgroundColor }) => backgroundColor || "transparent"};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
-
-const WrittenTextAfterInput = styled.p<{ show: boolean }>`
-  position: relative; 
+const WrittenTextAfterInput = styled.p<{ show: boolean | string }>`
+  position: relative;
   top: 9px;
   left: 8px;
   width: auto;
@@ -49,9 +48,9 @@ const InputBlock = styled.input<{
   fontColor?: string;
   fontSize?: string;
   padding?: string;
-  borderRadius? : string;
-  fontWeight? : string;
-  lineHeight? : string
+  borderRadius?: string;
+  fontWeight?: string;
+  lineHeight?: string;
 }>`
   width: ${({ width }) => width || "100%"};
   height: ${({ height }) => height || "54px"};
@@ -64,7 +63,7 @@ const InputBlock = styled.input<{
   font-family: Noto Sans;
   font-size: ${({ fontSize }) => fontSize || "16px"};
   font-weight: ${({ fontWeight }) => fontWeight || 400};
-  line-height: ${({ lineHeight }) => lineHeight || '16px'};
+  line-height: ${({ lineHeight }) => lineHeight || "16px"};
   text-align: left;
   outline: none;
 
@@ -87,8 +86,6 @@ interface InputProps {
   label: string; // To display label for each input block
 }
 
-
-
 const MultiFunctionInputComponent = ({
   label,
   type,
@@ -102,12 +99,17 @@ const MultiFunctionInputComponent = ({
   value,
   onChange,
 }: InputProps) => {
-  const [blockText, setBlockContent] = useState(false); // For showing the placeholder at top
+  const [blockText, setBlockContent] = useState<boolean | string>(value?value:false); // ✅ Set initial state based on value
   const inputRef = useRef<HTMLInputElement>(null);
 
+  // ✅ useEffect to check if value exists on mount
+  useEffect(() => {
+    if (value && value.trim() !== "") {
+      setBlockContent(true);
+    }
+  }, [value]); // Runs when value changes
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setBlockContent(true);
     let inputValue = e.target.value;
 
     if (type === "phone" && inputValue.length > 10) {
@@ -119,13 +121,8 @@ const MultiFunctionInputComponent = ({
   };
 
   return (
-    <InputContainer
-      
-      width={width}
-    >
-      <WrittenTextAfterInput show={blockText}>
-        {label} 
-      </WrittenTextAfterInput>
+    <InputContainer width={width}>
+      <WrittenTextAfterInput show={blockText}>{label}</WrittenTextAfterInput>
       <InputBlock
         ref={inputRef}
         type={type === "phone" ? "tel" : type} // Use 'tel' for phone input

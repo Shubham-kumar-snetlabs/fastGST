@@ -11,6 +11,7 @@ import SetStatus from './SetStatus';
 import SetAway from './SetAway';
 import ViewProfile from './ViewProfile';
 import YourStatus from '../../components/molecules/YourStatus';
+import EditProfile from './EditProfile';
 
 
 const InnerRightContainer = styled.div`
@@ -252,6 +253,8 @@ return(
                         <Routes>
                         <Route path="/" element={<ViewProfile />} />
               <Route path="view-profile" element={<ViewProfile />} />
+              <Route path="edit-profile" element={<EditProfile />}/>
+              <Route path="view-profile/edit-profile" element={<EditProfile />} />
               <Route path="set-status" element={<SetStatus />} />
               <Route path="set-status/your-status" element={<YourStatus />} />
               <Route path="set-away" element={<SetAway />} />

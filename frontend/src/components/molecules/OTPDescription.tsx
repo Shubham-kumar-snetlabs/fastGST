@@ -32,7 +32,7 @@ const NumberDiv = styled.div`
 `;
 
 interface OtpDescriptionProps{
-    description : string,
+    description : string | JSX.Element,
     phoneNumber? : string,
     text? : string
 }

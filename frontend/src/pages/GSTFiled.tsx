@@ -217,6 +217,7 @@ const Copy = styled.div`
   align-items : center;
   gap : 4px;
   color : #4C9EEB;
+  cursor : pointer;
 
   font-family: Noto Sans;
   font-size: 12px;
@@ -272,7 +273,8 @@ const GSTFiled: React.FC<DashBoardLeftProps> = ({ activeItem, setActiveItem }) =
   const [successModal , setSuccessModal] = useState(false)
 
 
-    const [timeLeft, setTimeLeft] = useState(600); // 600 seconds = 10 minutes
+  const [timeLeft, setTimeLeft] = useState(600); // 600 seconds = 10 minutes
+  const [otpValue, setOtpValue] = useState(""); 
 
   useEffect(() => {
     if (timeLeft === 0) return; // Stop when time reaches 0
@@ -291,6 +293,11 @@ const GSTFiled: React.FC<DashBoardLeftProps> = ({ activeItem, setActiveItem }) =
     return `${minutes.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
   };
 
+  const handleCopyOTP = () => {
+    if (otpValue)
+      navigator.clipboard.writeText(otpValue)
+  };
+  
 
   return (
     <Layout activeItem={activeItem} setActiveItem={setActiveItem} >
@@ -351,7 +358,7 @@ const GSTFiled: React.FC<DashBoardLeftProps> = ({ activeItem, setActiveItem }) =
                   <OTPTimerandButtonDiv>
                     <TimerandCopyDiv>
                         <Timer>{TimerIconSVG} {formatTime(timeLeft)}</Timer>
-                        <Copy>{CopyIconSVG} Copy</Copy>
+                        <Copy onClick={handleCopyOTP}>{CopyIconSVG} Copy</Copy> 
                     </TimerandCopyDiv>
                     <OTPandButtonDiv>
                       <OTPBoxDiv>
@@ -364,6 +371,8 @@ const GSTFiled: React.FC<DashBoardLeftProps> = ({ activeItem, setActiveItem }) =
                         gap="16px"
                         numInputs={6}
                         padding="8px"
+                        value={otpValue} 
+                        onChange={setOtpValue} 
                         />
                       </OTPBoxDiv>
                       <ButtonDiv>

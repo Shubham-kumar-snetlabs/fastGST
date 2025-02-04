@@ -214,13 +214,13 @@ const BusinessFiling: React.FC<DashBoardLeftProps> = ({ activeItem, setActiveIte
             <TitleContainer>
               <DashBoardTitle
                 svg={BusinessIconSVG}
-                headTitle={businessState.name}
-                headDescription={businessState.gstNo}
+                headTitle={businessState?.name}
+                headDescription={businessState?.gstNo}
                 
               />
               <PersonInfoComponent
-              name={client.name}
-              photo={client.photo}
+              name={client?.name}
+              photo={client?.photo}
               background="#E4F4FF"
               width="105.15px"
               height="32px"

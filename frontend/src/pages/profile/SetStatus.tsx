@@ -15,6 +15,7 @@ import DropdownComponent from "../../components/atoms/DropdownComponent";
 import MultiFunctionButtonComponent from "../../components/atoms/MultiFunctionButtonComponent";
 import { useNavigate } from "react-router-dom";
 import { label } from "framer-motion/client";
+import EmojiPicker from "emoji-picker-react";
 
 const Container = styled.div``;
 
@@ -65,10 +66,18 @@ const SquareStatusIconDiv = styled.div`
   width: 54px;
   border-radius: 4px;
   border: 1px solid #657786;
-  box-sizing : border-box;
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+`;
+
+const EmojiPickerContainer = styled.div`
+  position: absolute;
+  top : 300px;
+  right : 500px;
+  z-index: 100;
 `;
 
 const SuggestionBlock = styled.div`
@@ -109,11 +118,11 @@ const InnerSuggestionsItems = styled.div`
   padding: 8px;
   display: flex;
   gap: 8px;
-  cursor : pointer;
-  border-radius : 12px;
+  cursor: pointer;
+  border-radius: 12px;
 
-  &:hover{
-  background : #B9DCF7;
+  &:hover {
+    background: #b9dcf7;
   }
 `;
 
@@ -191,10 +200,35 @@ const statusItems: StatusItems[] = [
 ];
 
 const SetStatus = () => {
-  const [statusValue, setStatusValue] = useState("");
-  const [selectedItem, setSelectedItem] = useState<StatusItems | null>(null);
+  const [titleValue, setTitleValue] = useState("");
+  const [durationValue, setDurationValue] = useState("");
+
+  const [emojiPicker, setEmojiPicker] = useState(false);
+  const [selectedEmoji, setSelectedEmoji] = useState<React.ReactElement>();
 
   const navigate = useNavigate();
+
+  const handleEmojiClick = (emojiObject: any) => {
+    setSelectedEmoji(emojiObject.emoji);
+    setEmojiPicker(false);
+  };
+
+  const handleSuggestionsClicked = (item: any) => {
+    setTitleValue(item.title);
+    setDurationValue(item.duration);
+    setSelectedEmoji(item.icon);
+  };
+
+  const handleButtonClicked = () => {
+    if (titleValue) {
+      navigate("your-status", {
+        state: {
+          statusText: titleValue,
+          duration: durationValue || "Custom Duration",
+        },
+      });
+    }
+  };
 
   return (
     <Container>
@@ -207,55 +241,52 @@ const SetStatus = () => {
           <MultiFunctionInputComponent
             placeholder="What’s your status?"
             label="Status"
-            value={selectedItem?selectedItem.title:statusValue}
+            value={titleValue}
             onChange={(e) => {
-                setStatusValue(e.target.value); 
-                setSelectedItem(null);
-                console.log("status value is",statusValue);
-                console.log("selected item value is",selectedItem?.title);
+              setTitleValue(e.target.value);
             }}
           />
           <StatusDropdownDiv>
-            <SquareStatusIconDiv>{selectedItem?selectedItem.icon:ChatIconSVG}</SquareStatusIconDiv>
+            <SquareStatusIconDiv onClick={() => setEmojiPicker(!emojiPicker)}>
+              {selectedEmoji || ChatIconSVG}
+              {emojiPicker && (
+                <EmojiPickerContainer onClick={(e) => e.stopPropagation()}>
+                  <EmojiPicker onEmojiClick={handleEmojiClick} />
+                </EmojiPickerContainer>
+              )}
+            </SquareStatusIconDiv>
             <DropdownComponent
-              text={selectedItem?selectedItem.duration:'Clear Untill'}
+              text={durationValue ? durationValue : "Clear Until"}
               height="54px"
               width="239px"
               borderRadius="4px"
               justifyContent="space-between"
               options={statusItems.map((item) => ({
-                value: item.duration,
-                label: item.duration
+                value: item ? item.duration : durationValue,
+                label: item ? item.duration : durationValue,
               }))}
+              onChange={(e) => setDurationValue(e.target.value)}
             />
           </StatusDropdownDiv>
         </StatusInputDiv>
         <MultiFunctionButtonComponent
           text="Save"
-          background={(statusValue || selectedItem)?'#1DA1F2' :"#B9DCF7"}
+          background={titleValue ? "#1DA1F2" : "#B9DCF7"}
           width="303px"
           height="36px"
           borderRadius="1000px"
           padding="10px 16px"
-          onClick={() => {
-            if (statusValue || selectedItem) {
-              navigate("your-status", {
-                state: {
-                  statusText: statusValue || selectedItem?.title,
-                  duration: selectedItem?.duration || "Custom Duration",
-                  // icon: selectedItem?.icon || ChatIconSVG
-                }
-              });
-            }
-          }}
-          // disabled={!statusValue && !selectedItem} 
+          onClick={() => handleButtonClicked()}
         />
       </StatusInputAndButtonDiv>
       <SuggestionBlock>Suggestions</SuggestionBlock>
       <SuggestionsDiv>
         <InnerSuggestionsDiv>
           {statusItems.map((item) => (
-            <InnerSuggestionsItems key={item.id} onClick={()=>setSelectedItem(item)}>
+            <InnerSuggestionsItems
+              key={item.id}
+              onClick={() => handleSuggestionsClicked(item)}
+            >
               {item.icon}
               <SuggestionItemsTitle>{item.title}</SuggestionItemsTitle>
               <Arrow>{ArrowSVG}</Arrow>

@@ -23,7 +23,7 @@ const Example:React.FC<ModalProps> = ({member,setRemovwModal,business}) => {
   <>
   Are you sure you want to remove{" "} 
   <span style={{ color: "#14171A" }}>
-    { member.name } 
+    { member?.name } 
     { business && <span>'s{" "}</span> } 
     { business?.name }
   </span> from your team?
