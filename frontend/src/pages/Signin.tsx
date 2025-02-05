@@ -7,6 +7,7 @@ import RegisterorLoginComponent from '../components/atoms/RegisterorLoginCompone
 import MultiFunctionButtonComponent from '../components/atoms/MultiFunctionButtonComponent';
 import { signUpSVG } from '../svg/svg';
 import FixedLeftPage from './FixedLeftPage';
+import ToggleSwitch from '../components/atoms/ToggleSwitch';
 
 
 const Container = styled.div`
@@ -19,7 +20,7 @@ const Container = styled.div`
 `;
 
 const InnerContainer = styled.div`
-  height: 640px;
+  height: 640px ;
   width: 964px;
   padding-top: 8px;
   padding-left: 8px;
@@ -59,38 +60,42 @@ const InnerRightContainer = styled.div`
 `;
 
 const SignInContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 32px;
+    height : 336px;
+    width : 390px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap : 32px;
 `;
 
 const FirstContainer = styled.div`
-  width: 251px;
-  height: 140px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-`;
+  width : auto;
+  height : auto;
+  min-width : 251px;
+  min-height : 140px;
+  display : flex;
+  flex-direction : column;
+  gap : 16px;
+  align-items : center;
+`
 
 const SecondContainer = styled.div`
-  height: 116px;
-  width: 336px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
+    height: 116px;
+    width: 336px;
+    display: flex;
+    flex-direction : column;
+    align-items: center;
+    gap: 20px;
 `;
 
 const ThirdContainer = styled.div`
-  height: 70px;
-  width: 336px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
+    height: 70px;
+    width: 336px;
+    display: flex;
+    flex-direction : column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
 `;
 
 const Signin = () => {
@@ -110,10 +115,19 @@ const Signin = () => {
         </LeftContainer>
         <RightContainer>
           <InnerRightContainer>
+
             <SignInContainer>
+
               <FirstContainer>
-                <TitleName svgContent={signUpSVG} title="Sign In" />
+                <TitleName 
+                svgContent={signUpSVG} 
+                title="Sign In" 
+                gap='16px'
+                height='140px'
+                width='251px'
+                />
               </FirstContainer>
+
               <SecondContainer>
                 <PhoneNumberComponent />
                 <MultiFunctionButtonComponent
@@ -122,6 +136,7 @@ const Signin = () => {
                   width="336px"
                 />
               </SecondContainer>
+
               <ThirdContainer>
                 <RegisterorLoginComponent
                   text="Don't have an account?"
@@ -129,6 +144,7 @@ const Signin = () => {
                 />
                 <OtpDescriptionComponent desc={desc} />
               </ThirdContainer>
+
             </SignInContainer>
           </InnerRightContainer>
         </RightContainer>

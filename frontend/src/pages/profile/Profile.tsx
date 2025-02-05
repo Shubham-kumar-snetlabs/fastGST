@@ -3,8 +3,8 @@ import Layout from '../../layout/Layout';
 import styled from 'styled-components';
 import TopNavigatingBar from '../../components/molecules/TopNavigatingBar';
 import DashBoardTitle from '../../components/atoms/deprecated/DashBoardHead';
-import { AwayIConSVG, crossSVG, DeleteIconSVG, EmailIconSVG, LogoutIconSVG, LunchIconSVG, OfflineSVG, PauseNotificationIConSVG, PhoneIconSVG, ProfileBigIconSVG, ProfileInNavSVG, StatusIconSVG } from '../../svg/svg';
-import MultiFunctionButtonComponent from '../../components/atoms/MultiFunctionButtonComponent';
+import { AwayIConSVG, DeleteIconSVG, LogoutIconSVG, LunchIconSVG, OfflineSVG, PauseNotificationIConSVG, PhoneIconSVG, ProfileBigIconSVG, ProfileInNavSVG, StatusIconSVG } from '../../svg/svg';
+
 
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import SetStatus from './SetStatus';
@@ -12,6 +12,7 @@ import SetAway from './SetAway';
 import ViewProfile from './ViewProfile';
 import YourStatus from '../../components/molecules/YourStatus';
 import EditProfile from './EditProfile';
+import ToggleSwitch from '../../components/atoms/ToggleSwitch';
 
 
 const InnerRightContainer = styled.div`
@@ -86,8 +87,8 @@ const BodyContainer = styled.div`
 `;
 
 const ProfileNavigatorContainer = styled.div`
-    width : auto;
-    min-width : 481px;
+    // width : auto;
+    // min-width : 481px;
     height : fit-content;
     padding : 16px 8px;
     display : flex;
@@ -97,13 +98,15 @@ const ProfileNavigatorContainer = styled.div`
 `;
 
 const ProfileNavigator = styled.div`
-    width : 465px;
+    width : auto;;
     height : auto;
     min-height : 425px;
 `;
 
+
+
 const ProfileNavigatorItems = styled.div<{activeNav : boolean;}>`
-    width : 465px;
+    width : auto;
     height : 70px;
     border-radius : 12px;
     padding : 16px;
@@ -111,6 +114,15 @@ const ProfileNavigatorItems = styled.div<{activeNav : boolean;}>`
     background : ${(props) => (props.activeNav ? "#B9DCF7" : "transparent")};
     cursor : pointer;
     border-bottom : 1px solid #E1E8ED;
+`;
+
+const NavDiv = styled.div`
+    display : flex;
+    align-items : center;
+`;
+
+const TogglerContainer = styled.div`
+   
 `;
 
 const WindowContainer = styled.div`
@@ -164,14 +176,16 @@ const profileItems: ProfileItems[] = [
     title: "Set yourself as away", 
     text : "Set your availability for all your teams till you update.",
     icon: AwayIConSVG, 
-    link: "set-away" 
+    link: "set-away", 
+    additionalIcon : <ToggleSwitch/>
 },
 { 
     id: 4, 
     title: "Pause Notifications", 
     text : "You can pause notification till you disable it.",
     icon: PauseNotificationIConSVG, 
-    link: "pause-notifications" 
+    link: "pause-notifications",
+    additionalIcon : <ToggleSwitch/>
 },
 { 
     id: 5, 
@@ -224,12 +238,13 @@ return(
                                         navigate(`/profile/${item.link}`);
                                         } }  
                                 >
+                                    <NavDiv>
                                     <DashBoardTitle
                                     key={item.id}
                                     headTitle={item.title}
                                     headDescription={item.text}
                                     svg = {item.icon}
-                                    height='70px'
+                                    height='auto'
                                     width='465px'
                                     gap='8px'
                                     textGap='8px'
@@ -245,23 +260,25 @@ return(
                                     descriptionColor='#657786'
                                     descriptionFontSize='14px'
                                     />
+                                    <TogglerContainer>{item.additionalIcon}</TogglerContainer>
+                                    </NavDiv>
                                 </ProfileNavigatorItems>
                                 ))}
                             </ProfileNavigator>
                         </ProfileNavigatorContainer>
                         <WindowContainer>
                         <Routes>
-                        <Route path="/" element={<ViewProfile />} />
-              <Route path="view-profile" element={<ViewProfile />} />
-              <Route path="edit-profile" element={<EditProfile />}/>
-              <Route path="view-profile/edit-profile" element={<EditProfile />} />
-              <Route path="set-status" element={<SetStatus />} />
-              <Route path="set-status/your-status" element={<YourStatus />} />
-              <Route path="set-away" element={<SetAway />} />
-              <Route path="pause-notifications" element={<p>Pause Notifications</p>} />
-              <Route path="log-out" element={<p>Logging Out...</p>} />
-              <Route path="delete-account" element={<p>Deleting Account...</p>} />
-            </Routes>
+                            <Route path="/" element={<ViewProfile />} />
+                            <Route path="view-profile" element={<ViewProfile />} />
+                            <Route path="edit-profile" element={<EditProfile />}/>
+                            <Route path="view-profile/edit-profile" element={<EditProfile />} />
+                            <Route path="set-status" element={<SetStatus />} />
+                            <Route path="set-status/your-status" element={<YourStatus />} />
+                            <Route path="set-away" element={<SetAway />} />
+                            <Route path="pause-notifications" element={<p>Pause Notifications</p>} />
+                            <Route path="log-out" element={<p>Logging Out...</p>} />
+                            <Route path="delete-account" element={<p>Deleting Account...</p>} />
+                        </Routes>
                         </WindowContainer>
                     </BodyContainer>
                 </ContentMainContainer>

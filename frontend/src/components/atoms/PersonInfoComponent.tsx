@@ -50,7 +50,7 @@ const Photo = styled.img<StyledProps>`
 const NameNumberandEmail = styled.div<StyledProps>`
   display: flex;
   flex-direction: column;
-  gap: ${({NameNumberandEmailGap})=>NameNumberandEmailGap || "8px"}
+  gap: ${({NameNumberandEmailGap})=>NameNumberandEmailGap || "8px"};
 `;
 
 const Name = styled.div<StyledProps>`

@@ -20,6 +20,7 @@ const Container = styled.div<TimerProps>`
   color: ${({ color }) => color || '#4D4D4D'};
   display: flex;
   align-items: center;
+  justify-content : center;
   gap: ${({ gap }) => gap || '4px'};
   padding: ${({ padding }) => padding || '0'};
   box-sizing : border-box;

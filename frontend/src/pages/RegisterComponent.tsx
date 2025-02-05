@@ -59,17 +59,13 @@ const InnerRightContainer = styled.div`
   color: #14171A;
 `;
 
-
-
-
-
-
 const RegisterContainer = styled.div`
-    min-height : 336px;
-    min-width : 390px;
+    height : 336px;
+    width : 390px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap : 32px;
 `;
 
 const FirstContainer = styled.div`
@@ -80,6 +76,7 @@ const FirstContainer = styled.div`
   display : flex;
   flex-direction : column;
   gap : 16px;
+  align-items : center;
 `
 
 const SecondContainer = styled.div`
@@ -87,7 +84,6 @@ const SecondContainer = styled.div`
     width: 336px;
     display: flex;
     flex-direction : column;
-    justify-content: center;
     align-items: center;
     gap: 20px;
 `;
@@ -100,7 +96,6 @@ const ThirdContainer = styled.div`
     justify-content: center;
     align-items: center;
     gap: 16px;
-    margin-top : 32px;
 `;
 
 const RegisterComponent  = () => {
@@ -120,10 +115,19 @@ const RegisterComponent  = () => {
       </LeftContainer>
       <RightContainer>
         <InnerRightContainer>
+
     <RegisterContainer>
+
         <FirstContainer>
-          <TitleName svgContent = {signUpSVG} title=' Create an Account'/>
+          <TitleName 
+          svgContent = {signUpSVG} 
+          title=' Create an Account'
+          gap='16px'
+          height='140px'
+          width='251px'
+          />
         </FirstContainer>
+
         <SecondContainer>
           <PhoneNumberComponent/>
           <MultiFunctionButtonComponent
@@ -132,10 +136,12 @@ const RegisterComponent  = () => {
            width='336px'
            />
         </SecondContainer>
+
         <ThirdContainer>
           <RegisterorLoginComponent text='Already a member?' registerOrLogin='Login'/>
           <DescriptionComponent desc={desc}/>
         </ThirdContainer>
+
     </RegisterContainer>
     </InnerRightContainer>
         </RightContainer>

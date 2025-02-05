@@ -1,11 +1,7 @@
 import styled from 'styled-components';
-import EnterOTPBox from '../components/molecules/EnterOTPBox';
-import MultiFunctionButtonComponent from '../components/atoms/MultiFunctionButtonComponent';
 import { useNavigate } from 'react-router-dom';
-import TitleName from '../components/atoms/TitleName';
-import OTPDescription from '../components/molecules/OTPDescription';
-import { verifyOTPSVG } from '../svg/svg';
 import FixedLeftPage from './FixedLeftPage';
+import OTPModal from './profile/OTPModal';
 
 const Container = styled.div`
   display: flex;
@@ -39,43 +35,17 @@ const LeftContainer = styled.div`
 const RightContainer = styled.div`
   flex: 1;
   background: transparent;
-  height: 630px;
+  height: 624px;
   width: 464px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items : center;
 `;
 
-const InnerRightContainer = styled.div`
-  height: 630px;
-  width: 464px;
-  background: transparent;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #14171A;
-`;
 
-const VerifyKYCContainer = styled.div`
-  height: 358px;
-  width: 336px;
-  display: flex;
-  gap: 16px;
-  flex-direction: column;
-  align-items: center;
-`;
 
-const OTPandButtonDiv = styled.div`
-  height: 110px;
-  width : 228px;
-  display : flex;
-  flex-direction : column;
-  gap : 20px;
-`;
 
 const VerifyKYC = () => {
-  const description =
-    'One Time Password has been sent to your Adhaar linked mobile number.';
 
   const navigate = useNavigate();
 
@@ -90,28 +60,30 @@ const VerifyKYC = () => {
           <FixedLeftPage />
         </LeftContainer>
         <RightContainer>
-          <InnerRightContainer>
-            <VerifyKYCContainer>
-              <TitleName svgContent={verifyOTPSVG} title="KYC Verification" />
-              <OTPDescription description={description} />
-              <OTPandButtonDiv>
-              <EnterOTPBox 
-                width='228px'
-                height='48px'
-                gap='8px'
-                padding='8px'
-                boxHeight='48px'
-                boxWidth='48px'
-              />
-              <MultiFunctionButtonComponent
-                onClick={handleVerifyKYC}
-                text="Verify"
-                width="228px"
-              />
-              </OTPandButtonDiv>
-
-            </VerifyKYCContainer>
-          </InnerRightContainer>
+          <OTPModal
+          height='358px'
+          width='336px'
+          titleHeight='140px'
+          titleWidth='217px'
+          titleGap='16px'
+          background="transparent"
+          hasCloseButton = {false}
+          gap='32px'
+          onVerify={handleVerifyKYC}
+          title="KYC Verification"
+          description= 'One Time Password has been sent to your'
+          buttonText="Verify"
+          initialTime={60}  
+          otpBoxProps={{
+            numInputs: 4,       
+            otpWidth: "228px",
+            otpHeight: "48px",
+            otpGap: "8px",
+            otpPadding: "0px",
+            boxHeight: "48px",
+            boxWidth: "48px",
+          }}
+        />
         </RightContainer>
       </InnerContainer>
     </Container>

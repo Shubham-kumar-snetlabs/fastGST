@@ -34,12 +34,12 @@ const EnterOTPBox: React.FC<EnterOTPBoxProps> = ({
   numInputs = 4,
   allowAlphanumeric = false,
   backgroundColor,
-  gap = "10px",
-  padding = "8px",
-  width = "228px",
-  height = "110px",
-  boxHeight = "48px",
-  boxWidth = "48px",
+  gap ,
+  padding,
+  width,
+  height ,
+  boxHeight ,
+  boxWidth,
   value = "",
   onChange,
 }) => {
@@ -84,7 +84,7 @@ const EnterOTPBox: React.FC<EnterOTPBoxProps> = ({
   };
 
   return (
-    <Container width={width} height={height}>
+    <Container width={width} height={height} >
       <BoxContainer gap={gap} padding={padding}>
         {Array.from({ length: numInputs }, (_, index) => (
           <OTPBox
@@ -102,7 +102,6 @@ const EnterOTPBox: React.FC<EnterOTPBoxProps> = ({
             backgroundColor={backgroundColor}
             height={boxHeight}
             width={boxWidth}
-            padding={padding}
           />
         ))}
       </BoxContainer>

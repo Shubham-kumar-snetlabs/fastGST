@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import styled from 'styled-components'
 import MultiFunctionButtonComponent from '../../components/atoms/MultiFunctionButtonComponent';
 import MultiFunctionInputComponent from '../../components/atoms/MultiFunctionInputComponent';
@@ -21,7 +21,6 @@ const FirstContainer = styled.div`
     height : 38px;
     border-radius : 4px;
     display : flex;
-    // justify-content : space-between;
     align-items : center;
     gap : 10px;
     padding : 10px 8px;
@@ -123,6 +122,20 @@ const CountryCode = styled.div`
   color : #14171A
 `;
 
+
+const ModalContainer = styled.div`
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:  rgba(0, 0, 0, 0.8);
+  z-index: 999;
+`;
+
 const EditProfile = () => {
     const navigate = useNavigate()
 
@@ -143,13 +156,17 @@ const EditProfile = () => {
 
     const [buttonText, setButtonText] = useState ('Save')
 
+    const OTPDescr = 'One Time Password has been sent to' 
+
     const buttonAction = ()=>{
         setButtonText('Send OTP')
         if (buttonText === "Send OTP") {
             setShowOTPModal(true)
         }
     }
-    
+    const handleVerifyOTP = ()=>{
+        navigate('/')
+    }
   return (
     <Container>
         
@@ -177,7 +194,6 @@ const EditProfile = () => {
                     width='154.5px'
                     value={firstName}
                     height='54px'
-                    // borderColor='#4C9EEB'
                     onChange={(e)=>{setFirstName(e.target.value); setButtonText('Save')}}
                     />
                     <MultiFunctionInputComponent
@@ -187,7 +203,6 @@ const EditProfile = () => {
                     type='text'
                     width='154.5px'
                     height='54px'
-                    // borderColor='#4C9EEB'
                     onChange={(e)=>{setLastName(e.target.value); setButtonText('Save')}}
                     />
                 </NameContainer>
@@ -198,7 +213,7 @@ const EditProfile = () => {
                     type='email'
                     width='319px'
                     height='54px'
-                    // borderColor='#4C9EEB'
+
                     onChange={(e)=>{setEmail(e.target.value); setButtonText('Save')}}
                 />
                 <NumberComponent>
@@ -227,7 +242,37 @@ const EditProfile = () => {
                 onClick={buttonAction}
                 />
         </SecondContainer>
-        {showOTPModal && <OTPModal phoneNumber={phone} setOTPModal={setShowOTPModal}/>}
+        {showOTPModal && (
+        <ModalContainer>
+          <OTPModal
+          height='504px'
+          width='383px'
+          titleHeight='140px'
+          titleWidth='220px'
+          titleGap='16px'
+          background="#FFFFFF"
+          padding='36px 24px'
+          gap='32px'
+          hasCloseButton = {true}
+          phoneNumber={phone}
+          onClose={() => setShowOTPModal(false)}
+          onVerify={handleVerifyOTP}
+          title="OTP Verification"
+          description={OTPDescr}
+          buttonText="Verify"
+          initialTime={60}  
+          otpBoxProps={{
+            numInputs: 4,       
+            otpWidth: "228px",
+            otpHeight: "48px",
+            otpGap: "8px",
+            otpPadding: "0px",
+            boxHeight: "48px",
+            boxWidth: "48px",
+          }}
+        />
+        </ModalContainer>
+      )}
     </Container>
   )
 }

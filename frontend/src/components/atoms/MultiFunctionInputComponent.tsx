@@ -83,7 +83,7 @@ interface InputProps {
   fontSize?: string;
   value?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  label: string; // To display label for each input block
+  label: string; 
 }
 
 const MultiFunctionInputComponent = ({
@@ -99,25 +99,25 @@ const MultiFunctionInputComponent = ({
   value,
   onChange,
 }: InputProps) => {
-  const [blockText, setBlockContent] = useState<boolean | string>(value?value:false); // ✅ Set initial state based on value
+  const [blockText, setBlockContent] = useState<boolean | string>(value?value:false); 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // ✅ useEffect to check if value exists on mount
+
   useEffect(() => {
     if (value && value.trim() !== "") {
       setBlockContent(true);
     }
-  }, [value]); // Runs when value changes
+  }, [value]); 
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let inputValue = e.target.value;
 
     if (type === "phone" && inputValue.length > 10) {
-      inputValue = inputValue.slice(0, 10); // Limiting phone number to 10 digits
+      inputValue = inputValue.slice(0, 10); 
     }
 
-    setBlockContent(inputValue.length > 0); // Show label at top when user starts typing
-    onChange(e); // Pass the input value back to the parent component
+    setBlockContent(inputValue.length > 0); 
+    onChange(e); 
   };
 
   return (
@@ -125,7 +125,7 @@ const MultiFunctionInputComponent = ({
       <WrittenTextAfterInput show={blockText}>{label}</WrittenTextAfterInput>
       <InputBlock
         ref={inputRef}
-        type={type === "phone" ? "tel" : type} // Use 'tel' for phone input
+        type={type === "phone" ? "tel" : type} 
         placeholder={placeholder || label}
         width={width}
         height={height}

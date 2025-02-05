@@ -38,7 +38,7 @@ const LeftContainer = styled.div`
 const RightContainer = styled.div`
   flex: 1;
   background: transparent;
-  height: 630px;
+  height: 624px;
   width: 464px;
   display: flex;
   justify-content: center;
@@ -66,8 +66,8 @@ const CompleteProfileContainer = styled.div`
 `;
 
 const FirstContainer = styled.div`
-  height: 140px;
-  width: 234px;
+  height : auto;
+  width : auto;
 `;
 
 const SecondContainer = styled.div`
@@ -94,15 +94,25 @@ const CompleteProfile = () => {
         <RightContainer>
           <InnerRightContainer>
             <CompleteProfileContainer>
+
               <FirstContainer>
-                <TitleName svgContent={CompleteProfileSVG} title="Complete Profile" />
+                <TitleName 
+                svgContent={CompleteProfileSVG} 
+                title="Complete Profile" 
+                width='228px'
+                height='140px'
+                gap='16px'
+                />
               </FirstContainer>
+
               <SecondContainer>
                 <UserDetailInputs />
               </SecondContainer>
+
               <ThirdContainer>
                 <DescriptionComponent desc={desc} />
               </ThirdContainer>
+              
             </CompleteProfileContainer>
           </InnerRightContainer>
         </RightContainer>

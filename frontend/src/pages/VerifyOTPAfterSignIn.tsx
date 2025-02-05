@@ -1,12 +1,9 @@
 import styled from "styled-components";
-import EnterOTPBox from "../components/molecules/EnterOTPBox";
-import MultiFunctionButtonComponent from "../components/atoms/MultiFunctionButtonComponent";
 import { useNavigate } from "react-router-dom";
 import { usePhoneNumber } from "../contexts/PhoneNumberContext";
-import TitleName from "../components/atoms/TitleName";
-import OTPDescription from "../components/molecules/OTPDescription";
-import { verifyOTPSVG } from "../svg/svg";
+
 import FixedLeftPage from "./FixedLeftPage";
+import OTPModal from "./profile/OTPModal";
 
 const Container = styled.div`
   display: flex;
@@ -47,36 +44,11 @@ const RightContainer = styled.div`
   align-items: center;
 `;
 
-const InnerRightContainer = styled.div`
-  height: 630px;
-  width: 464px;
-  background: transparent;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #14171A;
-`;
 
-const VerifyOTPAfterSignInContainer = styled.div`
-  height: 358px;
-  width: 336px;
-  display: flex;
-  gap: 16px;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const OTPandButtonDiv = styled.div`
-  height: 110px;
-  width : 228px;
-  display : flex;
-  flex-direction : column;
-  gap : 20px;
-`;
 
 const VerifyOTPAfterSignIn = () => {
   const { phoneNumber } = usePhoneNumber();
-  const description = "One Time Password has been sent to";
+
 
   const navigate = useNavigate();
 
@@ -91,27 +63,31 @@ const VerifyOTPAfterSignIn = () => {
           <FixedLeftPage />
         </LeftContainer>
         <RightContainer>
-          <InnerRightContainer>
-            <VerifyOTPAfterSignInContainer>
-              <TitleName svgContent={verifyOTPSVG} title="Verify OTP" />
-              <OTPDescription description={description} phoneNumber={phoneNumber} />
-              <OTPandButtonDiv>
-              <EnterOTPBox 
-                width='228px'
-                height='48px'
-                gap='8px'
-                padding='8px'
-                boxHeight='48px'
-                boxWidth='48px'
-              />
-              <MultiFunctionButtonComponent
-                onClick={handleVerifyOTP}
-                text="Verify"
-                width="228px"
-              />
-              </OTPandButtonDiv>
-            </VerifyOTPAfterSignInContainer>
-          </InnerRightContainer>
+        <OTPModal
+          height='358px'
+          width='336px'
+          titleHeight='140px'
+          titleWidth='217px'
+          titleGap='16px'
+          background="transparent"
+          hasCloseButton = {false}
+          gap='32px'
+          onVerify={handleVerifyOTP}
+          title="OTP Verification"
+          description= 'One Time Password has been sent to your'
+          phoneNumber= {phoneNumber}
+          buttonText="Verify"
+          initialTime={60}  
+          otpBoxProps={{
+            numInputs: 4,       
+            otpWidth: "228px",
+            otpHeight: "48px",
+            otpGap: "8px",
+            otpPadding: "0px",
+            boxHeight: "48px",
+            boxWidth: "48px",
+          }}
+        />
         </RightContainer>
       </InnerContainer>
     </Container>

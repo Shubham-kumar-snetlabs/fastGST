@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div<{ borderColor?: string; backgroundColor?: string; height?: string; width?: string; padding?: string }>`
-  height: ${({ height }) => height || "48px"};
-  width: ${({ width }) => width || "48px"};
+  height: ${({ height }) => height || "88px"};
+  width: ${({ width }) => width || "88px"};
   border: 1px solid ${({ borderColor }) => borderColor || "#4C9EEB"};
   border-radius: 4px;
   padding: ${({ padding }) => padding || "8px"};
