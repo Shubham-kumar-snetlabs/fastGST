@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import DashBoardLeft from "../components/molecules/DashBoardLeft";
+import DashBoardLeft from "../components/organism/DashBoardLeft";
+
 
 const LayoutContainer = styled.div`
   height: 100vh;

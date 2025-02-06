@@ -1,6 +1,7 @@
-import ConfirmationModal from "./ConfirmationModal";
-import { ThumbsUpSVG } from "../../svg/svg";
+
 import styled from "styled-components";
+import ConfirmationModal from "../components/organism/ConfirmationModal";
+import { ThumbsUpSVG } from "../svg/svg";
 
 const DescriptionContainer = styled.div`
   height: ;

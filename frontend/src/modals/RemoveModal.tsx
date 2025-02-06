@@ -1,5 +1,6 @@
-import ConfirmationModal from "./ConfirmationModal";
-import { binSVG } from "../../svg/svg";
+import ConfirmationModal from "../components/organism/ConfirmationModal";
+import { binSVG } from "../svg/svg";
+
 
 interface ModalProps {
   member: any;

@@ -1,18 +1,23 @@
 import { Route, BrowserRouter as Router, Routes} from 'react-router-dom';
-import RegisterComponent from './pages/RegisterComponent';
-import VerifyOTPAfterCreationComponent from './pages/VerifyOTPAfterCreationComponent';
-import CompleteProfile from './pages/CompleteProfile';
-import VerifyKYC from './pages/VerifyKYC';
-import Signin from './pages/Signin';
-import VerifyOTPAfterSignIn from './pages/VerifyOTPAfterSignIn';
-import Dashboard from './pages/Dashboard';
-import FilingHistory from './pages/FilingHistory';
-import Clients from './pages/Clients';
+
+import VerifyOTPAfterCreationComponent from './pages/registerAndLogin/VerifyOTPAfterCreationComponent';
+
+import VerifyKYC from './pages/registerAndLogin/VerifyKYC';
+
+import VerifyOTPAfterSignIn from './pages/registerAndLogin/VerifyOTPAfterSignIn';
+
 import { useState } from 'react';
-import Business from './pages/Business';
-import BusinessFiling from './pages/BusinessFiling';
-import GSTFiled from './pages/GSTFiled';
+import Business from './pages/clients/Business';
+
 import Profile from './pages/profile/Profile';
+import Dashboard from './pages/team/Dashboard';
+import FilingHistory from './pages/team/FilingHistory';
+import Clients from './pages/clients/Clients';
+import BusinessFiling from './pages/clients/BusinessFiling';
+import GSTFiled from './pages/clients/GSTFiled';
+import RegisterComponent from './pages/registerAndLogin/RegisterComponent';
+import CompleteProfile from './pages/registerAndLogin/CompleteProfile';
+import Signin from './pages/registerAndLogin/Signin';
 
 
 interface DashBoardLeftProps {

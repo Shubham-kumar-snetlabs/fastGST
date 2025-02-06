@@ -1,12 +1,15 @@
 import styled from "styled-components";
-import TitleName from "../components/atoms/TitleName";
-import OtpDescriptionComponent from "../components/atoms/DescriptionComponent";
+
 import { useNavigate } from "react-router-dom";
-import PhoneNumberComponent from "../components/molecules/PhoneNumberComponent";
-import RegisterorLoginComponent from "../components/atoms/RegisterorLoginComponent";
-import MultiFunctionButtonComponent from "../components/atoms/MultiFunctionButtonComponent";
-import { signUpSVG } from "../svg/svg";
 import FixedLeftPage from "./FixedLeftPage";
+import TitleName from "../../components/atoms/TitleName";
+import { signUpSVG } from "../../svg/svg";
+import PhoneNumberComponent from "../../components/molecules/PhoneNumberComponent";
+import MultiFunctionButtonComponent from "../../components/atoms/MultiFunctionButtonComponent";
+import RegisterorLoginComponent from "../../components/atoms/RegisterorLoginComponent";
+import DescriptionComponent from "../../components/atoms/DescriptionComponent";
+
+
 
 
 const Container = styled.div`
@@ -139,7 +142,7 @@ const Signin = () => {
                   text="Don't have an account?"
                   registerOrLogin="Register"
                 />
-                <OtpDescriptionComponent desc={desc} />
+                <DescriptionComponent desc={desc} />
               </ThirdContainer>
             </SignInContainer>
           </InnerRightContainer>

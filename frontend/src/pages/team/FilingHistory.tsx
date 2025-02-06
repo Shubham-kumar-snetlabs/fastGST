@@ -1,15 +1,16 @@
 import styled from "styled-components";
-import TopNavigatingBar from "../components/molecules/TopNavigatingBar";
-import DashBoardHead from "../components/atoms/deprecated/DashBoardHead";
-import { exportSVG, FilingHistorySVG, FilterSVG } from "../svg/svg";
-import MemberCount from "../components/atoms/MemberCount";
-import DropdownComponent from "../components/atoms/DropdownComponent";
-import MultiFunctionButtonComponent from "../components/atoms/MultiFunctionButtonComponent";
-import { useClientMembers } from "../contexts/ClientMemberContext";
-import ClientTable from "../tables/ClientTable";
+import Layout from "../../layout/Layout";
+import TopNavigatingBar from "../../components/molecules/TopNavigatingBar";
+import { exportSVG, FilingHistorySVG, FilterSVG } from "../../svg/svg";
+import DashBoardTitle from "../../components/organism/DashBoardTitle";
+import MemberCount from "../../components/atoms/MemberCount";
+import DropdownComponent from "../../components/atoms/DropdownComponent";
+import MultiFunctionButtonComponent from "../../components/atoms/MultiFunctionButtonComponent";
+import ClientsTable from "../../tables/ClientsTable";
+import ExportModal from "../../modals/ExportModal";
+import { useClientMembers } from "../../contexts/ClientMemberContext";
 import { useState } from "react";
-import ExportModal from "../components/molecules/ExportModal";
-import Layout from "../layout/Layout";
+
 
 const InnerRightContainer = styled.div`
   height: 100%;
@@ -143,7 +144,7 @@ const FilingHistory: React.FC<DashBoardLeftProps> = ({
         <ContentContainer>
           <ContentMainContainer>
             <HeadContainer>
-              <DashBoardHead
+              <DashBoardTitle
                 svg={FilingHistorySVG}
                 headTitle="Filing History"
                 headDescription={headDescription}
@@ -196,7 +197,7 @@ const FilingHistory: React.FC<DashBoardLeftProps> = ({
                   </SearchAndFilterDiv>
                 </SearchandFilterBlock>
                 <MemberTableDiv>
-                  <ClientTable />
+                  <ClientsTable />
                 </MemberTableDiv>
               </SearchandFilterContainer>
             </BodyContainer>

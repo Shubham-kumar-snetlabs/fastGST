@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import TitleName from "../../components/atoms/TitleName";
-import { ClockIconSVG, crossSVG, verifyOTPSVG } from "../../svg/svg";
-import EnterOTPBox from "../../components/molecules/EnterOTPBox";
-import MultiFunctionButtonComponent from "../../components/atoms/MultiFunctionButtonComponent";
+import TitleName from "../components/atoms/TitleName";
+import { ClockIconSVG, crossSVG, verifyOTPSVG } from "../svg/svg";
+import EnterOTPBox from "../components/molecules/EnterOTPBox";
+import MultiFunctionButtonComponent from "../components/atoms/MultiFunctionButtonComponent";
 import { useState } from "react";
-import Timer from "../../components/atoms/Timer";
+import Timer from "../components/atoms/Timer";
 
 const ModalWrapper = styled.div<{
   background?: string;

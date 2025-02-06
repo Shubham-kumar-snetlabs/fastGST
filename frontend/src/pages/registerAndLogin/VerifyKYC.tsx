@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import FixedLeftPage from "./FixedLeftPage";
-import OTPModal from "./profile/OTPModal";
+import FixedLeftPage from "../FixedLeftPage";
+import OTPModal from "../../modals/OTPModal";
 
 const Container = styled.div`
   display: flex;

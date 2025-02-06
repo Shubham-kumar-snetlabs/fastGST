@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { usePhoneNumber } from "../contexts/PhoneNumberContext";
-
-import FixedLeftPage from "./FixedLeftPage";
-import OTPModal from "./profile/OTPModal";
+import { usePhoneNumber } from "../../contexts/PhoneNumberContext";
+import FixedLeftPage from "../FixedLeftPage";
+import OTPModal from "../../modals/OTPModal";
 
 const Container = styled.div`
   display: flex;
@@ -44,13 +43,14 @@ const RightContainer = styled.div`
   align-items: center;
 `;
 
-const VerifyOTPAfterSignIn = () => {
-  const { phoneNumber } = usePhoneNumber();
+const VerifyOTPAfterCreationComponent = () => {
+  const { phoneNumber, setPhoneNumber } = usePhoneNumber();
 
   const navigate = useNavigate();
 
   const handleVerifyOTP = () => {
-    navigate("/");
+    setPhoneNumber("");
+    navigate("/create-account");
   };
 
   return (
@@ -91,4 +91,4 @@ const VerifyOTPAfterSignIn = () => {
   );
 };
 
-export default VerifyOTPAfterSignIn;
+export default VerifyOTPAfterCreationComponent;

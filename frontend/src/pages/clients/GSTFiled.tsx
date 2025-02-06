@@ -1,21 +1,15 @@
-import styled from "styled-components";
-import TopNavigatingBar from "../components/molecules/TopNavigatingBar";
-import {
-  BusinessIconSVG,
-  CopyIconSVG,
-  CyberIconSVG,
-  DefensiveIconSVG,
-  TimerIconSVG,
-} from "../svg/svg";
-import { useLocation } from "react-router-dom";
-import DashBoardTitle from "../components/atoms/deprecated/DashBoardHead";
-import Layout from "../layout/Layout";
-import PersonInfoComponent from "../components/atoms/PersonInfoComponent";
 import { useEffect, useState } from "react";
-import MultiFunctionButtonComponent from "../components/atoms/MultiFunctionButtonComponent";
-import DropdownComponent from "../components/atoms/DropdownComponent";
-import EnterOTPBox from "../components/molecules/EnterOTPBox";
-import FiledSuccessfullyModal from "../components/molecules/FiledSuccessfullyModal";
+import { useLocation } from "react-router-dom";
+import styled from "styled-components";
+import DashBoardTitle from "../../components/organism/DashBoardTitle";
+import { BusinessIconSVG, CopyIconSVG, CyberIconSVG, DefensiveIconSVG, TimerIconSVG } from "../../svg/svg";
+import PersonInfoComponent from "../../components/atoms/PersonInfoComponent";
+import DropdownComponent from "../../components/atoms/DropdownComponent";
+import EnterOTPBox from "../../components/molecules/EnterOTPBox";
+import MultiFunctionButtonComponent from "../../components/atoms/MultiFunctionButtonComponent";
+import FiledSuccessfullyModal from "../../modals/FiledSuccessfullyModal";
+import TopNavigatingBar from "../../components/molecules/TopNavigatingBar";
+import Layout from "../../layout/Layout";
 
 const InnerRightContainer = styled.div`
   height: 100%;

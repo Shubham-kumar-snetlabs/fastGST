@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import RemoveModal from "./RemoveModal";
-import { CloseSVG, DropdownSVG } from "../../svg/svg";
-import MultiFunctionButtonComponent from "../atoms/MultiFunctionButtonComponent";
+import { CloseSVG, DropdownSVG } from "../svg/svg";
+import MultiFunctionButtonComponent from "../components/atoms/MultiFunctionButtonComponent";
 
 const Container = styled.div`
   height: 100%;

@@ -1,13 +1,13 @@
-import styled from "styled-components";
-import TopNavigatingBar from "../components/molecules/TopNavigatingBar";
-import { BusinessIconSVG, CyberIconSVG, DefensiveIconSVG } from "../svg/svg";
-import { useLocation, useNavigate } from "react-router-dom";
-import DashBoardTitle from "../components/atoms/deprecated/DashBoardHead";
-import Layout from "../layout/Layout";
-import PersonInfoComponent from "../components/atoms/PersonInfoComponent";
 import { useState } from "react";
-import MultiFunctionButtonComponent from "../components/atoms/MultiFunctionButtonComponent";
-import DropdownComponent from "../components/atoms/DropdownComponent";
+import { useLocation, useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import Layout from "../../layout/Layout";
+import TopNavigatingBar from "../../components/molecules/TopNavigatingBar";
+import DashBoardTitle from "../../components/organism/DashBoardTitle";
+import { BusinessIconSVG, CyberIconSVG, DefensiveIconSVG } from "../../svg/svg";
+import PersonInfoComponent from "../../components/atoms/PersonInfoComponent";
+import DropdownComponent from "../../components/atoms/DropdownComponent";
+import MultiFunctionButtonComponent from "../../components/atoms/MultiFunctionButtonComponent";
 
 const InnerRightContainer = styled.div`
   height: 100%;

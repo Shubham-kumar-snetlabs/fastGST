@@ -1,14 +1,14 @@
 import styled from "styled-components";
-import TopNavigatingBar from "../components/molecules/TopNavigatingBar";
-import { ClientSmallIconSVG, SearchSVG } from "../svg/svg";
-import MemberCount from "../components/atoms/MemberCount";
-import SearchComponent from "../components/atoms/SearchComponent";
-import DashBoardTitle from "../components/atoms/deprecated/DashBoardHead";
-import DashBoardBody from "../components/atoms/deprecated/DashBoardBody";
-import { useClients } from "../contexts/ClientsContext";
-import ClientsTable from "../tables/ClientsTable";
-import Layout from "../layout/Layout";
 import { useState } from "react";
+import { useClients } from "../../contexts/ClientsContext";
+import TopNavigatingBar from "../../components/molecules/TopNavigatingBar";
+import DashBoardTitle from "../../components/organism/DashBoardTitle";
+import { ClientSmallIconSVG, SearchSVG } from "../../svg/svg";
+import Layout from "../../layout/Layout";
+import MemberCount from "../../components/atoms/MemberCount";
+import SearchComponent from "../../components/atoms/SearchComponent";
+import ClientsTable from "../../tables/ClientsTable";
+import DashBoardBody from "../../components/organism/DashBoardBody";
 
 const InnerRightContainer = styled.div`
   height: 100%;

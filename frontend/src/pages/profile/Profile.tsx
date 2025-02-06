@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Layout from "../../layout/Layout";
 import styled from "styled-components";
 import TopNavigatingBar from "../../components/molecules/TopNavigatingBar";
-import DashBoardTitle from "../../components/atoms/deprecated/DashBoardHead";
+import DashBoardTitle from "../../components/organism/DashBoardTitle";
 import {
   AwayIConSVG,
   DeleteIconSVG,

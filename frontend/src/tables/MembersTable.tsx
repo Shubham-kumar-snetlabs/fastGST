@@ -4,7 +4,7 @@ import { useTeamMembers } from '../contexts/TeamMemberContext';
 import { historySVG } from '../svg/svg';
 import DropdownComponent from '../components/atoms/DropdownComponent';
 import DynamicTable from '../components/organism/DynamicTable';
-import MemberDetails from '../components/molecules/MemberDetails';
+import MemberDetails from '../modals/MemberDetails';
 import PersonInfoComponent from '../components/atoms/PersonInfoComponent';
 
 

@@ -1,12 +1,10 @@
 import styled from "styled-components";
-import TitleName from "../components/atoms/TitleName";
-import { useNavigate } from "react-router-dom";
-import PhoneNumberComponent from "../components/molecules/PhoneNumberComponent";
-import RegisterorLoginComponent from "../components/atoms/RegisterorLoginComponent";
-import MultiFunctionButtonComponent from "../components/atoms/MultiFunctionButtonComponent";
-import DescriptionComponent from "../components/atoms/DescriptionComponent";
-import { signUpSVG } from "../svg/svg";
 import FixedLeftPage from "./FixedLeftPage";
+import TitleName from "../../components/atoms/TitleName";
+import { CompleteProfileSVG } from "../../svg/svg";
+import UserDetailInputs from "../../components/organism/UserDetailInputs";
+import DescriptionComponent from "../../components/atoms/DescriptionComponent";
+
 
 const Container = styled.div`
   display: flex;
@@ -40,7 +38,7 @@ const LeftContainer = styled.div`
 const RightContainer = styled.div`
   flex: 1;
   background: transparent;
-  height: 630px;
+  height: 624px;
   width: 464px;
   display: flex;
   justify-content: center;
@@ -57,54 +55,36 @@ const InnerRightContainer = styled.div`
   color: #14171a;
 `;
 
-const RegisterContainer = styled.div`
-  height: 336px;
-  width: 390px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 32px;
-`;
-
-const FirstContainer = styled.div`
-  width: auto;
-  height: auto;
-  min-width: 251px;
-  min-height: 140px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  align-items: center;
-`;
-
-const SecondContainer = styled.div`
-  height: 116px;
+const CompleteProfileContainer = styled.div`
+  height: 517px;
   width: 336px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  color: #14171a;
+`;
+
+const FirstContainer = styled.div`
+  height: auto;
+  width: auto;
+`;
+
+const SecondContainer = styled.div`
+  height: 256px;
+  width: 336px;
 `;
 
 const ThirdContainer = styled.div`
-  height: 70px;
+  height: 57px;
   width: 336px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
 `;
 
-const RegisterComponent = () => {
+// Component
+const CompleteProfile = () => {
   const desc =
-    "You will receive a One-Time Password on your Phone to verify your Number.";
+    "It’s mandatory to verify your KYC. This is a one-time process and won’t take more than 1 minute of your time.";
 
-  const navigate = useNavigate();
-
-  const handleSendOTP = () => {
-    navigate("/verify-otp");
-  };
   return (
     <Container>
       <InnerContainer>
@@ -113,34 +93,25 @@ const RegisterComponent = () => {
         </LeftContainer>
         <RightContainer>
           <InnerRightContainer>
-            <RegisterContainer>
+            <CompleteProfileContainer>
               <FirstContainer>
                 <TitleName
-                  svgContent={signUpSVG}
-                  title=" Create an Account"
-                  gap="16px"
+                  svgContent={CompleteProfileSVG}
+                  title="Complete Profile"
+                  width="228px"
                   height="140px"
-                  width="251px"
+                  gap="16px"
                 />
               </FirstContainer>
 
               <SecondContainer>
-                <PhoneNumberComponent />
-                <MultiFunctionButtonComponent
-                  onClick={handleSendOTP}
-                  text="Send OTP"
-                  width="336px"
-                />
+                <UserDetailInputs />
               </SecondContainer>
 
               <ThirdContainer>
-                <RegisterorLoginComponent
-                  text="Already a member?"
-                  registerOrLogin="Login"
-                />
                 <DescriptionComponent desc={desc} />
               </ThirdContainer>
-            </RegisterContainer>
+            </CompleteProfileContainer>
           </InnerRightContainer>
         </RightContainer>
       </InnerContainer>
@@ -148,4 +119,4 @@ const RegisterComponent = () => {
   );
 };
 
-export default RegisterComponent;
+export default CompleteProfile;

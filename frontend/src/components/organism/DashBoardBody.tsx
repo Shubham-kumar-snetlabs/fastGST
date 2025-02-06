@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { ClientIconSVG, TeamIconSVG } from "../../../svg/svg";
-import StepContainerComponent from "../../organism/StepContainerComponent";
+import { ClientIconSVG, TeamIconSVG } from "../../svg/svg";
+import StepContainerComponent from "./StepContainerComponent";
+
 
 const InnerBodyContainer = styled.div`
   height: 100%;

@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import CarouselComponent from "../components/molecules/CarouselComponent";
-import { fixedLeftPageSVG } from "../svg/svg";
+import { fixedLeftPageSVG } from "../../svg/svg";
+import CarouselComponent from "../../components/organism/CarouselComponent";
+
 
 const Container = styled.div`
   flex: 1;

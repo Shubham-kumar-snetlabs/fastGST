@@ -1,5 +1,6 @@
-import { bigExportSVG } from "../../svg/svg";
-import ConfirmationModal from "./ConfirmationModal";
+import ConfirmationModal from "../components/organism/ConfirmationModal";
+import { bigExportSVG } from "../svg/svg";
+
 
 interface ExportProps {
   setExportModal: React.Dispatch<React.SetStateAction<boolean>>;

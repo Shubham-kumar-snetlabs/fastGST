@@ -4,7 +4,7 @@ import MultiFunctionButtonComponent from "../../components/atoms/MultiFunctionBu
 import MultiFunctionInputComponent from "../../components/atoms/MultiFunctionInputComponent";
 import { useLocation, useNavigate } from "react-router-dom";
 import { backButtonSVG } from "../../svg/svg";
-import OTPModal from "./OTPModal";
+import OTPModal from "../../modals/OTPModal";
 
 const Container = styled.div`
   display: flex;

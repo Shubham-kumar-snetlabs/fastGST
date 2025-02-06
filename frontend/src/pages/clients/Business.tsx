@@ -1,17 +1,20 @@
 import styled from "styled-components";
-import TopNavigatingBar from "../components/molecules/TopNavigatingBar";
-import { FilterSVG, headIconSVG, SearchSVG } from "../svg/svg";
-import MemberCount from "../components/atoms/MemberCount";
-import SearchComponent from "../components/atoms/SearchComponent";
-import DropdownComponent from "../components/atoms/DropdownComponent";
-import MultiFunctionButtonComponent from "../components/atoms/MultiFunctionButtonComponent";
-import { useNavigate } from "react-router-dom";
-import { useTeamMembers } from "../contexts/TeamMemberContext";
-import MembersTable from "../tables/MembersTable";
-import DashBoardTitle from "../components/atoms/deprecated/DashBoardHead";
-import DashBoardBody from "../components/atoms/deprecated/DashBoardBody";
-import Layout from "../layout/Layout";
+import TopNavigatingBar from "../../components/molecules/TopNavigatingBar";
+import { BusinessIconSVG, SearchSVG } from "../../svg/svg";
+import MemberCount from "../../components/atoms/MemberCount";
+import SearchComponent from "../../components/atoms/SearchComponent";
+import { useLocation } from "react-router-dom";
+
+
+import Layout from "../../layout/Layout";
+import BusinessTable from "../../tables/BusinessTable";
+import { useBusiness } from "../../contexts/BusinessContext";
+import PersonInfoComponent from "../../components/atoms/PersonInfoComponent";
 import { useState } from "react";
+import DashBoardTitle from "../../components/organism/DashBoardTitle";
+import DashBoardBody from "../../components/organism/DashBoardBody";
+import ClientDetails from "../../modals/ClientDetails";
+
 
 const InnerRightContainer = styled.div`
   height: 100%;
@@ -70,6 +73,7 @@ const TitleContainer = styled.div`
   box-sizing: border-box;
   display: flex;
   gap: 10px;
+  align-items: center;
 `;
 
 const BodyContainer = styled.div`
@@ -119,17 +123,18 @@ const SearchandFilterBlock = styled.div``;
 
 const TableDiv = styled.div``;
 
-const Dashboard: React.FC<DashBoardLeftProps> = ({
+const Business: React.FC<DashBoardLeftProps> = ({
   activeItem,
   setActiveItem,
 }) => {
   const headDescription =
-    "Manage and organize your team members for efficient collaboration.";
+    "Streamline your client’s tax filing process by effortlessly managing their business OTPs with automatic forwarding.";
 
-  const navigate = useNavigate();
-  const { teamMembers } = useTeamMembers();
-
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(1)
+  const { business } = useBusiness();
+  const location = useLocation();
+  const { client } = location.state || {};
+  const [showClientDetails, setShowClientDetails] = useState(false);
   return (
     <Layout activeItem={activeItem} setActiveItem={setActiveItem}>
       <InnerRightContainer>
@@ -140,59 +145,44 @@ const Dashboard: React.FC<DashBoardLeftProps> = ({
           <ContentMainContainer>
             <TitleContainer>
               <DashBoardTitle
-                svg={headIconSVG}
-                headTitle="Team"
+                svg={BusinessIconSVG}
+                headTitle="Business"
                 headDescription={headDescription}
+                gap="12px"
+                textGap=""
+              />
+              <PersonInfoComponent
+                name={client?.name}
+                photo={client?.photo}
+                background="#E4F4FF"
+                width="105.15px"
+                height="32px"
+                onClick={() => setShowClientDetails(true)}
               />
             </TitleContainer>
             <BodyContainer>
               <SearchandFilterContainer>
                 <SearchandFilterBlock>
-                  {teamMembers.length && (
+                  {business?.length && (
                     <SearchAndFilterDiv>
                       <MemberCount
                         label="All Members"
-                        count={teamMembers.length}
+                        count={business?.length}
                       />
                       <SearchFilterandHistoryDiv>
                         <SearchComponent
                           svg={SearchSVG}
                           placeholder="Search a Team member..."
                         />
-                        <DropdownComponent
-                          svg={FilterSVG}
-                          text="Filter"
-                          width="auto"
-                          options={[
-                            { value: "owner", label: "Owner" },
-                            { value: "super admin", label: "Super Admin" },
-                            { value: "admin", label: "Admin" },
-                            { value: "member", label: "Member" },
-                          ]}
-                        />
-                        <MultiFunctionButtonComponent
-                          onClick={() => navigate("filing")}
-                          text="Filling History"
-                          height="36px"
-                          width="137px"
-                          padding="10px 18px"
-                          background="#4C9EEB"
-                          fontSize="16px"
-                          lineHeight="16px"
-                        />
                       </SearchFilterandHistoryDiv>
                     </SearchAndFilterDiv>
                   )}
                 </SearchandFilterBlock>
                 <TableDiv>
-                  {teamMembers.length ? (
-                    <MembersTable />
+                  {business?.length ? (
+                    <BusinessTable client={client} />
                   ) : (
-                    <DashBoardBody
-                      type="team"
-                      setCurrentStep={setCurrentStep}
-                      currentStep={currentStep}
-                    />
+                    <DashBoardBody type="team" currentStep={currentStep} setCurrentStep={setCurrentStep} />
                   )}
                 </TableDiv>
               </SearchandFilterContainer>
@@ -200,8 +190,15 @@ const Dashboard: React.FC<DashBoardLeftProps> = ({
           </ContentMainContainer>
         </ContentContainer>
       </InnerRightContainer>
+      {showClientDetails && (
+        <ClientDetails
+          showClientDetails={showClientDetails}
+          setShowClientDetails={setShowClientDetails}
+          client={client}
+        />
+      )}
     </Layout>
   );
 };
 
-export default Dashboard;
+export default Business;

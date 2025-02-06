@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import DashBoardNav from "./DashBoardNav";
 import { zapperSVG } from "../../svg/svg";
 import PersonInfoComponent from "../atoms/PersonInfoComponent";
-import DashBoardFilter from "./DashBoardFilter";
+import DashBoardFilter from "../organism/DashBoardFilter";
 import { useNavigate } from "react-router-dom";
+import DashBoardNav from "./DashBoardNav";
 
 const Container = styled.div`
   height: 100%;
