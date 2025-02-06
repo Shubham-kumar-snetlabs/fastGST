@@ -15,7 +15,7 @@ const Switch = styled.div<{ isOn: boolean }>`
   width: 32px;
   height: 16px;
   background: ${({ isOn }) => (isOn ? "#4C9EEB" : "transparent")};
-  border : 2px solid #4C9EEB;
+  border: 2px solid #4c9eeb;
   border-radius: 50px;
   display: flex;
   align-items: center;
@@ -28,7 +28,7 @@ const Knob = styled.div<{ isOn: boolean }>`
   width: 15px;
   height: 15px;
   background: white;
-   border : 2px solid #4C9EEB;
+  border: 2px solid #4c9eeb;
   border-radius: 50%;
   position: absolute;
   left: ${({ isOn }) => (isOn ? "calc(100% - 20px)" : "3px")};

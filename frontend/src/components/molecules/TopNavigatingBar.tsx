@@ -1,17 +1,24 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { backButtonSVG, tablePaginationNextNavSVG } from "../../svg/svg";
+import React from "react";
 
 const Navigator = styled.div`
   height: 24px;
-  width: 245px;
+  width: auto;
   display: flex;
   gap: 16px;
   position: relative;
   top: 12px;
-  left: 24px;
+  left: 12px;
   align-items: center;
   color: #14171a;
+`;
+
+const BackButtonDiv = styled.div`
+  display: flex;
+  gap: 16px;
+  color: #657786;
 `;
 
 const BackButton = styled.div`
@@ -20,9 +27,12 @@ const BackButton = styled.div`
   cursor: pointer;
 `;
 
-const Pipe = styled.div`
-  width: 7px;
-  height: 16px;
+const Seperator = styled.div`
+  width: auto;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+
   font-family: Noto Sans;
   font-size: 12px;
   font-weight: 400;
@@ -35,83 +45,57 @@ const Pipe = styled.div`
 
 const TextDiv = styled.div`
   height: 20px;
-  width: 100%;
-  min-width: 52px;
+  width: auto;
   display: flex;
   align-items: center;
+  gap: 8px;
 `;
 
 const Text = styled.p`
-  width: 37px;
-  height: 14px;
   font-family: Noto Sans;
   font-size: 14px;
   font-weight: 500;
   line-height: 14px;
   text-align: left;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
   color: #14171a;
+  cursor: pointer;
 `;
 
-const ExtendedRoutesContainer = styled.div`
-  display: flex;
-  gap: 16px;
-  align-items : center;
-`;
+const TopNavigatingBar = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
 
-const RouteExtenderSVG = styled.div`
-  display: flex;
-  align-items: center;
-`;
+  // Get route segments
+  const pathSegments = location.pathname.split("/").filter(Boolean);
 
-const ExtendedRoutesText = styled.div`
-  width: 89px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  white-space: nowrap;
-
-  font-family: Noto Sans;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 14px;
-  text-align: left;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
-  color: #657786;
-`;
-
-const TopNavigatingBar = ({
-  showBackButton = true,
-  backButtonAction = () => {},
-  mainText = "Teams",
-  showExtendedRoutes = true,
-  extendedRouteText = "",
-}: {
-  showBackButton?: boolean;
-  backButtonAction?: () => void;
-  mainText?: string;
-  showExtendedRoutes?: boolean;
-  extendedRouteText?: string;
-}) => {
+  const previousRoute =
+    pathSegments.length > 1
+      ? `/${pathSegments.slice(0, -1).join("/")}` // Navigate to the previous segment in the hierarchy
+      : "/"; // Default to home if only one segment exists
 
   return (
     <Navigator>
-      {showBackButton && (
-        <BackButton onClick={backButtonAction}>{backButtonSVG}</BackButton>
+      {pathSegments.length > 1 && (
+        <BackButtonDiv>
+          <BackButton onClick={() => navigate(previousRoute)}>
+            {backButtonSVG}
+          </BackButton>
+          |
+        </BackButtonDiv>
       )}
-      {showBackButton && <Pipe>|</Pipe>}
       <TextDiv>
-        <Text>{mainText}</Text>
+        {pathSegments.map((segment, index) => {
+          const routePath = `/${pathSegments.slice(0, index + 1).join("/")}`;
+          return (
+            <React.Fragment key={routePath}>
+              {index > 0 && <Seperator>{tablePaginationNextNavSVG}</Seperator>}
+              <Text onClick={() => navigate(routePath)}>
+                {segment.replace(/\b\w/g, (char) => char.toUpperCase())}
+              </Text>
+            </React.Fragment>
+          );
+        })}
       </TextDiv>
-      {showExtendedRoutes && (
-        <ExtendedRoutesContainer>
-          <RouteExtenderSVG>{tablePaginationNextNavSVG}</RouteExtenderSVG>
-          <ExtendedRoutesText>{extendedRouteText}</ExtendedRoutesText>
-        </ExtendedRoutesContainer>
-      )}
     </Navigator>
   );
 };

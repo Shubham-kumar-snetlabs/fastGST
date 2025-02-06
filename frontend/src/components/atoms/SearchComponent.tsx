@@ -1,30 +1,30 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 interface SearchComponentProps {
-  svg?: React.ReactNode; 
-  placeholder?: string; 
-  height?: string; 
-  width?: string; 
-  padding?: string; 
-  background?: string; 
-  color?: string; 
-  borderColor?: string; 
-  fontStyle?: string; 
+  svg?: React.ReactNode;
+  placeholder?: string;
+  height?: string;
+  width?: string;
+  padding?: string;
+  background?: string;
+  color?: string;
+  borderColor?: string;
+  fontStyle?: string;
   fontFamily?: string;
-  fontWeight?: number; 
+  fontWeight?: number;
   fontSize?: string;
 }
 
 const SearchBarDiv = styled.div<SearchComponentProps>`
-  width: ${({ width }) => width || '216px'};
-  height: ${({ height }) => height || '36px'};
-  padding: ${({ padding }) => padding || '9px 8px'};
+  width: ${({ width }) => width || "216px"};
+  height: ${({ height }) => height || "36px"};
+  padding: ${({ padding }) => padding || "9px 8px"};
   box-sizing: border-box;
   border-radius: 100px;
-  border: 1px solid ${({ borderColor }) => borderColor || '#AAB8C2'};
-  background: ${({ background }) => background || '#F5F8FA'};
-  color: ${({ color }) => color || '#657786'};
+  border: 1px solid ${({ borderColor }) => borderColor || "#AAB8C2"};
+  background: ${({ background }) => background || "#F5F8FA"};
+  color: ${({ color }) => color || "#657786"};
   display: flex;
   gap: 10px;
 `;
@@ -45,7 +45,7 @@ const SearchInputDiv = styled.div<SearchComponentProps>`
   width: calc(100% - 18px);
   height: 14px;
   line-height: 14px;
-  color: ${({ color }) => color || '#657786'};
+  color: ${({ color }) => color || "#657786"};
   display: flex;
 `;
 
@@ -53,17 +53,17 @@ const SearchInput = styled.input<SearchComponentProps>`
   background: transparent;
   outline: none;
   border: none;
-  font-size: ${({ fontSize }) => fontSize || '14px'};
-  font-style: ${({ fontStyle }) => fontStyle || 'italic'};
+  font-size: ${({ fontSize }) => fontSize || "14px"};
+  font-style: ${({ fontStyle }) => fontStyle || "italic"};
   font-weight: ${({ fontWeight }) => fontWeight || 300};
-  font-family: ${({ fontFamily }) => fontFamily || 'Noto Sans'};
-  color: ${({ color }) => color || '#657786'};
+  font-family: ${({ fontFamily }) => fontFamily || "Noto Sans"};
+  color: ${({ color }) => color || "#657786"};
   width: 100%;
 `;
 
 const SearchComponent: React.FC<SearchComponentProps> = ({
   svg,
-  placeholder = 'Search a Team member...',
+  placeholder = "Search a Team member...",
   height,
   width,
   padding,
@@ -86,18 +86,14 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
     >
       <SearchBarItem>
         <SearchIcon>{svg}</SearchIcon>
-        <SearchInputDiv
-          
-          color={color}
-          
-        >
+        <SearchInputDiv color={color}>
           <SearchInput
             placeholder={placeholder}
             fontStyle={fontStyle}
             color={color}
             fontSize={fontSize}
             fontWeight={fontWeight}
-            fontFamily = {fontFamily}
+            fontFamily={fontFamily}
           />
         </SearchInputDiv>
       </SearchBarItem>

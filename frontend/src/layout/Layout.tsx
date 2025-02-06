@@ -40,26 +40,36 @@ const RightContainer = styled.div`
 `;
 
 interface LayoutProps {
-    children: React.ReactNode;
-    activeItem: number;
-    setActiveItem: (id: number) => void;
+  children: React.ReactNode;
+  activeItem: number;
+  setActiveItem: (id: number) => void;
 
-    filterOpen?: boolean;
-    setFilterOpen?: (open: boolean) => void;
-  }
-  
-  const Layout: React.FC<LayoutProps> = ({ children, activeItem, setActiveItem, filterOpen,setFilterOpen }) => {
-    return (
-      <LayoutContainer>
-        <MainContainer>
-          <LeftContainer>
-            <DashBoardLeft activeItem={activeItem} setActiveItem={setActiveItem} filterOpen={filterOpen} setFilterOpen={setFilterOpen}/>
-          </LeftContainer>
-          <RightContainer>{children}</RightContainer>
-        </MainContainer>
-      </LayoutContainer>
-    );
-  };
-  
-  export default Layout;
-  
+  filterOpen?: boolean;
+  setFilterOpen?: (open: boolean) => void;
+}
+
+const Layout: React.FC<LayoutProps> = ({
+  children,
+  activeItem,
+  setActiveItem,
+  filterOpen,
+  setFilterOpen,
+}) => {
+  return (
+    <LayoutContainer>
+      <MainContainer>
+        <LeftContainer>
+          <DashBoardLeft
+            activeItem={activeItem}
+            setActiveItem={setActiveItem}
+            filterOpen={filterOpen}
+            setFilterOpen={setFilterOpen}
+          />
+        </LeftContainer>
+        <RightContainer>{children}</RightContainer>
+      </MainContainer>
+    </LayoutContainer>
+  );
+};
+
+export default Layout;

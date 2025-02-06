@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
-import FixedLeftPage from './FixedLeftPage';
-import OTPModal from './profile/OTPModal';
+import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import FixedLeftPage from "./FixedLeftPage";
+import OTPModal from "./profile/OTPModal";
 
 const Container = styled.div`
   display: flex;
@@ -9,7 +9,7 @@ const Container = styled.div`
   align-items: center;
   height: 100vh;
   width: 100vw;
-  background: #E0E0E0;
+  background: #e0e0e0;
 `;
 
 const InnerContainer = styled.div`
@@ -17,7 +17,7 @@ const InnerContainer = styled.div`
   width: 964px;
   padding-top: 8px;
   padding-left: 8px;
-  background: #F5F8FA;
+  background: #f5f8fa;
   display: flex;
   border-radius: 8px;
   gap: 2px;
@@ -39,18 +39,14 @@ const RightContainer = styled.div`
   width: 464px;
   display: flex;
   justify-content: center;
-  align-items : center;
+  align-items: center;
 `;
 
-
-
-
 const VerifyKYC = () => {
-
   const navigate = useNavigate();
 
   const handleVerifyKYC = () => {
-    navigate('/sign-in');
+    navigate("/sign-in");
   };
 
   return (
@@ -61,29 +57,29 @@ const VerifyKYC = () => {
         </LeftContainer>
         <RightContainer>
           <OTPModal
-          height='358px'
-          width='336px'
-          titleHeight='140px'
-          titleWidth='217px'
-          titleGap='16px'
-          background="transparent"
-          hasCloseButton = {false}
-          gap='32px'
-          onVerify={handleVerifyKYC}
-          title="KYC Verification"
-          description= 'One Time Password has been sent to your'
-          buttonText="Verify"
-          initialTime={60}  
-          otpBoxProps={{
-            numInputs: 4,       
-            otpWidth: "228px",
-            otpHeight: "48px",
-            otpGap: "8px",
-            otpPadding: "0px",
-            boxHeight: "48px",
-            boxWidth: "48px",
-          }}
-        />
+            height="358px"
+            width="336px"
+            titleHeight="140px"
+            titleWidth="217px"
+            titleGap="16px"
+            background="transparent"
+            hasCloseButton={false}
+            gap="32px"
+            onVerify={handleVerifyKYC}
+            title="KYC Verification"
+            description="One Time Password has been sent to your"
+            buttonText="Verify"
+            initialTime={60}
+            otpBoxProps={{
+              numInputs: 4,
+              otpWidth: "228px",
+              otpHeight: "48px",
+              otpGap: "8px",
+              otpPadding: "0px",
+              boxHeight: "48px",
+              boxWidth: "48px",
+            }}
+          />
         </RightContainer>
       </InnerContainer>
     </Container>

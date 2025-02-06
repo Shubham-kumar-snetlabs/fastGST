@@ -5,14 +5,11 @@ import { exportSVG, FilingHistorySVG, FilterSVG } from "../svg/svg";
 import MemberCount from "../components/atoms/MemberCount";
 import DropdownComponent from "../components/atoms/DropdownComponent";
 import MultiFunctionButtonComponent from "../components/atoms/MultiFunctionButtonComponent";
-import { useNavigate } from "react-router-dom";
 import { useClientMembers } from "../contexts/ClientMemberContext";
 import ClientTable from "../tables/ClientTable";
 import { useState } from "react";
 import ExportModal from "../components/molecules/ExportModal";
 import Layout from "../layout/Layout";
-
-
 
 const InnerRightContainer = styled.div`
   height: 100%;
@@ -108,21 +105,22 @@ const SearchFilterandHistoryDiv = styled.div`
   width: 495px;
   display: flex;
   gap: 16px;
-  justify-content : flex-end;
+  justify-content: flex-end;
 `;
 
 const SearchandFilterBlock = styled.div``;
 
 const MemberTableDiv = styled.div``;
 
-
 interface DashBoardLeftProps {
   activeItem: number;
-  setActiveItem: (id: number) => void;  
+  setActiveItem: (id: number) => void;
 }
 
-const FilingHistory: React.FC<DashBoardLeftProps> = ({ activeItem, setActiveItem})  => {
-  const navigate = useNavigate();
+const FilingHistory: React.FC<DashBoardLeftProps> = ({
+  activeItem,
+  setActiveItem,
+}) => {
   const headDescription =
     "View Tax filing record of team members to track the efficiency and productivity.";
   const { clientMembers } = useClientMembers();
@@ -132,14 +130,15 @@ const FilingHistory: React.FC<DashBoardLeftProps> = ({ activeItem, setActiveItem
   const [filterOpen, setFilterOpen] = useState(false);
 
   return (
-    <Layout activeItem={activeItem} setActiveItem={setActiveItem} filterOpen={filterOpen} setFilterOpen={setFilterOpen} >
+    <Layout
+      activeItem={activeItem}
+      setActiveItem={setActiveItem}
+      filterOpen={filterOpen}
+      setFilterOpen={setFilterOpen}
+    >
       <InnerRightContainer>
         <NavigatingTopBar>
-          <TopNavigatingBar
-            mainText="Teams"
-            extendedRouteText="Filing History"
-            backButtonAction={() => navigate("/")}
-          />
+          <TopNavigatingBar/>
         </NavigatingTopBar>
         <ContentContainer>
           <ContentMainContainer>
@@ -148,7 +147,6 @@ const FilingHistory: React.FC<DashBoardLeftProps> = ({ activeItem, setActiveItem
                 svg={FilingHistorySVG}
                 headTitle="Filing History"
                 headDescription={headDescription}
-                
               />
             </HeadContainer>
             <BodyContainer>

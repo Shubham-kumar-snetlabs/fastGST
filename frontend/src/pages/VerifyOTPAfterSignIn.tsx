@@ -11,7 +11,7 @@ const Container = styled.div`
   align-items: center;
   height: 100vh;
   width: 100vw;
-  background: #E0E0E0;
+  background: #e0e0e0;
 `;
 
 const InnerContainer = styled.div`
@@ -19,7 +19,7 @@ const InnerContainer = styled.div`
   width: 964px;
   padding-top: 8px;
   padding-left: 8px;
-  background: #F5F8FA;
+  background: #f5f8fa;
   display: flex;
   border-radius: 8px;
   gap: 2px;
@@ -44,11 +44,8 @@ const RightContainer = styled.div`
   align-items: center;
 `;
 
-
-
 const VerifyOTPAfterSignIn = () => {
   const { phoneNumber } = usePhoneNumber();
-
 
   const navigate = useNavigate();
 
@@ -63,31 +60,31 @@ const VerifyOTPAfterSignIn = () => {
           <FixedLeftPage />
         </LeftContainer>
         <RightContainer>
-        <OTPModal
-          height='358px'
-          width='336px'
-          titleHeight='140px'
-          titleWidth='217px'
-          titleGap='16px'
-          background="transparent"
-          hasCloseButton = {false}
-          gap='32px'
-          onVerify={handleVerifyOTP}
-          title="OTP Verification"
-          description= 'One Time Password has been sent to your'
-          phoneNumber= {phoneNumber}
-          buttonText="Verify"
-          initialTime={60}  
-          otpBoxProps={{
-            numInputs: 4,       
-            otpWidth: "228px",
-            otpHeight: "48px",
-            otpGap: "8px",
-            otpPadding: "0px",
-            boxHeight: "48px",
-            boxWidth: "48px",
-          }}
-        />
+          <OTPModal
+            height="358px"
+            width="336px"
+            titleHeight="140px"
+            titleWidth="217px"
+            titleGap="16px"
+            background="transparent"
+            hasCloseButton={false}
+            gap="32px"
+            onVerify={handleVerifyOTP}
+            title="OTP Verification"
+            description="One Time Password has been sent to your"
+            phoneNumber={phoneNumber}
+            buttonText="Verify"
+            initialTime={60}
+            otpBoxProps={{
+              numInputs: 4,
+              otpWidth: "228px",
+              otpHeight: "48px",
+              otpGap: "8px",
+              otpPadding: "0px",
+              boxHeight: "48px",
+              boxWidth: "48px",
+            }}
+          />
         </RightContainer>
       </InnerContainer>
     </Container>

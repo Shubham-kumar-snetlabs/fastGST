@@ -1,9 +1,7 @@
-import React from 'react'
+
 
 const SetAway = () => {
-  return (
-    <div>SetAway</div>
-  )
-}
+  return <div>SetAway</div>;
+};
 
-export default SetAway
+export default SetAway;

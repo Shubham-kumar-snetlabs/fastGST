@@ -14,7 +14,6 @@ import { useState } from "react";
 import DropdownComponent from "../../components/atoms/DropdownComponent";
 import MultiFunctionButtonComponent from "../../components/atoms/MultiFunctionButtonComponent";
 import { useNavigate } from "react-router-dom";
-import { label } from "framer-motion/client";
 import EmojiPicker from "emoji-picker-react";
 
 const Container = styled.div``;
@@ -75,8 +74,8 @@ const SquareStatusIconDiv = styled.div`
 
 const EmojiPickerContainer = styled.div`
   position: absolute;
-  top : 300px;
-  right : 500px;
+  top: 300px;
+  right: 500px;
   z-index: 100;
 `;
 

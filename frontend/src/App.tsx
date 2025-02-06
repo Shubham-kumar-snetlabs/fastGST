@@ -26,23 +26,24 @@ const App:React.FC<DashBoardLeftProps> = () => {
   return (
     <Router>
       <Routes>
-        <Route path='/' element= {<Dashboard activeItem={activeItem} setActiveItem={setActiveItem} />} />
+        <Route path='/' element= {<Dashboard activeItem={0} setActiveItem={setActiveItem} />} />
+        <Route path='filing' element= {<FilingHistory activeItem={activeItem} setActiveItem={setActiveItem}/>} />
         <Route path='/team' element= {<Dashboard activeItem={activeItem} setActiveItem={setActiveItem} />} />
+        <Route path='/team/filing' element= {<FilingHistory activeItem={activeItem} setActiveItem={setActiveItem}/>} />
+
         <Route path='/clients' element= {<Clients activeItem={activeItem} setActiveItem={setActiveItem}/>} />
-        <Route path='/business' element={<Business activeItem={activeItem} setActiveItem={setActiveItem}/>}/>
+        <Route path='/clients/business' element={<Business activeItem={activeItem} setActiveItem={setActiveItem}/>}/>
+        <Route path='/clients/business/business-filing' element= {<BusinessFiling activeItem={activeItem} setActiveItem={setActiveItem}/>} />
+        <Route path='/clients/business/business-filing/gst-filed' element= {<GSTFiled activeItem={activeItem} setActiveItem={setActiveItem}/>} />
+
         <Route path='/billing' element= {<Dashboard activeItem={activeItem} setActiveItem={setActiveItem} />} />
         <Route path='/invites' element= {<Dashboard activeItem={activeItem} setActiveItem={setActiveItem} />} />
+
         <Route path="/profile" element={<Profile  activeItem={activeItem} setActiveItem={setActiveItem}/>} />
         <Route path="/profile/*" element={<Profile  activeItem={activeItem} setActiveItem={setActiveItem}/>} />
+        
         <Route path='/notifications' element= {<Dashboard activeItem={activeItem} setActiveItem={setActiveItem} />} />
         <Route path='/preferences' element= {<FilingHistory activeItem={activeItem} setActiveItem={setActiveItem}/>} />
-
-
-        <Route path='/filing' element= {<FilingHistory activeItem={activeItem} setActiveItem={setActiveItem}/>} />
-        <Route path='/business_filing' element= {<BusinessFiling activeItem={activeItem} setActiveItem={setActiveItem}/>} />
-        <Route path='/gst_filed' element= {<GSTFiled activeItem={activeItem} setActiveItem={setActiveItem}/>} />
-
-
 
         <Route path="/sign-up" element={<RegisterComponent />} />
         <Route path="/verify-otp" element={<VerifyOTPAfterCreationComponent />} />

@@ -34,16 +34,18 @@ const EnterOTPBox: React.FC<EnterOTPBoxProps> = ({
   numInputs = 4,
   allowAlphanumeric = false,
   backgroundColor,
-  gap ,
+  gap,
   padding,
   width,
-  height ,
-  boxHeight ,
+  height,
+  boxHeight,
   boxWidth,
   value = "",
   onChange,
 }) => {
-  const [otpValues, setOtpValues] = useState<string[]>(Array(numInputs).fill(""));
+  const [otpValues, setOtpValues] = useState<string[]>(
+    Array(numInputs).fill("")
+  );
   const inputRefs = useRef<HTMLInputElement[]>([]);
 
   useEffect(() => {
@@ -67,7 +69,10 @@ const EnterOTPBox: React.FC<EnterOTPBoxProps> = ({
     }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, index: number) => {
+  const handleKeyDown = (
+    e: React.KeyboardEvent<HTMLInputElement>,
+    index: number
+  ) => {
     if (e.key === "Backspace") {
       const updatedOtp = [...otpValues];
       if (updatedOtp[index] !== "") {
@@ -84,7 +89,7 @@ const EnterOTPBox: React.FC<EnterOTPBoxProps> = ({
   };
 
   return (
-    <Container width={width} height={height} >
+    <Container width={width} height={height}>
       <BoxContainer gap={gap} padding={padding}>
         {Array.from({ length: numInputs }, (_, index) => (
           <OTPBox

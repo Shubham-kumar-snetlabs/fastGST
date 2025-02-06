@@ -1,11 +1,11 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 import { usePhoneNumber } from "../../contexts/PhoneNumberContext";
-import MultiFunctionInputComponent from '../atoms/MultiFunctionInputComponent';
+import MultiFunctionInputComponent from "../atoms/MultiFunctionInputComponent";
 
 const NumberComponent = styled.div`
   display: flex;
   justify-content: space-between;
-  gap : 10px;
+  gap: 10px;
 `;
 
 const CountryCodeBlock = styled.div`
@@ -47,24 +47,19 @@ const CountryCode = styled.div`
   text-align: center;
 `;
 
-
 const PhoneNumberComponent = () => {
   const { phoneNumber, setPhoneNumber } = usePhoneNumber();
-
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e);
     // console.log(e.target.name);
     // console.log(e.target.value);
-    
-    
+
     let inputValue = e.target.value;
     if (/^\d{0,10}$/.test(inputValue)) {
       setPhoneNumber(inputValue);
     }
   };
-
-
 
   return (
     <NumberComponent>
@@ -73,13 +68,13 @@ const PhoneNumberComponent = () => {
         <CountryCode>+91</CountryCode>
       </CountryCodeBlock>
       <MultiFunctionInputComponent
-      type='text'
-      label='Phone Number'
-      value={phoneNumber}
-      onChange={handleInputChange}
+        type="text"
+        label="Phone Number"
+        value={phoneNumber}
+        onChange={handleInputChange}
       />
     </NumberComponent>
-  )
-}
+  );
+};
 
 export default PhoneNumberComponent;

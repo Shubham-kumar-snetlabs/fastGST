@@ -15,32 +15,34 @@ interface BusinessContextType {
 }
 
 // Create the context with a default value of `undefined`
-const BusinessContext = createContext<BusinessContextType | undefined>(undefined);
+const BusinessContext = createContext<BusinessContextType | undefined>(
+  undefined
+);
 
 // Create the provider component
-export const BusinessProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const BusinessProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [business, setBusiness] = useState<Business[]>([
     {
       id: 1,
-      name: 'Tesla',
-      gstNo: 'EM060724637341T',
-      lastFiled: '15 Nov 2024',
+      name: "Tesla",
+      gstNo: "EM060724637341T",
+      lastFiled: "15 Nov 2024",
     },
     {
-        id: 2,
-        name: 'Space X',
-        gstNo: 'EM060724637341T',
-        lastFiled: '15 Nov 2024',
+      id: 2,
+      name: "Space X",
+      gstNo: "EM060724637341T",
+      lastFiled: "15 Nov 2024",
     },
 
     {
       id: 3,
-      name: 'Neuralink',
-      gstNo: 'EM060724637341T',
-      lastFiled: '15 Nov 2024',
+      name: "Neuralink",
+      gstNo: "EM060724637341T",
+      lastFiled: "15 Nov 2024",
     },
-    
-    
   ]);
 
   return (
@@ -51,7 +53,7 @@ export const BusinessProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 };
 
 // Custom hook to use the TeamMemberContext
-export const useBusiness= () => {
+export const useBusiness = () => {
   const context = useContext(BusinessContext);
   if (!context) {
     throw new Error("useBusiness must be used within a BusinessProvider");

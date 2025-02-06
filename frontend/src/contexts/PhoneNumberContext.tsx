@@ -1,16 +1,18 @@
 import React, { createContext, useState, useContext } from "react";
 
-
 interface PhoneNumberContextType {
   phoneNumber: string;
   setPhoneNumber: React.Dispatch<React.SetStateAction<string>>;
-};
+}
 
-
-const PhoneNumberContext = createContext<PhoneNumberContextType | undefined>(undefined);
+const PhoneNumberContext = createContext<PhoneNumberContextType | undefined>(
+  undefined
+);
 
 // Create a provider component
-export const PhoneNumberProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const PhoneNumberProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [phoneNumber, setPhoneNumber] = useState<string>("");
 
   return (
@@ -19,7 +21,6 @@ export const PhoneNumberProvider: React.FC<{ children: React.ReactNode }> = ({ c
     </PhoneNumberContext.Provider>
   );
 };
-
 
 export const usePhoneNumber = () => {
   const context = useContext(PhoneNumberContext);

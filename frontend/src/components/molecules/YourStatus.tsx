@@ -1,13 +1,14 @@
-import styled from "styled-components"
-import { ChatIconSVG, crossSVG, TravellingBigIconSVG, TravellingSVG } from "../../svg/svg";
+import styled from "styled-components";
+import {
+  ChatIconSVG,
+  crossSVG,
+} from "../../svg/svg";
 import { useLocation } from "react-router-dom";
 
-
 const Container = styled.div`
-  display : flex;
-  flex-direction : column;
+  display: flex;
+  flex-direction: column;
   gap: 8px;
-
 `;
 
 const TitleContainer = styled.div`
@@ -28,33 +29,33 @@ const TitleContainer = styled.div`
 `;
 
 const ContentContainer = styled.div`
-  width : 335px;
-  height : 96px;
-  border-radius : 8px;
-  padding : 16px;
-  box-sizing : border-box;
-  display : flex;
-  gap : 24px;
+  width: 335px;
+  height: 96px;
+  border-radius: 8px;
+  padding: 16px;
+  box-sizing: border-box;
+  display: flex;
+  gap: 24px;
 `;
 
 const ContentInnerContainer = styled.div`
-  width : 303px;
-  height : 64px;
-  display : flex;
-  justify-content : space-between;
+  width: 303px;
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
 `;
 
 const ContentStatusInfoContainer = styled.div`
-  width : 172px;
-  height : 64px;
-  display : flex;
-  flex-direction : column;
-  gap : 6px;
+  width: 172px;
+  height: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 `;
 
 const IconDiv = styled.div`
-  height : 24px;
-  width : 24px;
+  height: 24px;
+  width: 24px;
 `;
 
 const TitleDiv = styled.div`
@@ -64,7 +65,7 @@ const TitleDiv = styled.div`
   line-height: 16px;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
-  color : #657786;
+  color: #657786;
 `;
 
 const DurationDiv = styled.div`
@@ -75,13 +76,12 @@ const DurationDiv = styled.div`
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
-  color : #657786;
-
+  color: #657786;
 `;
 
 const ClearContainer = styled.div`
-  width : 39px;
-  height : 16px;
+  width: 39px;
+  height: 16px;
   font-family: Noto Sans;
   font-size: 16px;
   font-weight: 400;
@@ -89,33 +89,30 @@ const ClearContainer = styled.div`
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
-  color : #EB5244;
+  color: #eb5244;
 `;
 
-
 const YourStatus = () => {
-    const location = useLocation();
-    const statusData = location.state || {};
+  const location = useLocation();
+  const statusData = location.state || {};
   return (
     <Container>
-        <TitleContainer>
-            Your Status
-            {crossSVG}
-        </TitleContainer>
-        <ContentContainer>
-          <ContentInnerContainer>
-            <ContentStatusInfoContainer>
-              <IconDiv>{ChatIconSVG}</IconDiv>
-              <TitleDiv>{statusData.statusText}</TitleDiv>
-              <DurationDiv>{statusData.duration}</DurationDiv>
-            </ContentStatusInfoContainer>
-            <ClearContainer>
-              Clear
-            </ClearContainer>
-          </ContentInnerContainer>
-        </ContentContainer>
+      <TitleContainer>
+        Your Status
+        {crossSVG}
+      </TitleContainer>
+      <ContentContainer>
+        <ContentInnerContainer>
+          <ContentStatusInfoContainer>
+            <IconDiv>{ChatIconSVG}</IconDiv>
+            <TitleDiv>{statusData.statusText}</TitleDiv>
+            <DurationDiv>{statusData.duration}</DurationDiv>
+          </ContentStatusInfoContainer>
+          <ClearContainer>Clear</ClearContainer>
+        </ContentInnerContainer>
+      </ContentContainer>
     </Container>
-  )
-}
+  );
+};
 
-export default YourStatus
+export default YourStatus;

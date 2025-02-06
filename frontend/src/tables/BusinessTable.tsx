@@ -95,12 +95,10 @@ const BusinessTable: React.FC<BusinessTableProps> = ({client}) => {
   const [businessState, setBusinessState] = useState(null)
 
   const handleStartFiling = (item : any)=>{
-    // console.log("Item is :",item);
     setBusinessState(item)
     console.log(client);
-    
-    // console.log("businessState is :",businessState);
-    naviagte('/business_filing',{ state: { businessState, client } })
+
+    naviagte('business-filing',{ state: { businessState, client } })
   }
 
   const handleRemoveClient  = (item : any)=>{

@@ -1,19 +1,19 @@
-import { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import { useEffect, useState } from "react";
+import styled from "styled-components";
 
 const Container = styled.div`
   width: 392px;
-  height : 132px;
-  
+  height: 132px;
+
   gap: 10px;
   border-radius: 4px;
-  color: #FFFFFF;
-  background: #FFFFFF33;
+  color: #ffffff;
+  background: #ffffff33;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;  
+  overflow: hidden;
 `;
 
 const Slide = styled.div<{ isActive: boolean }>`
@@ -34,7 +34,7 @@ const Slide = styled.div<{ isActive: boolean }>`
 const Comment = styled.p`
   width: 348px;
   height: 44px;
-  position : relative;
+  position: relative;
   font-family: Noto Sans;
   font-size: 16px;
   font-weight: 400;
@@ -42,16 +42,15 @@ const Comment = styled.p`
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
-  color : #FFFFFF;
+  color: #ffffff;
 `;
 
 const Photo = styled.img`
   width: 32px;
   height: 32px;
   gap: 0px;
-  border-radius: 4px ;
+  border-radius: 4px;
   opacity: 0px;
-
 `;
 
 const Name = styled.h3`
@@ -66,7 +65,7 @@ const Name = styled.h3`
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
-  color : #FFFFFF;
+  color: #ffffff;
   margin: 0px;
 `;
 
@@ -83,15 +82,14 @@ const Profession = styled.p`
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
-  color : #FFFFFF;
+  color: #ffffff;
   margin-top: 5px;
 `;
 
-
 const DotsContainer = styled.div`
-   display: flex;
-   justify-content: center;
-   margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
 `;
 
 const DotsWrapper = styled.div`
@@ -105,58 +103,68 @@ const Dot = styled.div<{ isActive: boolean }>`
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: ${({ isActive }) => (isActive ? '#FFFFFF' : '#AABBC2')};
+  background-color: ${({ isActive }) => (isActive ? "#FFFFFF" : "#AABBC2")};
   cursor: pointer;
 `;
 
 const CarouselComponent = () => {
-    const slides = [
-        {
-          name: 'Apoorva K.',
-          profession: 'CA',
-          comment: 'Simply unbelievable! I am really satisfied with the app.',
-          photo: '/image.png', 
-        },
-        {
-          name: 'Amit K.',
-          profession: 'SDE',
-          comment: 'Whenever you want to make good financial decisions, use FastGST',
-          photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHr74Pjdj__bQPnZK-BFujbwgnP1t5PIqkig&s', 
-        },
-        {
-          name: 'Ram S.',
-          profession: 'SDE',
-          comment: 'Really helpful for gathering all information about GST',
-          photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHr74Pjdj__bQPnZK-BFujbwgnP1t5PIqkig&s', 
-        },
-        
-      ];
+  const slides = [
+    {
+      name: "Apoorva K.",
+      profession: "CA",
+      comment: "Simply unbelievable! I am really satisfied with the app.",
+      photo: "/image.png",
+    },
+    {
+      name: "Amit K.",
+      profession: "SDE",
+      comment:
+        "Whenever you want to make good financial decisions, use FastGST",
+      photo:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHr74Pjdj__bQPnZK-BFujbwgnP1t5PIqkig&s",
+    },
+    {
+      name: "Ram S.",
+      profession: "SDE",
+      comment: "Really helpful for gathering all information about GST",
+      photo:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHr74Pjdj__bQPnZK-BFujbwgnP1t5PIqkig&s",
+    },
+  ];
 
-    const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-    const handleNext = () => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === slides.length - 1 ? 0 : prevIndex + 1
-      );
-    };
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === slides.length - 1 ? 0 : prevIndex + 1
+    );
+  };
 
-    useEffect(() => {
-      const interval = setInterval(() => {
-        handleNext();
-      }, 3000);
-      return () => clearInterval(interval); 
-    }, [currentIndex]);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleNext();
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [currentIndex]);
 
-    return (
-        <>
-        <Container>
+  return (
+    <>
+      <Container>
         {slides.map((slide, index) => (
           <Slide key={index} isActive={index === currentIndex}>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <div style={{ display: "flex", flexDirection: "column" }}>
               <Comment>{slide.comment}</Comment>
-              <div style={{ display: 'flex', alignContent: 'center', gap: '15px' }}>
+              <div
+                style={{ display: "flex", alignContent: "center", gap: "15px" }}
+              >
                 <Photo src={slide.photo} />
-                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                  }}
+                >
                   <Name>{slide.name}</Name>
                   <Profession>{slide.profession}</Profession>
                 </div>
@@ -164,19 +172,16 @@ const CarouselComponent = () => {
             </div>
           </Slide>
         ))}
-        </Container>
-        <DotsContainer>
-            <DotsWrapper>
-            {slides.map((_, index) => (
-            <Dot
-                key={index}
-                isActive={index === currentIndex}
-            />
-            ))}
-            </DotsWrapper>
-        </DotsContainer>
-        </>
-    );
+      </Container>
+      <DotsContainer>
+        <DotsWrapper>
+          {slides.map((_, index) => (
+            <Dot key={index} isActive={index === currentIndex} />
+          ))}
+        </DotsWrapper>
+      </DotsContainer>
+    </>
+  );
 };
 
 export default CarouselComponent;

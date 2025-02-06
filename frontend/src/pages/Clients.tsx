@@ -3,12 +3,12 @@ import TopNavigatingBar from "../components/molecules/TopNavigatingBar";
 import { ClientSmallIconSVG, SearchSVG } from "../svg/svg";
 import MemberCount from "../components/atoms/MemberCount";
 import SearchComponent from "../components/atoms/SearchComponent";
-import { useNavigate } from "react-router-dom";
 import DashBoardTitle from "../components/atoms/deprecated/DashBoardHead";
 import DashBoardBody from "../components/atoms/deprecated/DashBoardBody";
 import { useClients } from "../contexts/ClientsContext";
 import ClientsTable from "../tables/ClientsTable";
 import Layout from "../layout/Layout";
+import { useState } from "react";
 
 const InnerRightContainer = styled.div`
   height: 100%;
@@ -104,7 +104,7 @@ const SearchFilterandHistoryDiv = styled.div`
   width: 495px;
   display: flex;
   gap: 16px;
-  justify-content : flex-end;
+  justify-content: flex-end;
 `;
 
 const SearchandFilterBlock = styled.div``;
@@ -116,20 +116,21 @@ interface DashBoardLeftProps {
   setActiveItem: (id: number) => void;
 }
 
-const Clients: React.FC<DashBoardLeftProps> = ({ activeItem, setActiveItem }) => {
+const Clients: React.FC<DashBoardLeftProps> = ({
+  activeItem,
+  setActiveItem,
+}) => {
   const headDescription =
     "Effortlessly manage your clients and their businesses by automatically receiving your client’s business OTPs for streamlining the tax filing process.";
-  const navigate = useNavigate();
+
   const { clients } = useClients();
+
+  const [currentStep, setCurrentStep] = useState(1);
   return (
     <Layout activeItem={activeItem} setActiveItem={setActiveItem}>
       <InnerRightContainer>
         <NavigatingTopBar>
-          <TopNavigatingBar
-            showBackButton={false}
-            mainText="Clients"
-            showExtendedRoutes={false}
-          />
+          <TopNavigatingBar />
         </NavigatingTopBar>
         <ContentContainer>
           <ContentMainContainer>
@@ -138,7 +139,6 @@ const Clients: React.FC<DashBoardLeftProps> = ({ activeItem, setActiveItem }) =>
                 svg={ClientSmallIconSVG}
                 headTitle="Clients"
                 headDescription={headDescription}
-                
               />
             </TitleContainer>
             <BodyContainer>
@@ -158,9 +158,13 @@ const Clients: React.FC<DashBoardLeftProps> = ({ activeItem, setActiveItem }) =>
                 </SearchandFilterBlock>
                 <TableDiv>
                   {clients.length ? (
-                    <ClientsTable  />
+                    <ClientsTable />
                   ) : (
-                    <DashBoardBody type="client" />
+                    <DashBoardBody
+                      type="team"
+                      setCurrentStep={setCurrentStep}
+                      currentStep={currentStep}
+                    />
                   )}
                 </TableDiv>
               </SearchandFilterContainer>

@@ -15,8 +15,8 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding-left : 12px;
-  padding-right : 12px;
+  padding-left: 12px;
+  padding-right: 12px;
 `;
 
 const NavContainer = styled.div<{ isActive: boolean }>`
@@ -31,7 +31,14 @@ const NavContainer = styled.div<{ isActive: boolean }>`
   background-color: ${(props) => (props.isActive ? "#F5F8FA" : "transparent")};
   color: ${(props) => (props.isActive ? "#1DA1F2" : "#14171A")};
   cursor: pointer;
-  box-shadow: ${(props) => (props.isActive ? "0px 4px 4px 0px #B9DCF740" : "none")};
+  box-shadow: ${(props) =>
+    props.isActive ? "0px 4px 4px 0px #B9DCF740" : "none"};
+
+  & :hover{
+  //  background : red;
+  //  padding: 8px 16px;
+  //  box-sizing: border-box;
+  }
 
   a {
     text-decoration: none;
@@ -47,6 +54,8 @@ const FlexWrapper = styled.div`
   justify-content: space-between;
   width: 100%;
   align-items: center;
+
+  
 `;
 
 const MainContent = styled.div`
@@ -81,7 +90,7 @@ interface NavItem {
   id: number;
   text: string;
   icon: JSX.Element;
-  link: string; 
+  link: string;
   additionalIcon?: JSX.Element;
 }
 
@@ -96,16 +105,23 @@ const navItems: NavItem[] = [
   { id: 3, text: "Billing", icon: BillingSVG, link: "/billing" },
   { id: 4, text: "Invites", icon: InvitesSVG, link: "/invites" },
   { id: 5, text: "Profile", icon: ProfileSVG, link: "/profile" },
-  { id: 6, text: "Notifications", icon: NotificationsSVG, link: "/notifications", additionalIcon: NotificatioNumberSVG },
+  {
+    id: 6,
+    text: "Notifications",
+    icon: NotificationsSVG,
+    link: "/notifications",
+    additionalIcon: NotificatioNumberSVG,
+  },
   { id: 7, text: "Preferences", icon: PreferencesSVG, link: "/preferences" },
 ];
 
-const DashBoardNav: React.FC<DashBoardNavProps> = ({activeItem, setActiveItem}) => {
-  
-
+const DashBoardNav: React.FC<DashBoardNavProps> = ({
+  activeItem,
+  setActiveItem,
+}) => {
   const handleClick = (id: number) => {
     setActiveItem(id);
-    console.log(activeItem," and ",id);
+    console.log(activeItem, " and ", id);
   };
 
   return (

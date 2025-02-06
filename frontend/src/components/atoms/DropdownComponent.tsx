@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import styled from "styled-components";
 
 interface FilterComponentProps {
   svg?: React.ReactNode; // SVG or any JSX to render as an icon
@@ -10,55 +10,55 @@ interface FilterComponentProps {
   borderColor?: string; // Border color
   borderRadius?: string;
   background?: string; // Background color
-  justifyContent? : string;
+  justifyContent?: string;
   text?: string; // Placeholder text when no option is selected
   color?: string; // Text color
   fontSize?: string; // Font size for the text
   fontWeight?: number; // Font weight for the text
   fontStyle?: string; // Font style for the text
-  options?: { value: string; label: string; svg?: any; onClick?: ()=>void}[];
-  onChange?:  (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  onClick?: ()=>void;
+  options?: { value: string; label: string; svg?: any; onClick?: () => void }[];
+  onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  onClick?: () => void;
 }
 
 const FilterDiv = styled.div<FilterComponentProps>`
-  width: ${({ width }) => width || '110px'};
-  height: ${({ height }) => height || '36px'};
-  padding: ${({ padding }) => padding || '9px 12px'};
+  width: ${({ width }) => width || "110px"};
+  height: ${({ height }) => height || "36px"};
+  padding: ${({ padding }) => padding || "9px 12px"};
   box-sizing: border-box;
-  gap: ${({ gap }) => gap || '6px'};
-  border-radius: ${({borderRadius}) => borderRadius || '100px'};
-  border: 1px solid ${({ borderColor }) => borderColor || '#657786'};
-  background: ${({ background }) => background || 'transparent'};
+  gap: ${({ gap }) => gap || "6px"};
+  border-radius: ${({ borderRadius }) => borderRadius || "100px"};
+  border: 1px solid ${({ borderColor }) => borderColor || "#657786"};
+  background: ${({ background }) => background || "transparent"};
   display: flex;
   align-items: center;
-  cursor : pointer;
-  justify-content : ${({justifyContent}) => justifyContent || 'start'};
+  cursor: pointer;
+  justify-content: ${({ justifyContent }) => justifyContent || "start"};
 `;
 
 const FilterText = styled.div<FilterComponentProps>`
-  font-size: ${({ fontSize }) => fontSize || '16px'};
+  font-size: ${({ fontSize }) => fontSize || "16px"};
   font-weight: ${({ fontWeight }) => fontWeight || 400};
-  font-style: ${({ fontStyle }) => fontStyle || 'Noto Sans'};
-  color: ${({ color }) => color || '#657786'};
-  line-height: ${({ fontSize }) => fontSize || '16px'};
-  white-space : nowrap;
+  font-style: ${({ fontStyle }) => fontStyle || "Noto Sans"};
+  color: ${({ color }) => color || "#657786"};
+  line-height: ${({ fontSize }) => fontSize || "16px"};
+  white-space: nowrap;
 `;
 
 const Dropdown = styled.select<FilterComponentProps>`
   width: 16px;
   height: 16px;
-  font-size: ${({ fontSize }) => fontSize || '14px'};
+  font-size: ${({ fontSize }) => fontSize || "14px"};
   font-weight: ${({ fontWeight }) => fontWeight || 400};
-  color: ${({ color }) => color || '#657786'};
-  background: ${({ background }) => background || '#F5F8FA'};
+  color: ${({ color }) => color || "#657786"};
+  background: ${({ background }) => background || "#F5F8FA"};
   border: none;
   outline: none;
-  cursor : pointer;
+  cursor: pointer;
 
   option {
-    font-size: ${({ fontSize }) => fontSize || '14px'};
-    color: ${({ color }) => color || '#657786'};
+    font-size: ${({ fontSize }) => fontSize || "14px"};
+    color: ${({ color }) => color || "#657786"};
     background: transparent;
     border-radius: 100px;
   }
@@ -85,9 +85,7 @@ const DropdownComponent: React.FC<FilterComponentProps> = ({
   const [selectedOption, setSelectedOption] = useState<any>(null);
 
   const handleDropdownChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selected = options.find(
-      (option) => option.value === e.target.value
-    );
+    const selected = options.find((option) => option.value === e.target.value);
     setSelectedOption(selected || null);
 
     // Execute the specific `onClick` handler if defined
@@ -118,7 +116,7 @@ const DropdownComponent: React.FC<FilterComponentProps> = ({
         fontWeight={fontWeight}
         fontStyle={fontStyle}
       >
-        {selectedOption?.label || text} 
+        {selectedOption?.label || text}
       </FilterText>
       <Dropdown
         fontSize={fontSize}
@@ -126,9 +124,16 @@ const DropdownComponent: React.FC<FilterComponentProps> = ({
         color={color}
         background={background}
         onChange={handleDropdownChange}
-        value={selectedOption?.value }
+        value={selectedOption?.value}
       >
-        <option value="" disabled selected={!selectedOption} style={{display : 'none'}}>{text}</option> 
+        <option
+          value=""
+          disabled
+          selected={!selectedOption}
+          style={{ display: "none" }}
+        >
+          {text}
+        </option>
         {options.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}

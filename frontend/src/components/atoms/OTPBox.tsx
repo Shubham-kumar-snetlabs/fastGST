@@ -1,17 +1,24 @@
 import React from "react";
 import styled from "styled-components";
 
-const Container = styled.div<{ borderColor?: string; backgroundColor?: string; height?: string; width?: string; padding?: string }>`
+const Container = styled.div<{
+  borderColor?: string;
+  backgroundColor?: string;
+  height?: string;
+  width?: string;
+  padding?: string;
+}>`
   height: ${({ height }) => height || "88px"};
   width: ${({ width }) => width || "88px"};
   border: 1px solid ${({ borderColor }) => borderColor || "#4C9EEB"};
   border-radius: 4px;
   padding: ${({ padding }) => padding || "8px"};
-  box-sizing : border-box;
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${({ backgroundColor }) => backgroundColor || "transparent"};
+  background-color: ${({ backgroundColor }) =>
+    backgroundColor || "transparent"};
 `;
 
 const OTPNumberInput = styled.input<{ allowAlphanumeric: boolean }>`
@@ -19,15 +26,14 @@ const OTPNumberInput = styled.input<{ allowAlphanumeric: boolean }>`
   outline: none;
   background: transparent;
 
-
-  font-family: Lato;
+  font-family: Noto Sans;
   font-size: 24px;
   font-weight: 600;
   line-height: 24px;
   text-align: center;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
-  color: #4C9EEB;
+  color: #4c9eeb;
   width: 100%;
   text-align: center;
   ::-webkit-inner-spin-button {
@@ -63,7 +69,13 @@ const OTPBox: React.FC<OTPBoxProps> = ({
   padding,
 }) => {
   return (
-    <Container borderColor={borderColor} backgroundColor={backgroundColor} height={height} width={width} padding={padding}>
+    <Container
+      borderColor={borderColor}
+      backgroundColor={backgroundColor}
+      height={height}
+      width={width}
+      padding={padding}
+    >
       <OTPNumberInput
         type="text"
         maxLength={1}

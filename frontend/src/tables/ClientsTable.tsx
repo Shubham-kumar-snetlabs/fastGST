@@ -54,7 +54,7 @@ const ClientsTable: React.FC = () => {
 
 const handleGotoBusiness = (client : any) => {
   console.log('Go to business Clicked');
-  navigate('/business',{state:{client}})
+  navigate('business',{state:{client}})
 }
   
 

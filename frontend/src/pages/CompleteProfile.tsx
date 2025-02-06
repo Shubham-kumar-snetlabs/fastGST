@@ -1,10 +1,9 @@
-import styled from 'styled-components';
-import TitleName from '../components/atoms/TitleName';
-import DescriptionComponent from '../components/atoms/DescriptionComponent';
-import UserDetailInputs from '../components/organism/UserDetailInputs';
-import { CompleteProfileSVG } from '../svg/svg';
-import FixedLeftPage from './FixedLeftPage';
-
+import styled from "styled-components";
+import TitleName from "../components/atoms/TitleName";
+import DescriptionComponent from "../components/atoms/DescriptionComponent";
+import UserDetailInputs from "../components/organism/UserDetailInputs";
+import { CompleteProfileSVG } from "../svg/svg";
+import FixedLeftPage from "./FixedLeftPage";
 
 const Container = styled.div`
   display: flex;
@@ -66,8 +65,8 @@ const CompleteProfileContainer = styled.div`
 `;
 
 const FirstContainer = styled.div`
-  height : auto;
-  width : auto;
+  height: auto;
+  width: auto;
 `;
 
 const SecondContainer = styled.div`
@@ -83,7 +82,7 @@ const ThirdContainer = styled.div`
 // Component
 const CompleteProfile = () => {
   const desc =
-    'It’s mandatory to verify your KYC. This is a one-time process and won’t take more than 1 minute of your time.';
+    "It’s mandatory to verify your KYC. This is a one-time process and won’t take more than 1 minute of your time.";
 
   return (
     <Container>
@@ -94,14 +93,13 @@ const CompleteProfile = () => {
         <RightContainer>
           <InnerRightContainer>
             <CompleteProfileContainer>
-
               <FirstContainer>
-                <TitleName 
-                svgContent={CompleteProfileSVG} 
-                title="Complete Profile" 
-                width='228px'
-                height='140px'
-                gap='16px'
+                <TitleName
+                  svgContent={CompleteProfileSVG}
+                  title="Complete Profile"
+                  width="228px"
+                  height="140px"
+                  gap="16px"
                 />
               </FirstContainer>
 
@@ -112,7 +110,6 @@ const CompleteProfile = () => {
               <ThirdContainer>
                 <DescriptionComponent desc={desc} />
               </ThirdContainer>
-              
             </CompleteProfileContainer>
           </InnerRightContainer>
         </RightContainer>

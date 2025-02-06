@@ -16,52 +16,56 @@ interface TeamMemberContextType {
 }
 
 // Create the context with a default value of `undefined`
-const TeamMemberContext = createContext<TeamMemberContextType | undefined>(undefined);
+const TeamMemberContext = createContext<TeamMemberContextType | undefined>(
+  undefined
+);
 
 // Create the provider component
-export const TeamMemberProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const TeamMemberProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([
     {
       id: 1,
-      name: 'Shivang Patel',
-      phoneNumber: '1234567890',
-      role: 'Owner',
-      photo: 'ShivangSir.png',
+      name: "Shivang Patel",
+      phoneNumber: "1234567890",
+      role: "Owner",
+      photo: "ShivangSir.png",
     },
     {
       id: 2,
-      name: 'Chirag Jain',
-      phoneNumber: '987-654-3210',
-      role: 'Super Admin',
-      photo: 'ShivangSir.png',
+      name: "Chirag Jain",
+      phoneNumber: "987-654-3210",
+      role: "Super Admin",
+      photo: "ShivangSir.png",
     },
     {
       id: 3,
-      name: 'Aman Singh',
-      phoneNumber: '987-654-3210',
-      role: 'Admin',
-      photo: 'ShivangSir.png',
+      name: "Aman Singh",
+      phoneNumber: "987-654-3210",
+      role: "Admin",
+      photo: "ShivangSir.png",
     },
     {
       id: 4,
-      name: 'Sourav Saini',
-      phoneNumber: '987-654-3210',
-      role: 'Member',
-      photo: 'ShivangSir.png',
+      name: "Sourav Saini",
+      phoneNumber: "987-654-3210",
+      role: "Member",
+      photo: "ShivangSir.png",
     },
     {
       id: 5,
-      name: 'Shubham Kumar',
-      phoneNumber: '987-654-3210',
-      role: 'Member',
-      photo: 'ShivangSir.png',
+      name: "Shubham Kumar",
+      phoneNumber: "987-654-3210",
+      role: "Member",
+      photo: "ShivangSir.png",
     },
     {
       id: 6,
-      name: 'Member-6',
-      phoneNumber: '987-654-3210',
-      role: 'Member',
-      photo: 'ShivangSir.png',
+      name: "Member-6",
+      phoneNumber: "987-654-3210",
+      role: "Member",
+      photo: "ShivangSir.png",
     },
   ]);
 

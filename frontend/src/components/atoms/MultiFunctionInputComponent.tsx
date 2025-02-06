@@ -83,7 +83,7 @@ interface InputProps {
   fontSize?: string;
   value?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  label: string; 
+  label: string;
 }
 
 const MultiFunctionInputComponent = ({
@@ -99,25 +99,26 @@ const MultiFunctionInputComponent = ({
   value,
   onChange,
 }: InputProps) => {
-  const [blockText, setBlockContent] = useState<boolean | string>(value?value:false); 
+  const [blockText, setBlockContent] = useState<boolean | string>(
+    value ? value : false
+  );
   const inputRef = useRef<HTMLInputElement>(null);
-
 
   useEffect(() => {
     if (value && value.trim() !== "") {
       setBlockContent(true);
     }
-  }, [value]); 
+  }, [value]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let inputValue = e.target.value;
 
     if (type === "phone" && inputValue.length > 10) {
-      inputValue = inputValue.slice(0, 10); 
+      inputValue = inputValue.slice(0, 10);
     }
 
-    setBlockContent(inputValue.length > 0); 
-    onChange(e); 
+    setBlockContent(inputValue.length > 0);
+    onChange(e);
   };
 
   return (
@@ -125,7 +126,7 @@ const MultiFunctionInputComponent = ({
       <WrittenTextAfterInput show={blockText}>{label}</WrittenTextAfterInput>
       <InputBlock
         ref={inputRef}
-        type={type === "phone" ? "tel" : type} 
+        type={type === "phone" ? "tel" : type}
         placeholder={placeholder || label}
         width={width}
         height={height}

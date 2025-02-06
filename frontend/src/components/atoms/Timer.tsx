@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 
 interface TimerProps {
   height?: string;
@@ -15,19 +15,19 @@ interface TimerProps {
 }
 
 const Container = styled.div<TimerProps>`
-  height: ${({ height }) => height || 'auto'};
-  width: ${({ width }) => width || 'auto'};
-  color: ${({ color }) => color || '#4D4D4D'};
+  height: ${({ height }) => height || "auto"};
+  width: ${({ width }) => width || "auto"};
+  color: ${({ color }) => color || "#4D4D4D"};
   display: flex;
   align-items: center;
-  justify-content : center;
-  gap: ${({ gap }) => gap || '4px'};
-  padding: ${({ padding }) => padding || '0'};
-  box-sizing : border-box;
-  font-family: ${({ fontStyle }) => fontStyle || 'Noto Sans'};
-  font-size: ${({ fontSize }) => fontSize || '16px'};
+  justify-content: center;
+  gap: ${({ gap }) => gap || "4px"};
+  padding: ${({ padding }) => padding || "0"};
+  box-sizing: border-box;
+  font-family: ${({ fontStyle }) => fontStyle || "Noto Sans"};
+  font-size: ${({ fontSize }) => fontSize || "16px"};
   font-weight: ${({ fontWeight }) => fontWeight || 400};
-  line-height: ${({ fontSize }) => fontSize || '16px'};
+  line-height: ${({ fontSize }) => fontSize || "16px"};
   text-align: center;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
@@ -61,7 +61,9 @@ const Timer: React.FC<TimerProps> = ({
   const formatTime = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
     const secs = seconds % 60;
-    return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    return `${minutes.toString().padStart(2, "0")}:${secs
+      .toString()
+      .padStart(2, "0")}`;
   };
 
   return (

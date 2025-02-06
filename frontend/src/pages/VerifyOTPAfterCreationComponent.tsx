@@ -1,8 +1,8 @@
-import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
-import { usePhoneNumber } from '../contexts/PhoneNumberContext';
-import FixedLeftPage from './FixedLeftPage';
-import OTPModal from './profile/OTPModal';
+import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import { usePhoneNumber } from "../contexts/PhoneNumberContext";
+import FixedLeftPage from "./FixedLeftPage";
+import OTPModal from "./profile/OTPModal";
 
 const Container = styled.div`
   display: flex;
@@ -10,7 +10,7 @@ const Container = styled.div`
   align-items: center;
   height: 100vh;
   width: 100vw;
-  background: #E0E0E0;
+  background: #e0e0e0;
 `;
 
 const InnerContainer = styled.div`
@@ -18,7 +18,7 @@ const InnerContainer = styled.div`
   width: 964px;
   padding-top: 8px;
   padding-left: 8px;
-  background: #F5F8FA;
+  background: #f5f8fa;
   display: flex;
   border-radius: 8px;
   gap: 2px;
@@ -43,15 +43,14 @@ const RightContainer = styled.div`
   align-items: center;
 `;
 
-
 const VerifyOTPAfterCreationComponent = () => {
   const { phoneNumber, setPhoneNumber } = usePhoneNumber();
 
   const navigate = useNavigate();
 
   const handleVerifyOTP = () => {
-    setPhoneNumber('');
-    navigate('/create-account');
+    setPhoneNumber("");
+    navigate("/create-account");
   };
 
   return (
@@ -61,31 +60,31 @@ const VerifyOTPAfterCreationComponent = () => {
           <FixedLeftPage />
         </LeftContainer>
         <RightContainer>
-        <OTPModal
-          height='358px'
-          width='336px'
-          titleHeight='140px'
-          titleWidth='217px'
-          titleGap='16px'
-          background="transparent"
-          hasCloseButton = {false}
-          gap='32px'
-          onVerify={handleVerifyOTP}
-          title="OTP Verification"
-          description= 'One Time Password has been sent to your'
-          phoneNumber= {phoneNumber}
-          buttonText="Verify"
-          initialTime={60}  
-          otpBoxProps={{
-            numInputs: 4,       
-            otpWidth: "228px",
-            otpHeight: "48px",
-            otpGap: "8px",
-            otpPadding: "0px",
-            boxHeight: "48px",
-            boxWidth: "48px",
-          }}
-        />
+          <OTPModal
+            height="358px"
+            width="336px"
+            titleHeight="140px"
+            titleWidth="217px"
+            titleGap="16px"
+            background="transparent"
+            hasCloseButton={false}
+            gap="32px"
+            onVerify={handleVerifyOTP}
+            title="OTP Verification"
+            description="One Time Password has been sent to your"
+            phoneNumber={phoneNumber}
+            buttonText="Verify"
+            initialTime={60}
+            otpBoxProps={{
+              numInputs: 4,
+              otpWidth: "228px",
+              otpHeight: "48px",
+              otpGap: "8px",
+              otpPadding: "0px",
+              boxHeight: "48px",
+              boxWidth: "48px",
+            }}
+          />
         </RightContainer>
       </InnerContainer>
     </Container>

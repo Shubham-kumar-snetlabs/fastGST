@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import TopNavigatingBar from "../components/molecules/TopNavigatingBar";
-import { BusinessIconSVG,  SearchSVG } from "../svg/svg";
+import { BusinessIconSVG, SearchSVG } from "../svg/svg";
 import MemberCount from "../components/atoms/MemberCount";
 import SearchComponent from "../components/atoms/SearchComponent";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import DashBoardTitle from "../components/atoms/deprecated/DashBoardHead";
 import DashBoardBody from "../components/atoms/deprecated/DashBoardBody";
 import Layout from "../layout/Layout";
@@ -12,8 +12,6 @@ import { useBusiness } from "../contexts/BusinessContext";
 import PersonInfoComponent from "../components/atoms/PersonInfoComponent";
 import { useState } from "react";
 import ClientDetails from "../components/molecules/ClientDetails";
-
-
 
 const InnerRightContainer = styled.div`
   height: 100%;
@@ -72,7 +70,7 @@ const TitleContainer = styled.div`
   box-sizing: border-box;
   display: flex;
   gap: 10px;
-  align-items : center;
+  align-items: center;
 `;
 
 const BodyContainer = styled.div`
@@ -110,7 +108,7 @@ const SearchFilterandHistoryDiv = styled.div`
   width: 495px;
   display: flex;
   gap: 16px;
-  justify-content : flex-end;
+  justify-content: flex-end;
 `;
 
 interface DashBoardLeftProps {
@@ -122,25 +120,23 @@ const SearchandFilterBlock = styled.div``;
 
 const TableDiv = styled.div``;
 
-const Business: React.FC<DashBoardLeftProps> = ({ activeItem, setActiveItem }) => {
-  const headDescription = "Streamline your client’s tax filing process by effortlessly managing their business OTPs with automatic forwarding.";
+const Business: React.FC<DashBoardLeftProps> = ({
+  activeItem,
+  setActiveItem,
+}) => {
+  const headDescription =
+    "Streamline your client’s tax filing process by effortlessly managing their business OTPs with automatic forwarding.";
 
-  const navigate = useNavigate();
+  const [currentStep, setCurrentStep] = useState(1)
   const { business } = useBusiness();
   const location = useLocation();
   const { client } = location.state || {};
-  const [showClientDetails, setShowClientDetails] = useState(false)
+  const [showClientDetails, setShowClientDetails] = useState(false);
   return (
-    <Layout activeItem={activeItem} setActiveItem={setActiveItem} >
+    <Layout activeItem={activeItem} setActiveItem={setActiveItem}>
       <InnerRightContainer>
         <NavigatingTopBar>
-          <TopNavigatingBar
-            showBackButton={true}
-            mainText="Client"
-            showExtendedRoutes={true}
-            extendedRouteText="Business"
-            backButtonAction={()=>navigate('/clients')}
-          />
+          <TopNavigatingBar />
         </NavigatingTopBar>
         <ContentContainer>
           <ContentMainContainer>
@@ -153,12 +149,12 @@ const Business: React.FC<DashBoardLeftProps> = ({ activeItem, setActiveItem }) =
                 textGap=""
               />
               <PersonInfoComponent
-              name={client?.name}
-              photo={client?.photo}
-              background="#E4F4FF"
-              width="105.15px"
-              height="32px"
-              onClick={()=>setShowClientDetails(true)}
+                name={client?.name}
+                photo={client?.photo}
+                background="#E4F4FF"
+                width="105.15px"
+                height="32px"
+                onClick={() => setShowClientDetails(true)}
               />
             </TitleContainer>
             <BodyContainer>
@@ -166,15 +162,25 @@ const Business: React.FC<DashBoardLeftProps> = ({ activeItem, setActiveItem }) =
                 <SearchandFilterBlock>
                   {business?.length && (
                     <SearchAndFilterDiv>
-                      <MemberCount label="All Members" count={business?.length} />
+                      <MemberCount
+                        label="All Members"
+                        count={business?.length}
+                      />
                       <SearchFilterandHistoryDiv>
-                        <SearchComponent svg={SearchSVG} placeholder="Search a Team member..." />
+                        <SearchComponent
+                          svg={SearchSVG}
+                          placeholder="Search a Team member..."
+                        />
                       </SearchFilterandHistoryDiv>
                     </SearchAndFilterDiv>
                   )}
                 </SearchandFilterBlock>
                 <TableDiv>
-                  {business?.length ? <BusinessTable client={client}/> : <DashBoardBody type="team"/>}
+                  {business?.length ? (
+                    <BusinessTable client={client} />
+                  ) : (
+                    <DashBoardBody type="team" currentStep={currentStep} setCurrentStep={setCurrentStep} />
+                  )}
                 </TableDiv>
               </SearchandFilterContainer>
             </BodyContainer>
@@ -183,9 +189,9 @@ const Business: React.FC<DashBoardLeftProps> = ({ activeItem, setActiveItem }) =
       </InnerRightContainer>
       {showClientDetails && (
         <ClientDetails
-        showClientDetails={showClientDetails}
-        setShowClientDetails={setShowClientDetails}
-        client={client}
+          showClientDetails={showClientDetails}
+          setShowClientDetails={setShowClientDetails}
+          client={client}
         />
       )}
     </Layout>

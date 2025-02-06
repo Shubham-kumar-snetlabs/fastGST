@@ -15,7 +15,11 @@ const Container = styled.div<{ background: string }>`
   z-index: 999;
 `;
 
-const MainContainer = styled.div<{ width: string; height: string; padding: string }>`
+const MainContainer = styled.div<{
+  width: string;
+  height: string;
+  padding: string;
+}>`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
   border-radius: 12px;
@@ -48,27 +52,33 @@ const TextContainer = styled.div`
   gap: 12px;
 `;
 
-const Title = styled.div<{ fontSize: string; fontWeight: string; color: string }>`
+const Title = styled.div<{
+  fontSize: string;
+  fontWeight: string;
+  color: string;
+}>`
   font-size: ${({ fontSize }) => fontSize};
   font-weight: ${({ fontWeight }) => fontWeight};
-  color: ${({color})=>color };
+  color: ${({ color }) => color};
 `;
 
-const Description = styled.div<{ color: string; fontSize: string; lineHeight: string }>`
+const Description = styled.div<{
+  color: string;
+  fontSize: string;
+  lineHeight: string;
+}>`
   font-size: ${({ fontSize }) => fontSize};
   line-height: ${({ lineHeight }) => lineHeight};
   color: ${({ color }) => color};
 `;
 
 const ButtonContainer = styled.div`
-  height : 100px;
-  width : 408px;
+  height: 100px;
+  width: 408px;
   display: flex;
   flex-direction: column;
   gap: 16px;
 `;
-
-
 
 interface ButtonConfig {
   text: string;
@@ -139,7 +149,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
             <Title
               fontSize={titleStyles.fontSize || "18px"}
               fontWeight={titleStyles.fontWeight || "500"}
-              color={titleStyles.color || '#14171A'}
+              color={titleStyles.color || "#14171A"}
             >
               {title}
             </Title>
@@ -147,7 +157,6 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
               color={descriptionStyles.color || "#657786"}
               fontSize={descriptionStyles.fontSize || "14px"}
               lineHeight={descriptionStyles.lineHeight || "18.9px"}
-              
             >
               {description}
             </Description>

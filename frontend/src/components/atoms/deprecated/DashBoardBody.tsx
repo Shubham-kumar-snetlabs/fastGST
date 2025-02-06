@@ -1,14 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { 
-  ClientIconSVG,
-  number2SVG, 
-  number3SVG, 
-  number4SVG, 
-  number5SVG, 
-  TeamIconSVG, 
-  tickSVG 
-} from "../../../svg/svg";
+import { ClientIconSVG, TeamIconSVG } from "../../../svg/svg";
 import StepContainerComponent from "../../organism/StepContainerComponent";
 
 const InnerBodyContainer = styled.div`
@@ -41,7 +33,7 @@ const BodyContentContainer = styled.div`
 const BodyTitle = styled.div`
   height: 44px;
   width: 316px;
-  font-family: Inter;
+  font-family: Noto Sans;
   font-size: 18px;
   font-weight: 500;
   line-height: 21.78px;
@@ -54,7 +46,7 @@ const BodyDesciption = styled.div`
   width: 100%;
   min-width: 316px;
   height: 17px;
-  font-family: Inter;
+  font-family: Noto Sans;
   font-size: 14px;
   font-weight: 400;
   line-height: 16.94px;
@@ -66,7 +58,7 @@ const BodyDesciption = styled.div`
 const BodyContent = styled.div`
   width: 316px;
   height: 376px;
-  padding: 16px 0px;
+  padding: 16px 16px;
   display: flex;
   justify-content: center;
   gap: 10px;
@@ -77,56 +69,67 @@ const BodyContent = styled.div`
 `;
 
 interface StepData {
-  icon: React.ReactNode;
-  text: string;
+  id: number;
+  title: string;
 }
 
 interface DashBoardBodyProps {
-  type: "team" | "client" | "task"; // Add more types as needed
+  type: "team" | "client" | "task";
+  currentStep: number;
+  setCurrentStep: (step: number) => void;
 }
 
 const getStepsByType = (type: string): StepData[] => {
   switch (type) {
     case "team":
       return [
-        { icon: tickSVG, text: "Download FastGST biz mobile App" },
-        { icon: number2SVG, text: "Open App and go to Team" },
-        { icon: number3SVG, text: "Select member from your contact list" },
-        { icon: number4SVG, text: "Send invite" },
-        { icon: number5SVG, text: "Wait for the invite acceptance" },
+        { id: 1, title: "Download FastGST biz mobile App" },
+        { id: 2, title: "Open App and go to Team" },
+        { id: 3, title: "Select member from your contact list" },
+        { id: 4, title: "Send invite" },
+        { id: 5, title: "Wait for the invite acceptance" },
       ];
     case "client":
       return [
-        { icon: tickSVG, text: "Download FastGST biz mobie App" },
-        { icon: number2SVG, text: "Go to Clients" },
-        { icon: number3SVG, text: "Select member from your contact list and add business" },
-        { icon: number4SVG, text: "Send invite" },
-        { icon: number5SVG, text: "Wait for the invite acceptance" },
+        { id: 1, title: "Download FastGST biz mobie App" },
+        { id: 2, title: "Go to Clients" },
+        {
+          id: 3,
+          title: "Select member from your contact list and add business",
+        },
+        { id: 4, title: "Send invite" },
+        { id: 5, title: "Wait for the invite acceptance" },
       ];
     default:
       return [];
   }
 };
 
-const DashBoardBody: React.FC<DashBoardBodyProps> = ({ type }) => {
+const DashBoardBody: React.FC<DashBoardBodyProps> = ({
+  type,
+  currentStep,
+  setCurrentStep,
+}) => {
   const steps = getStepsByType(type);
 
   return (
     <InnerBodyContainer>
       <InnerBodyIconContainer>
-      {type === "team" && TeamIconSVG}
-      {type === "client" && ClientIconSVG}
+        {type === "team" && TeamIconSVG}
+        {type === "client" && ClientIconSVG}
       </InnerBodyIconContainer>
       <BodyContentContainer>
         <BodyTitle>
           {type === "team" && "You have not added any member in your Team."}
           {type === "client" && "You have not added any client till now."}
         </BodyTitle>
-        <BodyDesciption>
-        When you do, It’ll show up here.
-        </BodyDesciption>
+        <BodyDesciption>When you do, It’ll show up here.</BodyDesciption>
         <BodyContent>
-          <StepContainerComponent steps={steps} showVerticalLine={true} />
+          <StepContainerComponent
+            steps={steps}
+            currentStep={currentStep}
+            setCurrentStep={setCurrentStep}
+          />
         </BodyContent>
       </BodyContentContainer>
     </InnerBodyContainer>

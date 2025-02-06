@@ -11,8 +11,7 @@ import MembersTable from "../tables/MembersTable";
 import DashBoardTitle from "../components/atoms/deprecated/DashBoardHead";
 import DashBoardBody from "../components/atoms/deprecated/DashBoardBody";
 import Layout from "../layout/Layout";
-
-
+import { useState } from "react";
 
 const InnerRightContainer = styled.div`
   height: 100%;
@@ -108,7 +107,7 @@ const SearchFilterandHistoryDiv = styled.div`
   width: 495px;
   display: flex;
   gap: 16px;
-  justify-content : flex-end;
+  justify-content: flex-end;
 `;
 
 interface DashBoardLeftProps {
@@ -120,20 +119,22 @@ const SearchandFilterBlock = styled.div``;
 
 const TableDiv = styled.div``;
 
-const Dashboard: React.FC<DashBoardLeftProps> = ({ activeItem, setActiveItem }) => {
-  const headDescription = "Manage and organize your team members for efficient collaboration.";
+const Dashboard: React.FC<DashBoardLeftProps> = ({
+  activeItem,
+  setActiveItem,
+}) => {
+  const headDescription =
+    "Manage and organize your team members for efficient collaboration.";
 
   const navigate = useNavigate();
   const { teamMembers } = useTeamMembers();
+
+  const [currentStep, setCurrentStep] = useState(1);
   return (
-    <Layout activeItem={activeItem} setActiveItem={setActiveItem} >
+    <Layout activeItem={activeItem} setActiveItem={setActiveItem}>
       <InnerRightContainer>
         <NavigatingTopBar>
-          <TopNavigatingBar
-            showBackButton={false}
-            mainText="Teams"
-            showExtendedRoutes={false}
-          />
+          <TopNavigatingBar />
         </NavigatingTopBar>
         <ContentContainer>
           <ContentMainContainer>
@@ -149,9 +150,15 @@ const Dashboard: React.FC<DashBoardLeftProps> = ({ activeItem, setActiveItem }) 
                 <SearchandFilterBlock>
                   {teamMembers.length && (
                     <SearchAndFilterDiv>
-                      <MemberCount label="All Members" count={teamMembers.length} />
+                      <MemberCount
+                        label="All Members"
+                        count={teamMembers.length}
+                      />
                       <SearchFilterandHistoryDiv>
-                        <SearchComponent svg={SearchSVG} placeholder="Search a Team member..." />
+                        <SearchComponent
+                          svg={SearchSVG}
+                          placeholder="Search a Team member..."
+                        />
                         <DropdownComponent
                           svg={FilterSVG}
                           text="Filter"
@@ -164,7 +171,7 @@ const Dashboard: React.FC<DashBoardLeftProps> = ({ activeItem, setActiveItem }) 
                           ]}
                         />
                         <MultiFunctionButtonComponent
-                          onClick={() => navigate("/filing")}
+                          onClick={() => navigate("filing")}
                           text="Filling History"
                           height="36px"
                           width="137px"
@@ -178,7 +185,15 @@ const Dashboard: React.FC<DashBoardLeftProps> = ({ activeItem, setActiveItem }) 
                   )}
                 </SearchandFilterBlock>
                 <TableDiv>
-                  {teamMembers.length ? <MembersTable /> : <DashBoardBody type="team" />}
+                  {teamMembers.length ? (
+                    <MembersTable />
+                  ) : (
+                    <DashBoardBody
+                      type="team"
+                      setCurrentStep={setCurrentStep}
+                      currentStep={currentStep}
+                    />
+                  )}
                 </TableDiv>
               </SearchandFilterContainer>
             </BodyContainer>

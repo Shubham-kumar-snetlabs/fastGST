@@ -19,61 +19,65 @@ interface ClientMemberContextType {
 }
 
 // Create the context with a default value of `undefined`
-const ClientMemberContext = createContext<ClientMemberContextType | undefined>(undefined);
+const ClientMemberContext = createContext<ClientMemberContextType | undefined>(
+  undefined
+);
 
 // Create the provider component
-export const ClientMemberProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const ClientMemberProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [clientMembers, setClientMembers] = useState<ClientMember[]>([
     {
       id: 1,
-      client: 'Bill Gates',
-      business: 'Microsoft',
-      businessNumber: 'AA060724637341B',
-      filingType: 'R1',
-      gstPeriod: 'Nov 2024',
-      filedBy : 'Lokesh Kumar',
-      filedAt: '15 Jan 2024',
+      client: "Bill Gates",
+      business: "Microsoft",
+      businessNumber: "AA060724637341B",
+      filingType: "R1",
+      gstPeriod: "Nov 2024",
+      filedBy: "Lokesh Kumar",
+      filedAt: "15 Jan 2024",
     },
     {
-        id: 2,
-        client: 'Bill Gates',
-        business: 'Microsoft',
-        businessNumber: 'AA060724637341B',
-        filingType: 'R1',
-        gstPeriod: 'Dec 2024',
-        filedBy : 'Lokesh Kumar',
-        filedAt: '15 Jan 2024',
-      },
-      {
-        id: 3,
-        client: 'Elon Musk',
-        business: 'SpaceX',
-        businessNumber: 'AA060724637341B',
-        filingType: 'R1',
-        gstPeriod: 'Nov 2024',
-        filedBy : 'Lokesh Kumar',
-        filedAt: '15 Jan 2024',
-      },
-      {
-        id: 4,
-        client: 'Elon Musk',
-        business: 'SpaceX',
-        businessNumber: 'AA060724637341B',
-        filingType: 'R1',
-        gstPeriod: 'Nov 2024',
-        filedBy : 'Lokesh Kumar',
-        filedAt: '15 Jan 2024',
-      },
-      {
-        id: 5,
-        client: 'Jeff Bezos',
-        business: 'Amazon',
-        businessNumber: 'AA060724637341B',
-        filingType: 'R1',
-        gstPeriod: 'Nov 2024',
-        filedBy : 'Lokesh Kumar',
-        filedAt: '15 Jan 2024',
-      },
+      id: 2,
+      client: "Bill Gates",
+      business: "Microsoft",
+      businessNumber: "AA060724637341B",
+      filingType: "R1",
+      gstPeriod: "Dec 2024",
+      filedBy: "Lokesh Kumar",
+      filedAt: "15 Jan 2024",
+    },
+    {
+      id: 3,
+      client: "Elon Musk",
+      business: "SpaceX",
+      businessNumber: "AA060724637341B",
+      filingType: "R1",
+      gstPeriod: "Nov 2024",
+      filedBy: "Lokesh Kumar",
+      filedAt: "15 Jan 2024",
+    },
+    {
+      id: 4,
+      client: "Elon Musk",
+      business: "SpaceX",
+      businessNumber: "AA060724637341B",
+      filingType: "R1",
+      gstPeriod: "Nov 2024",
+      filedBy: "Lokesh Kumar",
+      filedAt: "15 Jan 2024",
+    },
+    {
+      id: 5,
+      client: "Jeff Bezos",
+      business: "Amazon",
+      businessNumber: "AA060724637341B",
+      filingType: "R1",
+      gstPeriod: "Nov 2024",
+      filedBy: "Lokesh Kumar",
+      filedAt: "15 Jan 2024",
+    },
   ]);
 
   return (
@@ -87,7 +91,9 @@ export const ClientMemberProvider: React.FC<{ children: React.ReactNode }> = ({ 
 export const useClientMembers = () => {
   const context = useContext(ClientMemberContext);
   if (!context) {
-    throw new Error("useClientMembers must be used within a ClientMemberProvider");
+    throw new Error(
+      "useClientMembers must be used within a ClientMemberProvider"
+    );
   }
   return context;
 };
